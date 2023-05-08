@@ -1,5 +1,4 @@
-from PyQt6.QtWidgets import QApplication, QWidget, QMainWindow, QPushButton
-from PyQt6 import uic
+from PySide6.QtWidgets import QApplication, QWidget, QMainWindow, QPushButton
 import sys
 
 app = QApplication(sys.argv)
