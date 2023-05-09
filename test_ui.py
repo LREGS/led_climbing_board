@@ -2,7 +2,8 @@ from PySide6.QtCore import QFile, QIODevice
 from PySide6.QtGui import QIcon, QPixmap
 from PySide6.QtUiTools import QUiLoader
 from PySide6 import QtCore
-from PySide6.QtWidgets import QSizePolicy, QApplication, QMainWindow, QLabel, QPushButton, QToolButton
+from PySide6.QtWidgets import QSizePolicy, QApplication, QMainWindow, \
+QLabel,QPushButton, QToolButton, QVBoxLayout, QWidget
 import os
 
 
@@ -15,12 +16,16 @@ class MainWindow(QMainWindow):
         loader = QUiLoader()
         ui_file = QFile(ui_file_path)
         ui_file.open(QIODevice.ReadOnly)
-        self.window = loader.load(ui_file)
+        self.board_widget = loader.load(ui_file)
     
 
-        # Set the UI as the Central Widget
-        self.setCentralWidget('boardgui.ui')
-
+        # Add to main windows layout
+        main_layout = QVBoxLayout()
+        main_layout.addWidget(self.board_widget)
+        self.central_widget = QWidget()
+        self.central_widget.setLayout(main_layout)
+        self.setCentralWidget(self.central_widget)
+        """
         # Load the image
         image_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "ched_board.jpg"))
         pixmap = QPixmap(image_path)
@@ -29,19 +34,17 @@ class MainWindow(QMainWindow):
         # Create a new QLabel and set its pixmap property
         self.label = QLabel(self.window)
         self.label.setPixmap(pixmap)
-        self.label.setScaledContents(True)
+        self.label.setScaledContents(True)"""
         
         
-        """NEED TO FIX THAT THE HOLDS DONT MATCH WITH SCALED PIXMAP 
-        THE LOCATION ON QTDESIGNER ISN'T AN EXACT MATCH TO THE WINDOW 
-        OPENED THROUGH PY AS THE FORCED SCALE CHANGES THIS"""
+        
         #Add Buttons
         for i in range(1, 27):
             holds = "hold{}".format(i)
-            hold = self.window.findChild(QToolButton, holds)
+            hold = self.board_widget.findChild(QToolButton, holds)
             hold.raise_()
             hold.clicked.connect(self.hold_selected)
-        
+       
         # Close the file
         ui_file.close()
     
