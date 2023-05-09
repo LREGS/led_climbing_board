@@ -17,6 +17,7 @@ class MainWindow(QMainWindow):
         ui_file = QFile(ui_file_path)
         ui_file.open(QIODevice.ReadOnly)
         self.board_widget = loader.load(ui_file)
+
     
 
         # Add to main windows layout
@@ -25,25 +26,19 @@ class MainWindow(QMainWindow):
         self.central_widget = QWidget()
         self.central_widget.setLayout(main_layout)
         self.setCentralWidget(self.central_widget)
-        """
-        # Load the image
-        image_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "ched_board.jpg"))
-        pixmap = QPixmap(image_path)
-        pixmap = pixmap.scaled(400,400, QtCore.Qt.KeepAspectRatio)
-
-        # Create a new QLabel and set its pixmap property
-        self.label = QLabel(self.window)
-        self.label.setPixmap(pixmap)
-        self.label.setScaledContents(True)"""
+            
         
         
-        
-        #Add Buttons
-        for i in range(1, 27):
+        #Add Buttons on Climbs
+        for i in range(1, 28):
             holds = "hold{}".format(i)
             hold = self.board_widget.findChild(QToolButton, holds)
             hold.raise_()
             hold.clicked.connect(self.hold_selected)
+        
+        #Adds a Create Climb Button 
+        self.creat_climb_btn = QPushButton('Create Climb')
+        main_layout.addWidget(self.creat_climb_btn)
        
         # Close the file
         ui_file.close()
