@@ -19,7 +19,7 @@ class MainWindow(QMainWindow):
     
 
         # Set the UI as the Central Widget
-        self.setCentralWidget(self.window)
+        self.setCentralWidget('boardgui.ui')
 
         # Load the image
         image_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "ched_board.jpg"))
