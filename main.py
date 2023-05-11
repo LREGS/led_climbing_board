@@ -15,16 +15,20 @@ class State:
         self.creation_actv = False 
 
 class Climb():
+    
     def __init__(self, state):
         self.climb = {'route' : []}
         self.state = state
                 
     def handle_hold_selection(self):
         """Stores the desired holds for the climb into a dictionary"""
-        hold_name = self.sender().objectName()
-        self.climb['route'].append(hold_name)
-        print(hold_name)
-    
+        if self.creation_actv:
+            hold_name = self.sender().objectName()
+            self.climb['route'].append(hold_name)
+            print(hold_name)
+        else:
+            return
+        
     def assign_start_holds(self):
         print('n/a')
     
