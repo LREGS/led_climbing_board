@@ -20,3 +20,10 @@ class CreateClimbDlg(QDialog):
         self.layout.addWidget(message)
         self.layout.addWidget(self.buttonBox)
         self.setLayout(self.layout)
+    
+def open_dlg_box():
+    dlg = CreateClimbDlg()
+    dlg.exec()
+        
+    
+        
