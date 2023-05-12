@@ -126,7 +126,7 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold1">
+  <widget class="QPushButton" name="hold1">
    <property name="geometry">
     <rect>
      <x>60</x>
@@ -234,7 +234,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold21">
+  <widget class="QPushButton" name="hold21">
    <property name="geometry">
     <rect>
      <x>340</x>
@@ -342,7 +342,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold22">
+  <widget class="QPushButton" name="hold22">
    <property name="geometry">
     <rect>
      <x>250</x>
@@ -450,7 +450,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold23">
+  <widget class="QPushButton" name="hold23">
    <property name="geometry">
     <rect>
      <x>250</x>
@@ -558,7 +558,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold25">
+  <widget class="QPushButton" name="hold25">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -666,7 +666,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold26">
+  <widget class="QPushButton" name="hold26">
    <property name="geometry">
     <rect>
      <x>300</x>
@@ -774,7 +774,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold27">
+  <widget class="QPushButton" name="hold27">
    <property name="geometry">
     <rect>
      <x>330</x>
@@ -882,7 +882,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold24">
+  <widget class="QPushButton" name="hold24">
    <property name="geometry">
     <rect>
      <x>60</x>
@@ -990,7 +990,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold2">
+  <widget class="QPushButton" name="hold2">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -1098,7 +1098,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold3">
+  <widget class="QPushButton" name="hold3">
    <property name="geometry">
     <rect>
      <x>190</x>
@@ -1206,7 +1206,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold4">
+  <widget class="QPushButton" name="hold4">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -1314,7 +1314,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold5">
+  <widget class="QPushButton" name="hold5">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -1422,7 +1422,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold6">
+  <widget class="QPushButton" name="hold6">
    <property name="geometry">
     <rect>
      <x>190</x>
@@ -1530,7 +1530,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold7">
+  <widget class="QPushButton" name="hold7">
    <property name="geometry">
     <rect>
      <x>90</x>
@@ -1638,7 +1638,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold8">
+  <widget class="QPushButton" name="hold8">
    <property name="geometry">
     <rect>
      <x>250</x>
@@ -1746,7 +1746,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold9">
+  <widget class="QPushButton" name="hold9">
    <property name="geometry">
     <rect>
      <x>310</x>
@@ -1854,7 +1854,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold10">
+  <widget class="QPushButton" name="hold10">
    <property name="geometry">
     <rect>
      <x>280</x>
@@ -1962,7 +1962,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold11">
+  <widget class="QPushButton" name="hold11">
    <property name="geometry">
     <rect>
      <x>270</x>
@@ -2070,7 +2070,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold12">
+  <widget class="QPushButton" name="hold12">
    <property name="geometry">
     <rect>
      <x>160</x>
@@ -2178,7 +2178,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold13">
+  <widget class="QPushButton" name="hold13">
    <property name="geometry">
     <rect>
      <x>130</x>
@@ -2286,7 +2286,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold14">
+  <widget class="QPushButton" name="hold14">
    <property name="geometry">
     <rect>
      <x>110</x>
@@ -2394,7 +2394,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold15">
+  <widget class="QPushButton" name="hold15">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -2502,7 +2502,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold16">
+  <widget class="QPushButton" name="hold16">
    <property name="geometry">
     <rect>
      <x>70</x>
@@ -2610,7 +2610,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold17">
+  <widget class="QPushButton" name="hold17">
    <property name="geometry">
     <rect>
      <x>190</x>
@@ -2718,7 +2718,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold18">
+  <widget class="QPushButton" name="hold18">
    <property name="geometry">
     <rect>
      <x>240</x>
@@ -2826,7 +2826,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold19">
+  <widget class="QPushButton" name="hold19">
    <property name="geometry">
     <rect>
      <x>260</x>
@@ -2934,7 +2934,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="hold20">
+  <widget class="QPushButton" name="hold20">
    <property name="geometry">
     <rect>
      <x>140</x>
