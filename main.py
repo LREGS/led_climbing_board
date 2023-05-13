@@ -50,7 +50,8 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         
-        climb = Climb()
+        
+     
         
         # def open_dlg_box():
         #     dlg = CreateClimbDlg()
@@ -73,24 +74,25 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.central_widget)
         
         #Adds buttons for holds 
-        holds = climb.hold_buttons()
+        #holds = climb.hold_buttons()
             
         #Adds Buttons for Holds
-        # hold_buttons = QButtonGroup()
-        # for i in range(1, 28):
-        #     hold = self.board_widget.findChild(QPushButton, f'hold{i}')
-        #     hold_buttons.addButton(hold, i)
+        hold_buttons = QButtonGroup()
+        for i in range(1, 28):
+            hold = self.board_widget.findChild(QPushButton, f'hold{i}')
+            hold_buttons.addButton(hold, i)
         
-        # def check(button):
-        #     #while / after create climb button has been pressed, access 
-        #     #the values of the button presses and store in dictionary
-        #     #Check is now logic behind handle_hold_selection in climbs.py
-        #     hold_selected = hold_buttons.id(button)
-        #     print(hold_selected)
+        route = []
+        def collect_route(button):
+            hold_selected = hold_buttons.id(button)
+            route.append(hold_selected)
+            #climb.route.append(hold_selected)
+         #   print(climb.route)
+        
         
         # #Connects the hold_buttons button group to the check function    
         # #hold_buttons.buttonClicked.connect(climb.handle_hold_selection(hold_buttons))
-        # hold_buttons.buttonClicked.connect(check)
+        hold_buttons.buttonClicked.connect(collect_route)
         #Adds a Create Climb Button 
         self.create_climb_btn = QPushButton('Create Climb')
         main_layout.addWidget(self.create_climb_btn)
@@ -101,7 +103,10 @@ class MainWindow(QMainWindow):
         self.save_climb_btn = QPushButton('Save Climb')
         main_layout.addWidget(self.save_climb_btn)
         
-
+        climb = Climb(route)
+        
+        
+        
     #open dialogue 
     
     # def create_climbs_state(self):
