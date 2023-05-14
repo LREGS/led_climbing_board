@@ -37,13 +37,17 @@ class MainWindow(QMainWindow):
             hold = self.board_widget.findChild(QPushButton, f'hold{i}')
             hold_buttons.addButton(hold, i)
         
+        
         route = []
+        climb = Climb(route)
         def collect_route(button):
             hold_selected = hold_buttons.id(button)
             route.append(hold_selected)
             #climb.route.append(hold_selected)
-            #print(climb.route)
-        
+            #print(route)
+            climb.route = route
+        #prints route through instance of a climb
+            print(climb.route)
         
         # #Connects the hold_buttons button group to the check function    
         hold_buttons.buttonClicked.connect(collect_route)
@@ -60,7 +64,8 @@ class MainWindow(QMainWindow):
         self.save_climb_btn = QPushButton('Save Climb')
         main_layout.addWidget(self.save_climb_btn)
         
-        climb = Climb(route)
+        
+        #print(climb.route)
     
 
         
