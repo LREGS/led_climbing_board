@@ -39,7 +39,7 @@ class MainWindow(QMainWindow):
         
         
         route = []
-        climb = Climb(route)
+        #climb = Climb(route)
         def collect_route(button):
             hold_selected = hold_buttons.id(button)
             route.append(hold_selected)
@@ -48,8 +48,9 @@ class MainWindow(QMainWindow):
             climb.route = route
         #prints route through instance of a climb
             print(climb.route)
+
         
-        # #Connects the hold_buttons button group to the check function    
+        
         hold_buttons.buttonClicked.connect(collect_route)
         
         #Adds a Create Climb Button 
@@ -58,14 +59,13 @@ class MainWindow(QMainWindow):
         
         #Slot to link in to create_climbs
         #self.create_climb_btn.clicked.connect(self.create_climbs_state)
-        self.create_climb_btn.clicked.connect(open_dlg_box)
+        climb = self.create_climb_btn.clicked.connect(open_dlg_box)
         
         #Adds a Save Climb button 
         self.save_climb_btn = QPushButton('Save Climb')
         main_layout.addWidget(self.save_climb_btn)
         
         
-        #print(climb.route)
     
 
         
