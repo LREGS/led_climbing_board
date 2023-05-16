@@ -1,4 +1,4 @@
-from PySide6.QtCore import QFile, QIODevice
+from PySide6.QtCore import QFile, QIODevice, Signal
 from PySide6.QtGui import QIcon, QPixmap
 from PySide6.QtUiTools import QUiLoader
 from PySide6 import QtCore
@@ -11,6 +11,8 @@ from Climbs import Climb
 
                 
 class MainWindow(QMainWindow):
+
+             
     def __init__(self):
         super().__init__()
         
@@ -39,8 +41,8 @@ class MainWindow(QMainWindow):
         
         
         route = []
-        #climb = Climb(route)
         def collect_route(button):
+            climb = Climb(route)
             hold_selected = hold_buttons.id(button)
             route.append(hold_selected)
             #climb.route.append(hold_selected)
@@ -48,6 +50,8 @@ class MainWindow(QMainWindow):
             climb.route = route
         #prints route through instance of a climb
             print(climb.route)
+        
+   
 
         
         
@@ -59,13 +63,20 @@ class MainWindow(QMainWindow):
         
         #Slot to link in to create_climbs
         #self.create_climb_btn.clicked.connect(self.create_climbs_state)
-        climb = self.create_climb_btn.clicked.connect(open_dlg_box)
+        self.create_climb_btn.clicked.connect(open_dlg_box)
+        self.climbAccepted.connect(self.handleAccepted)
+        
         
         #Adds a Save Climb button 
         self.save_climb_btn = QPushButton('Save Climb')
         main_layout.addWidget(self.save_climb_btn)
         
         
+            
+    # def handleRejected(self):
+    #     print('r')   
+   
+
     
 
         

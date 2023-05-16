@@ -1,17 +1,18 @@
 from PySide6.QtWidgets import QDialog, QDialogButtonBox, QVBoxLayout, QLabel 
+from Climbs import Climb
+from main import MainWindow
 
 class CreateClimbDlg(QDialog):
     """Create a Dialog box that initilizes the create climb sequence"""
     def __init__(self):
         super().__init__()
         
-        self.setWindowTitle('Create Climb')
-        
+        self.setWindowTitle('Create Climb')        
         #Create Buttons
         Btn = QDialogButtonBox.Ok | QDialogButtonBox.Cancel
         
         self.buttonBox = QDialogButtonBox(Btn)
-        self.buttonBox.accepted.connect(self.accept)
+        self.buttonBox.accepted.connect(bAccepted)
         self.buttonBox.rejected.connect(self.reject)
         
         #Create Layout of Dialog box
@@ -23,7 +24,13 @@ class CreateClimbDlg(QDialog):
     
 def open_dlg_box():
     dlg = CreateClimbDlg()
-    dlg.exec()
+    if dlg.exec() == QDialog.Accepted:
+        MainWindow.climbAccepted.emit()
+    else:
+        MainWindow.climbRejected.emit()
+
+def bAccepted():
+    print('a')
         
     
         
