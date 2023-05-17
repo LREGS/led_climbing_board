@@ -5,9 +5,10 @@ from PySide6 import QtCore
 from PySide6.QtWidgets import QSizePolicy, QApplication, QMainWindow, \
 QLabel,QPushButton, QToolButton, QVBoxLayout, QWidget, QDialog, QButtonGroup
 import os
+
 from create_clmb_dlg import CreateClimbDlg
 from Climbs import Climb
-              
+from open_create_clmb_dlg_box import open_clmb_dlg_box
 
                 
 class MainWindow(QMainWindow):
@@ -35,15 +36,8 @@ class MainWindow(QMainWindow):
       
         super().__init__()
         
-        def open_create_clmb_dlg_box():
-            dlg = CreateClimbDlg()
-            result = dlg.exec()
-            
-            if result == QDialog.Accepted:
-                print('A')
-            else:
-                print('R')
-
+        self.climb = None
+        
         # Load UI file
         ui_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "boardgui.ui"))
         loader = QUiLoader()
@@ -73,14 +67,22 @@ class MainWindow(QMainWindow):
         self.create_climb_btn = QPushButton('Create Climb')
         main_layout.addWidget(self.create_climb_btn)
         
-        #Slot to link in to create_climbs
-        self.create_climb_btn.clicked.connect(open_create_clmb_dlg_box) 
+        def handle_create_climb():
+            """Gets climb as object from open_clmb_dlg_box and prints name"""
+            self.climb = open_clmb_dlg_box()
+           
+            if self.climb is not None:
+                print(self.climb.name)
+            else:
+                print('no climb')       
         
+        #Slot to link in to create_climbs
+        #self.create_climb_btn.clicked.connect(open_clmb_dlg_box)
+        self.create_climb_btn.clicked.connect(handle_create_climb)
+                
         #Adds a Save Climb button 
         self.save_climb_btn = QPushButton('Save Climb')
         main_layout.addWidget(self.save_climb_btn)
-    
-
         
 if __name__ == '__main__':
     app = QApplication([])
