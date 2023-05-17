@@ -9,10 +9,8 @@ from PySide6.QtCore import QFile, QIODevice
 class Climb():
     
     """Creates a Climb"""
-    def __init__(self, button):
-        self.button = button
+    def __init__(self, name, route = None):
+        self.name = name
 
-    def route(self, button):
-        #self.hold_buttons.append(id(button))
-        print(button)    
+
  
