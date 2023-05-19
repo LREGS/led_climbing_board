@@ -36,6 +36,7 @@ class MainWindow(QMainWindow):
       
         super().__init__()
         
+        #Holder variable for the climb object to be assigned too
         self.climb = None
         
         # Load UI file
@@ -79,6 +80,14 @@ class MainWindow(QMainWindow):
         #Slot to link in to create_climbs
         #self.create_climb_btn.clicked.connect(open_clmb_dlg_box)
         self.create_climb_btn.clicked.connect(handle_create_climb)
+        
+        def change_climb_name(self):
+            if self.climb:
+                self.climb.name = 'bas'
+            else:
+                print('error 404')
+            
+        print(change_climb_name(self))
                 
         #Adds a Save Climb button 
         self.save_climb_btn = QPushButton('Save Climb')

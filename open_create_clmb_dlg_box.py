@@ -8,7 +8,7 @@ def open_clmb_dlg_box():
     result = dlg.exec()
             
     if result == QDialog.Accepted:
-        climb = Climb('William')
+        climb = Climb()
         print('Please Select the Holds for your route and then click save')
         return climb
     else:

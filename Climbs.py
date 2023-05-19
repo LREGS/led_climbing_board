@@ -9,8 +9,9 @@ from PySide6.QtCore import QFile, QIODevice
 class Climb():
     
     """Creates a Climb"""
-    def __init__(self, name, route = None):
+    def __init__(self, name = None, route = None):
         self.name = name
+        self.route = route
 
 
  
