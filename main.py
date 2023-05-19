@@ -9,6 +9,7 @@ import os
 from create_clmb_dlg import CreateClimbDlg
 from Climbs import Climb
 from open_create_clmb_dlg_box import open_clmb_dlg_box
+from handle_create_climb import ClimbCreator
 
                 
 class MainWindow(QMainWindow):
@@ -34,10 +35,11 @@ class MainWindow(QMainWindow):
                 hold_buttons.addButton(hold, i)
             return hold_buttons
       
+
         super().__init__()
         
         #Holder variable for the climb object to be assigned too
-        self.climb = None
+        
         
         # Load UI file
         ui_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "boardgui.ui"))
@@ -54,38 +56,48 @@ class MainWindow(QMainWindow):
         self.central_widget = QWidget()
         self.central_widget.setLayout(main_layout)
         self.setCentralWidget(self.central_widget)
+        
+        def onclimb_created(self, climb):
+            self.create_climb_btn.setEnabled(True)
+            self.climb = climb
+        
+        #Climb Creator
+        self.climb_creator = ClimbCreator()
+        self.climb_creator.create_climb.connect(onclimb_created)
+
     
         #Create Button Group for Holds
         button_group = create_btn_group(board_widget)
         
         #Placeholder for the route list
         route =[]
+        
+        self.climb = None
 
         #Connects the buttons to the collect_route slot
         button_group.buttonClicked.connect(collect_route)
         
+        def create_climb():
+            self.create_climb_btn.setEnabled(False)
+            self.climb_creator.handle_create_climb()  
+        
+        
         #Adds a Create Climb Button 
         self.create_climb_btn = QPushButton('Create Climb')
+        self.create_climb_btn.clicked.connect(create_climb)
         main_layout.addWidget(self.create_climb_btn)
         
-        def handle_create_climb():
-            """Gets climb as object from open_clmb_dlg_box and prints name"""
-            self.climb = open_clmb_dlg_box()
-           
-            if self.climb is not None:
-                print(self.climb.name)
-            else:
-                print('no climb')       
         
-        #Slot to link in to create_climbs
-        #self.create_climb_btn.clicked.connect(open_clmb_dlg_box)
-        self.create_climb_btn.clicked.connect(handle_create_climb)
-        
+            
+  
+            
         def change_climb_name(self):
             if self.climb:
                 self.climb.name = 'bas'
             else:
-                print('error 404')
+                print('e')
+        
+        
             
         print(change_climb_name(self))
                 
