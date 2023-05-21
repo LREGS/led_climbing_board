@@ -10,6 +10,7 @@ from create_clmb_dlg import CreateClimbDlg
 from Climbs import Climb
 from open_create_clmb_dlg_box import open_clmb_dlg_box
 from handle_create_climb import ClimbCreator
+from load_ui_file import ui_loader
 
 def onclimb_created(climb):
     """assigns the climb object to the holder variable"""
@@ -48,14 +49,9 @@ class MainWindow(QMainWindow):
         self.climb = None
         
         # Load UI file
-        ui_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__)\
-            , "boardgui.ui"))
-        loader = QUiLoader()
-        ui_file = QFile(ui_file_path)
-        ui_file.open(QIODevice.ReadOnly)
-        board_widget = self.board_widget = loader.load(ui_file)
-        # Close the file
-        ui_file.close()    
+        board_widget = self.board_widget = ui_loader\
+        (os.path.join(os.path.dirname(__file__), "boardgui.ui"))
+
 
         # Add to main windows layout
         main_layout = QVBoxLayout()
