@@ -11,6 +11,7 @@ from Climbs import Climb
 from open_create_clmb_dlg_box import open_clmb_dlg_box
 from handle_create_climb import ClimbCreator
 from load_ui_file import ui_loader
+from button_group import create_button_group
 
 def onclimb_created(climb):
     """assigns the climb object to the holder variable"""
@@ -26,22 +27,13 @@ class MainWindow(QMainWindow):
         
         def collect_route(button):
            climb = Climb(route)
-           hold_selected = button_group.id(button)
+           hold_selected = hold_button_group.id(button)
            route.append(hold_selected)
            #climb.route.append(hold_selected)
            #print(route)
            climb.route = route
         #prints route through instance of a climb
            print(climb.route)
-        
-            #Adds Buttons for Holds
-        def create_btn_group(boardWidget):
-            hold_buttons = QButtonGroup()
-            for i in range(1, 28):
-                hold = boardWidget.findChild(QPushButton, f'hold{i}')
-                hold_buttons.addButton(hold, i)
-            return hold_buttons
-      
 
         super().__init__()
         
@@ -66,13 +58,14 @@ class MainWindow(QMainWindow):
         self.climb_creator.create_climb.connect(onclimb_created)
 
         #Create Button Group for Holds
-        button_group = create_btn_group(board_widget)
+        #button_group = create_btn_group(board_widget)
+        hold_button_group = create_button_group(board_widget)
         
         #Placeholder for the route list
         route =[]
         
         #Connects the buttons to the collect_route slot
-        button_group.buttonClicked.connect(collect_route)
+        hold_button_group.buttonClicked.connect(collect_route)
         
         def create_climb():
             self.create_climb_btn.setEnabled(False)
