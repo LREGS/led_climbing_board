@@ -12,6 +12,7 @@ from open_create_clmb_dlg_box import open_clmb_dlg_box
 from handle_create_climb import ClimbCreator
 from load_ui_file import ui_loader
 from button_group import create_button_group
+from handle_save_climb import SaveClimb
 
 def onclimb_created(climb):
     """assigns the climb object to the holder variable"""
@@ -45,7 +46,6 @@ class MainWindow(QMainWindow):
         (os.path.join(os.path.dirname(__file__), "boardgui.ui"))
 
 
-        # Add to main windows layout
         main_layout = QVBoxLayout()
         main_layout.addWidget(self.board_widget)
         self.central_widget = QWidget()
@@ -53,23 +53,27 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.central_widget)
         
         
-        #Climb Creator    
         self.climb_creator = ClimbCreator()
         self.climb_creator.create_climb.connect(onclimb_created)
+        
+        self.climb_save = SaveClimb()
+        
+        
+        
 
-        #Create Button Group for Holds
-        #button_group = create_btn_group(board_widget)
         hold_button_group = create_button_group(board_widget)
         
-        #Placeholder for the route list
         route =[]
         
-        #Connects the buttons to the collect_route slot
         hold_button_group.buttonClicked.connect(collect_route)
         
         def create_climb():
             self.create_climb_btn.setEnabled(False)
-            self.climb_creator.handle_create_climb()  
+            self.climb_creator.handle_create_climb()
+            
+        def save_climb():
+            self.climb_save.handle_save_climb()
+
         
         
         #Adds a Create Climb Button 
@@ -79,6 +83,7 @@ class MainWindow(QMainWindow):
                 
         #Adds a Save Climb button 
         self.save_climb_btn = QPushButton('Save Climb')
+        self.save_climb_btn.clicked.connect(save_climb)
         main_layout.addWidget(self.save_climb_btn)
         
 if __name__ == '__main__':

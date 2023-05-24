@@ -1,13 +1,11 @@
 from PySide6.QtWidgets import QDialog, QDialogButtonBox, QVBoxLayout, QLabel 
-from Climbs import Climb
 
-class CreateClimbDlg(QDialog):
-    """Create a Dialog box that initilizes the create climb sequence"""
+class CheckButtonActionDlg(QDialog):
+    """Checks if user meant button click with yes/no"""
     def __init__(self):
         super().__init__()
-        self. climb = None
-        self.setWindowTitle('Create Climb')        
-        #Create Buttons
+        self.setWindowTitle(str('title'))   
+             
         Btn = QDialogButtonBox.Ok | QDialogButtonBox.Cancel
         
         self.buttonBox = QDialogButtonBox(Btn)
@@ -15,13 +13,10 @@ class CreateClimbDlg(QDialog):
         self.buttonBox.accepted.connect(self.accept)
         self.buttonBox.rejected.connect(self.reject)
         
-        #Create Layout of Dialog box
         self.layout = QVBoxLayout()
-        message = QLabel("Select 'OK' and then select your desired holds")
+        message = QLabel(str('label'))
         self.layout.addWidget(message)
         self.layout.addWidget(self.buttonBox)
         self.setLayout(self.layout)
 
-        
-    
         
