@@ -7,7 +7,7 @@ from open_save_clmb_dlg import open_save_clmb_dlg_box
 class SaveClimb(QObject):
     """Handles Saving of the climb"""
     
-    def handle_save_climb():
+    def handle_save_climb(self):
         
         save_check = open_save_clmb_dlg_box()
         

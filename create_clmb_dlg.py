@@ -7,7 +7,7 @@ class CreateClimbDlg(QDialog):
         super().__init__()
         self. climb = None
         self.setWindowTitle('Create Climb')        
-        #Create Buttons
+
         Btn = QDialogButtonBox.Ok | QDialogButtonBox.Cancel
         
         self.buttonBox = QDialogButtonBox(Btn)
@@ -15,7 +15,6 @@ class CreateClimbDlg(QDialog):
         self.buttonBox.accepted.connect(self.accept)
         self.buttonBox.rejected.connect(self.reject)
         
-        #Create Layout of Dialog box
         self.layout = QVBoxLayout()
         message = QLabel("Select 'OK' and then select your desired holds")
         self.layout.addWidget(message)

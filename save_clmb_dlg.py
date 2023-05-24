@@ -1,7 +1,9 @@
 from PySide6.QtWidgets import QDialog, QLineEdit, QSpinBox                         
 
-TODO
-[] 
+#TODO
+#[] create an ok/cancel dialog box to check the user wants  to save 
+#[] create the dlg box that will take the climb name and climb grade as an int
+#[] saved and return these values 
 
 class SaveClimbDlg(QDialog):
     def __inint__(self):
