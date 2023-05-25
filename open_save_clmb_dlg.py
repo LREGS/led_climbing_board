@@ -7,7 +7,8 @@ def open_save_clmb_dlg_box():
     result = dlg.exec()
     
     if result == QDialog.Accepted:
-        return dlg.name, dlg.grade
+        return dlg.grade, dlg.name
+        
     else:
         print('Climb aborted')
         return False
