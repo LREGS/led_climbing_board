@@ -1,10 +1,12 @@
+import os
+
 from PySide6.QtCore import QFile, QIODevice, Signal
 from PySide6.QtGui import QIcon, QPixmap
 from PySide6.QtUiTools import QUiLoader
 from PySide6 import QtCore
 from PySide6.QtWidgets import QSizePolicy, QApplication, QMainWindow, \
 QLabel,QPushButton, QToolButton, QVBoxLayout, QWidget, QDialog, QButtonGroup
-import os
+
 
 from create_clmb_dlg import CreateClimbDlg
 from Climbs import Climb
@@ -58,9 +60,6 @@ class MainWindow(QMainWindow):
         
         self.climb_save = SaveClimb()
         
-        
-        
-
         hold_button_group = create_button_group(board_widget)
         
         route =[]
