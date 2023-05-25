@@ -10,10 +10,10 @@ class SaveClimb(QObject):
     
     def handle_save_climb(self):
         
-        name_climb_input = open_save_clmb_dlg_box()
+        climb_name, climb_grade = open_save_clmb_dlg_box()
         
-        if name_climb_input:
-            print('gay')            
+        if climb_name:
+           print(climb_name)            
         else:
             print('Climb Aborted')
     
