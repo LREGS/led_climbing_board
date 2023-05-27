@@ -29,14 +29,14 @@ class MainWindow(QMainWindow):
     def __init__(self):
         
         def collect_route(button):
-           climb = Climb(route)
+           #climb = Climb(route)
            hold_selected = hold_button_group.id(button)
            route.append(hold_selected)
            #climb.route.append(hold_selected)
            #print(route)
-           climb.route = route
+           self.climb.route = route
         #prints route through instance of a climb
-           print(climb.route)
+           print(self.climb.route)
 
         super().__init__()
         
