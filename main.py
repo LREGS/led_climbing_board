@@ -16,11 +16,21 @@ from load_ui_file import ui_loader
 from button_group import create_button_group
 from handle_save_climb import SaveClimb
 
-def onclimb_created(climb):
+def onclimb_created(climb, name=None, grade=None):
     """assigns the climb object to the holder variable"""
     window.create_climb_btn.setEnabled(True)
     window.climb = climb
-    print(window.climb.name)    
+    #print(window.climb.name)
+    window.climb.name = name
+    window.climb.grade = grade
+    print(window.climb)
+    
+# def assign_name(name):
+#     window.climb.name = name
+
+# def assign_grade(grade):
+#     window.climb.grade = grade 
+#     print(window.climb)   
 
             
 class MainWindow(QMainWindow):
@@ -29,21 +39,14 @@ class MainWindow(QMainWindow):
     def __init__(self):
         
         def collect_route(button):
-           climb = Climb(route)
            hold_selected = hold_button_group.id(button)
            route.append(hold_selected)
-           #climb.route.append(hold_selected)
-           #print(route)
-           climb.route = route
-        #prints route through instance of a climb
-           print(climb.route)
+           self.climb.route = route
 
         super().__init__()
         
-        #Holder variable for the climb object to be assigned too
         self.climb = None
         
-        # Load UI file
         board_widget = self.board_widget = ui_loader\
         (os.path.join(os.path.dirname(__file__), "boardgui.ui"))
 
@@ -59,6 +62,9 @@ class MainWindow(QMainWindow):
         self.climb_creator.create_climb.connect(onclimb_created)
         
         self.climb_save = SaveClimb()
+        # self.climb_save.climb_grade.connect(assign_grade)
+        # self.climb_save.climb_name.connect(assign_name)
+        self.climb_save.name_grade.connect(onclimb_created)
         
         hold_button_group = create_button_group(board_widget)
         
@@ -72,18 +78,18 @@ class MainWindow(QMainWindow):
             
         def save_climb():
             self.climb_save.handle_save_climb()
+            print(self.climb.route)
 
         
-        
-        #Adds a Create Climb Button 
         self.create_climb_btn = QPushButton('Create Climb')
         self.create_climb_btn.clicked.connect(create_climb)
         main_layout.addWidget(self.create_climb_btn)
                 
-        #Adds a Save Climb button 
         self.save_climb_btn = QPushButton('Save Climb')
         self.save_climb_btn.clicked.connect(save_climb)
         main_layout.addWidget(self.save_climb_btn)
+        
+        print('dank')
         
 if __name__ == '__main__':
     app = QApplication([])
