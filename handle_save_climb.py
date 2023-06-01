@@ -4,29 +4,18 @@ from open_save_clmb_dlg import open_save_clmb_dlg_box
 
 class SaveClimb(QObject):
     """Handles Saving of the climb"""
-    # climb_grade = Signal(int)
-    # climb_name = Signal(str)
     name_grade = Signal(str, int)
     
     def __init__(self):
         self.climb_grade = None
         self.climb_name = None
-        
-    
     
     def handle_save_climb(self):
         
         grade, name = open_save_clmb_dlg_box()
-        
+
         if grade and name:
-<<<<<<< HEAD
-           self.climb_grade = grade
-           self.climb_name = name
-=======
            print(f'Your route is v{grade}, and called {name}')
-        #    self.climb_grade.emit(grade)
-        #    self.climb_name.emit(name)
            self.name_grade.emit(name, grade)
->>>>>>> save_climb_use_input
         else:
             print('no data')

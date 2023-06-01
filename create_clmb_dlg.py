@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import QDialog, QDialogButtonBox, QVBoxLayout, QLabel 
-from Climbs import Climb
+
 
 class CreateClimbDlg(QDialog):
     """Create a Dialog box that initilizes the create climb sequence"""
