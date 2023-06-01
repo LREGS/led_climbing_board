@@ -23,7 +23,7 @@ def onclimb_created(climb, name=None, grade=None):
     #print(window.climb.name)
     window.climb.name = name
     window.climb.grade = grade
-    print(window.climb)
+    #print(window.climb)
     
 # def assign_name(name):
 #     window.climb.name = name
@@ -42,6 +42,7 @@ class MainWindow(QMainWindow):
            hold_selected = hold_button_group.id(button)
            route.append(hold_selected)
            self.climb.route = route
+           print(self.climb.route)
 
         super().__init__()
         
@@ -78,7 +79,6 @@ class MainWindow(QMainWindow):
             
         def save_climb():
             self.climb_save.handle_save_climb()
-            print(self.climb.route)
 
         
         self.create_climb_btn = QPushButton('Create Climb')
