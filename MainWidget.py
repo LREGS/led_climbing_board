@@ -28,6 +28,9 @@ class MainWidget(QWidget):
     
     def begin_create_climb(self):
         self.create_climb_btn.setEnabled(False)
-        route_collector = self.board_widget.collect_route()
-        self.route_signal.emit(route_collector)
+        self.board_widget.creating_climb = True
+        if self.board_widget.route:
+            print(self.board_widget.route)
+        else:
+            print('no holds selected yet')
           
