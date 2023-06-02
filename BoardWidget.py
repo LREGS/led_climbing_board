@@ -18,10 +18,12 @@ class BoardWidget(QtWidgets.QWidget):
         self.widget.hold_buttons.buttonClicked.connect(self.collect_route)
     
     def handle_create_climb_clicked(self):
-        print('creating cimb')
+        print('click on the holds you want to include in the route')
         
-    def collect_route(self):
+    def collect_route(self, button):
         # hold_selected = self.widget.hold_buttons.id(button)
         # self.route.append(hold_selected)
         # print(self.route)
-        print('hi)')
+        hold_selected = self.widget.hold_buttons.id(button)
+        self.route.append(hold_selected)
+        print(self.route)

@@ -3,6 +3,8 @@ import os
 from PySide6.QtWidgets import QWidget, QVBoxLayout
 from PySide6.QtWidgets import QSizePolicy, QApplication, QMainWindow, \
 QLabel,QPushButton, QToolButton, QVBoxLayout, QWidget, QDialog, QButtonGroup
+from PySide6.QtCore import QObject, Signal
+
 
 from BoardWidget import BoardWidget
 
@@ -25,5 +27,7 @@ class MainWidget(QWidget):
         self.main_layout.addWidget(self.save_climb_btn)
     
     def begin_create_climb(self):
-          self.create_climb_btn.setEnabled(False)
-          print('creating climb')
+        self.create_climb_btn.setEnabled(False)
+        route_collector = self.board_widget.collect_route()
+        self.route_signal.emit(route_collector)
+          
