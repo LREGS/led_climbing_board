@@ -10,16 +10,21 @@ from button_group import create_button_group
 """Add ui components to this file (buttons etc)"""
 
 class UiBoardWidget(object):
+    def __init__(self):
+        super(UiBoardWidget, self).__init__()
+        self.hold_buttons = None 
+    
     def setupUi(self, parent):
         self.board_widget = ui_loader\
         (os.path.join(os.path.dirname(__file__), "boardgui.ui"))
+
 
         # self.main_layout = QVBoxLayout()
         # self.main_layout.addWidget(self.board_widget)
         # self.setLayout(self.main_layout)
         
         #Add buttons
-        self.hold_buttons_group = create_button_group(self.board_widget)
+        self.hold_buttons = create_button_group(self.board_widget)
         parent.layout().addWidget(self.board_widget)
         
         """follow ui_queue_ui to create seperate widget that 

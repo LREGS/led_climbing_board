@@ -11,3 +11,5 @@ class Ui_MainWindow(object):
     #    self.main_layout.addWidget(self.board_widget)
        self.central_widget = QWidget(MainWindow) 
        MainWindow.setCentralWidget(self.central_widget)
+
+        

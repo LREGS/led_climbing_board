@@ -8,8 +8,11 @@ def open_clmb_dlg_box():
     result = dlg.exec()
             
     if result == QDialog.Accepted:
-        climb = Climb()
+        route = return_route()
         print('Please Select the Holds for your route and then click save')
-        return climb
+        return route
     else:
         print('You clicked cancel')
+        
+#if Qdialog accepted collect route while save_climb_button.setEnabled(True)
+#this should record the route until the save climb button has been pressed

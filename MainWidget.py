@@ -15,4 +15,15 @@ class MainWidget(QWidget):
 
         self.board_widget = BoardWidget()
         
+        self.create_climb_btn = QPushButton('Create Climb')
+        self.create_climb_btn.clicked.connect(self.begin_create_climb)
+        
+        self.save_climb_btn = QPushButton('Save Climb')
+                
         self.main_layout.addWidget(self.board_widget)
+        self.main_layout.addWidget(self.create_climb_btn)
+        self.main_layout.addWidget(self.save_climb_btn)
+    
+    def begin_create_climb(self):
+          self.create_climb_btn.setEnabled(False)
+          print('creating climb')
