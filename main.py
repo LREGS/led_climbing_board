@@ -5,7 +5,7 @@ from PySide6.QtGui import QIcon, QPixmap
 from PySide6.QtUiTools import QUiLoader
 from PySide6 import QtCore
 from PySide6.QtWidgets import QSizePolicy, QApplication, QMainWindow, \
-QLabel,QPushButton, QToolButton, QVBoxLayout, QWidget, QDialog, QButtonGroup
+QLabel,QPushButton, QToolButton, QVBoxLayout, QWidget, QDialog, QButtonGroup, QApplication
 
 
 from create_clmb_dlg import CreateClimbDlg
@@ -16,6 +16,7 @@ from load_ui_file import ui_loader
 from button_group import create_button_group
 from handle_save_climb import SaveClimb
 from Ui_MainWindow_ import *
+from MainWidget import MainWidget
 
 def onclimb_created(climb, name=None, grade=None):
     """assigns the climb object to the holder variable"""
@@ -35,13 +36,13 @@ def onclimb_created(climb, name=None, grade=None):
 
             
 class MainWindow(QMainWindow):        
-    def __init__(self):
-        super().__init__()
+    def __init__(self, app: QApplication = None):
+        super(MainWindow, self).__init__()
         
-        self.climb = None
+        # self.climb = None
         
-        self.board_widget = ui_loader\
-        (os.path.join(os.path.dirname(__file__), "boardgui.ui"))
+        # self.board_widget = ui_loader\
+        # (os.path.join(os.path.dirname(__file__), "boardgui.ui"))
 
         # self.main_layout = QVBoxLayout()
         # self.main_layout.addWidget(self.board_widget)
@@ -50,6 +51,8 @@ class MainWindow(QMainWindow):
         # self.setCentralWidget(self.central_widget)
         self.window_ = Ui_MainWindow()
         self.window_.setupUI(self)
+        self.main_widget = MainWidget()
+        self.setCentralWidget(self.main_widget)
         
         
     #     self.climb_creator = ClimbCreator()
@@ -88,7 +91,7 @@ class MainWindow(QMainWindow):
     
 if __name__ == '__main__':
     app = QApplication()
-    window = MainWindow()
+    window = MainWindow(app)
     window.show()
     app.exec()
     
