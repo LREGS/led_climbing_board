@@ -8,6 +8,7 @@ from PySide6.QtCore import QObject, Signal
 
 from BoardWidget import BoardWidget
 from Climbs import Climb
+from create_climb_form_widget import CreateClimbForm
 
 class MainWidget(QWidget):
     def __init__(self, parent: QWidget = None) -> None:
@@ -17,6 +18,7 @@ class MainWidget(QWidget):
         self.setLayout(self.main_layout)
 
         self.board_widget = BoardWidget()
+        self.create_climb_form = CreateClimbForm()
         
         self.create_climb_btn = QPushButton('Create Climb')
         self.create_climb_btn.clicked.connect(self.begin_create_climb)
@@ -25,7 +27,8 @@ class MainWidget(QWidget):
         
         self.main_layout.addWidget(self.board_widget)
         self.main_layout.addWidget(self.create_climb_btn)        
-        self.main_layout.addWidget(self.save_climb_btn)     
+        self.main_layout.addWidget(self.save_climb_btn)   
+        self.main_layout.addWidget(self.create_climb_form)  
 
         self.create_climb_btn.setEnabled(True)
         self.save_climb_btn.setEnabled(False)
