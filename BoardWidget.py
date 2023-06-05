@@ -1,22 +1,36 @@
 import os 
 
-from PySide6 import QtWidgets, QtCore, QtGui
-from PySide6.QtWidgets import QVBoxLayout
+from PySide6 import QtWidgets
+from PySide6.QtWidgets import QVBoxLayout, QButtonGroup
 
-from BoardWidgetUi import UiBoardWidget
+#from BoardWidgetUi import UiBoardWidget
+from boardgui import Ui_board_widget
 
 """Add methods to manipulate ui and connect signals to slots"""
 
 class BoardWidget(QtWidgets.QWidget):
     def __init__(self, parent: QtWidgets.QWidget = None) -> None:
         super(BoardWidget, self).__init__(parent)
-        self.widget = UiBoardWidget()
+        # self.widget = UiBoardWidget()
+        self.widget = Ui_board_widget()
         self.setLayout(QVBoxLayout())
         self.widget.setupUi(self)
         self.route = []
 #        self.creating_climb = False
+        self.hold_buttons = self.create_button_group()
 
-        self.widget.hold_buttons.buttonClicked.connect(self.collect_route)
+        #self.widget.hold_buttons.buttonClicked.connect(self.collect_route)
+        
+    def create_button_group(self):
+        button_group = QButtonGroup()
+        for i in range(1,28):
+            button_name = f'hold{i}'
+            button = getattr(self.widget, button_name, None)
+            if button:
+                button_group.addButton(button, i)
+        print(button_group)
+        return button_group
+
     
     def handle_create_climb_clicked(self):
         print('click on the holds you want to include in the route')
@@ -28,3 +42,4 @@ class BoardWidget(QtWidgets.QWidget):
             hold_selected = self.widget.hold_buttons.id(button)
             self.route.append(hold_selected)
             print(self.route)
+    

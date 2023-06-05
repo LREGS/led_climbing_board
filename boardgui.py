@@ -1,665 +1,516 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ui version="4.0">
- <class>BOARDCLIMB</class>
- <widget class="QWidget" name="BOARDCLIMB">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>615</width>
-    <height>560</height>
-   </rect>
-  </property>
-  <property name="mouseTracking">
-   <bool>true</bool>
-  </property>
-  <property name="windowTitle">
-   <string>Form</string>
-  </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>-10</x>
-     <y>40</y>
-     <width>301</width>
-     <height>441</height>
-    </rect>
-   </property>
-   <property name="autoFillBackground">
-    <bool>true</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-image: url(:/newPrefix/ched_board.jpg);</string>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::NoFrame</enum>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="board_img/board_label.qrc">:/newPrefix/ched_board.jpg</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_1">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>90</y>
-     <width>61</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="palette">
-    <palette>
-     <active>
-      <colorrole role="Button">
-       <brush brushstyle="SolidPattern">
-        <color alpha="0">
-         <red>0</red>
-         <green>0</green>
-         <blue>0</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="Base">
-       <brush brushstyle="SolidPattern">
-        <color alpha="0">
-         <red>0</red>
-         <green>0</green>
-         <blue>0</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="Window">
-       <brush brushstyle="SolidPattern">
-        <color alpha="0">
-         <red>0</red>
-         <green>0</green>
-         <blue>0</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </active>
-     <inactive>
-      <colorrole role="Button">
-       <brush brushstyle="SolidPattern">
-        <color alpha="0">
-         <red>0</red>
-         <green>0</green>
-         <blue>0</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="Base">
-       <brush brushstyle="SolidPattern">
-        <color alpha="0">
-         <red>0</red>
-         <green>0</green>
-         <blue>0</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="Window">
-       <brush brushstyle="SolidPattern">
-        <color alpha="0">
-         <red>0</red>
-         <green>0</green>
-         <blue>0</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </inactive>
-     <disabled>
-      <colorrole role="Button">
-       <brush brushstyle="SolidPattern">
-        <color alpha="0">
-         <red>0</red>
-         <green>0</green>
-         <blue>0</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="Base">
-       <brush brushstyle="SolidPattern">
-        <color alpha="0">
-         <red>0</red>
-         <green>0</green>
-         <blue>0</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="Window">
-       <brush brushstyle="SolidPattern">
-        <color alpha="0">
-         <red>0</red>
-         <green>0</green>
-         <blue>0</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </disabled>
-    </palette>
-   </property>
-   <property name="toolTip">
-    <string>{background-color: transparent; border: none;}</string>
-   </property>
-   <property name="whatsThis">
-    <string>{background-color: transparent; border: none;}</string>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-   <property name="autoRaise">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_11">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>110</y>
-     <width>26</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_2">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>150</y>
-     <width>26</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_3">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>211</y>
-     <width>41</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_10">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>240</y>
-     <width>31</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_4">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>260</y>
-     <width>31</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_9">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>280</y>
-     <width>26</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_5">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>330</y>
-     <width>26</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_8">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>330</y>
-     <width>41</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_15">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>330</y>
-     <width>26</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_20">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>300</y>
-     <width>26</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_21">
-   <property name="geometry">
-    <rect>
-     <x>200</x>
-     <y>280</y>
-     <width>16</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_14">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>230</y>
-     <width>16</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_24">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
-     <y>180</y>
-     <width>16</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="toolButton_15">
-   <property name="geometry">
-    <rect>
-     <x>580</x>
-     <y>460</y>
-     <width>16</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_26">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>100</y>
-     <width>16</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_12">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>180</y>
-     <width>16</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_25">
-   <property name="geometry">
-    <rect>
-     <x>170</x>
-     <y>140</y>
-     <width>31</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_13">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>206</y>
-     <width>31</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_22">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>240</y>
-     <width>41</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_23">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>210</y>
-     <width>16</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_6">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>380</y>
-     <width>21</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_19">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
-     <y>340</y>
-     <width>21</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_7">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>410</y>
-     <width>16</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_17">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>420</y>
-     <width>21</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_16">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>390</y>
-     <width>31</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_18">
-   <property name="geometry">
-    <rect>
-     <x>190</x>
-     <y>370</y>
-     <width>16</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="new_climb">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>480</y>
-     <width>151</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>New Climb</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="save_clim">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>480</y>
-     <width>161</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Save Climb</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="hold_27">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>60</y>
-     <width>26</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: transparent; border: none;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>480</y>
-     <width>161</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Load Climb</string>
-   </property>
-  </widget>
-  <widget class="QListWidget" name="saved_climbs">
-   <property name="geometry">
-    <rect>
-     <x>290</x>
-     <y>10</y>
-     <width>261</width>
-     <height>481</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::WinPanel</enum>
-   </property>
-   <property name="verticalScrollBarPolicy">
-    <enum>Qt::ScrollBarAsNeeded</enum>
-   </property>
-   <property name="textElideMode">
-    <enum>Qt::ElideRight</enum>
-   </property>
-   <item>
-    <property name="text">
-     <string>one</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>https://www.qtcentre.org/threads/15182-How-to-use-a-button-widget-as-item-for-QListWidget</string>
-    </property>
-   </item>
-  </widget>
- </widget>
- <resources>
-  <include location="board_img/board_label.qrc"/>
- </resources>
- <connections/>
-</ui>
+# -*- coding: utf-8 -*-
+
+################################################################################
+## Form generated from reading UI file 'boardgui.ui'
+##
+## Created by: Qt User Interface Compiler version 6.5.0
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
+
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QLabel, QPushButton, QSizePolicy,
+    QWidget)
+
+class Ui_board_widget(object):
+    def setupUi(self, board_widget):
+        if not board_widget.objectName():
+            board_widget.setObjectName(u"board_widget")
+        board_widget.resize(828, 608)
+        palette = QPalette()
+        brush = QBrush(QColor(0, 0, 0, 0))
+        brush.setStyle(Qt.SolidPattern)
+        palette.setBrush(QPalette.Active, QPalette.Button, brush)
+        palette.setBrush(QPalette.Active, QPalette.Base, brush)
+        palette.setBrush(QPalette.Active, QPalette.Window, brush)
+        palette.setBrush(QPalette.Inactive, QPalette.Button, brush)
+        palette.setBrush(QPalette.Inactive, QPalette.Base, brush)
+        palette.setBrush(QPalette.Inactive, QPalette.Window, brush)
+        palette.setBrush(QPalette.Disabled, QPalette.Button, brush)
+        palette.setBrush(QPalette.Disabled, QPalette.Base, brush)
+        palette.setBrush(QPalette.Disabled, QPalette.Window, brush)
+        board_widget.setPalette(palette)
+        board_widget.setStyleSheet(u"background-color: transparent;")
+        self.label = QLabel(board_widget)
+        self.label.setObjectName(u"label")
+        self.label.setGeometry(QRect(0, 0, 400, 400))
+        self.label.setPixmap(QPixmap(u"../../.designer/backup/ched_board.jpg"))
+        self.label.setScaledContents(True)
+        self.hold1 = QPushButton(board_widget)
+        self.hold1.setObjectName(u"hold1")
+        self.hold1.setGeometry(QRect(60, 50, 81, 24))
+        palette1 = QPalette()
+        brush1 = QBrush(QColor(255, 255, 255, 0))
+        brush1.setStyle(Qt.SolidPattern)
+        palette1.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette1.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette1.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette1.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette1.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette1.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette1.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette1.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette1.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold1.setPalette(palette1)
+        self.hold1.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold21 = QPushButton(board_widget)
+        self.hold21.setObjectName(u"hold21")
+        self.hold21.setGeometry(QRect(340, 50, 16, 16))
+        palette2 = QPalette()
+        palette2.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette2.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette2.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette2.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette2.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette2.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette2.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette2.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette2.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold21.setPalette(palette2)
+        self.hold21.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold22 = QPushButton(board_widget)
+        self.hold22.setObjectName(u"hold22")
+        self.hold22.setGeometry(QRect(250, 10, 41, 31))
+        palette3 = QPalette()
+        palette3.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette3.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette3.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette3.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette3.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette3.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette3.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette3.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette3.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold22.setPalette(palette3)
+        self.hold22.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold23 = QPushButton(board_widget)
+        self.hold23.setObjectName(u"hold23")
+        self.hold23.setGeometry(QRect(250, 90, 31, 16))
+        palette4 = QPalette()
+        palette4.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette4.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette4.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette4.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette4.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette4.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette4.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette4.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette4.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold23.setPalette(palette4)
+        self.hold23.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold25 = QPushButton(board_widget)
+        self.hold25.setObjectName(u"hold25")
+        self.hold25.setGeometry(QRect(170, 70, 16, 16))
+        palette5 = QPalette()
+        palette5.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette5.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette5.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette5.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette5.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette5.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette5.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette5.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette5.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold25.setPalette(palette5)
+        self.hold25.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold26 = QPushButton(board_widget)
+        self.hold26.setObjectName(u"hold26")
+        self.hold26.setGeometry(QRect(300, 120, 16, 16))
+        palette6 = QPalette()
+        palette6.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette6.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette6.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette6.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette6.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette6.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette6.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette6.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette6.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold26.setPalette(palette6)
+        self.hold26.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold27 = QPushButton(board_widget)
+        self.hold27.setObjectName(u"hold27")
+        self.hold27.setGeometry(QRect(330, 160, 16, 16))
+        palette7 = QPalette()
+        palette7.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette7.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette7.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette7.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette7.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette7.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette7.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette7.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette7.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold27.setPalette(palette7)
+        self.hold27.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold24 = QPushButton(board_widget)
+        self.hold24.setObjectName(u"hold24")
+        self.hold24.setGeometry(QRect(60, 160, 41, 16))
+        palette8 = QPalette()
+        palette8.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette8.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette8.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette8.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette8.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette8.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette8.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette8.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette8.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold24.setPalette(palette8)
+        self.hold24.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold2 = QPushButton(board_widget)
+        self.hold2.setObjectName(u"hold2")
+        self.hold2.setGeometry(QRect(170, 150, 31, 16))
+        palette9 = QPalette()
+        palette9.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette9.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette9.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette9.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette9.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette9.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette9.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette9.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette9.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold2.setPalette(palette9)
+        self.hold2.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold3 = QPushButton(board_widget)
+        self.hold3.setObjectName(u"hold3")
+        self.hold3.setGeometry(QRect(190, 120, 16, 16))
+        palette10 = QPalette()
+        palette10.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette10.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette10.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette10.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette10.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette10.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette10.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette10.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette10.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold3.setPalette(palette10)
+        self.hold3.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold4 = QPushButton(board_widget)
+        self.hold4.setObjectName(u"hold4")
+        self.hold4.setGeometry(QRect(100, 180, 31, 16))
+        palette11 = QPalette()
+        palette11.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette11.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette11.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette11.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette11.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette11.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette11.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette11.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette11.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold4.setPalette(palette11)
+        self.hold4.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold5 = QPushButton(board_widget)
+        self.hold5.setObjectName(u"hold5")
+        self.hold5.setGeometry(QRect(40, 200, 41, 16))
+        palette12 = QPalette()
+        palette12.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette12.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette12.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette12.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette12.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette12.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette12.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette12.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette12.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold5.setPalette(palette12)
+        self.hold5.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold6 = QPushButton(board_widget)
+        self.hold6.setObjectName(u"hold6")
+        self.hold6.setGeometry(QRect(190, 170, 16, 16))
+        palette13 = QPalette()
+        palette13.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette13.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette13.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette13.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette13.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette13.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette13.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette13.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette13.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold6.setPalette(palette13)
+        self.hold6.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold7 = QPushButton(board_widget)
+        self.hold7.setObjectName(u"hold7")
+        self.hold7.setGeometry(QRect(90, 100, 21, 16))
+        palette14 = QPalette()
+        palette14.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette14.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette14.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette14.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette14.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette14.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette14.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette14.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette14.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold7.setPalette(palette14)
+        self.hold7.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold8 = QPushButton(board_widget)
+        self.hold8.setObjectName(u"hold8")
+        self.hold8.setGeometry(QRect(250, 180, 51, 16))
+        palette15 = QPalette()
+        palette15.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette15.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette15.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette15.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette15.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette15.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette15.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette15.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette15.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold8.setPalette(palette15)
+        self.hold8.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold9 = QPushButton(board_widget)
+        self.hold9.setObjectName(u"hold9")
+        self.hold9.setGeometry(QRect(310, 270, 21, 16))
+        palette16 = QPalette()
+        palette16.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette16.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette16.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette16.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette16.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette16.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette16.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette16.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette16.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold9.setPalette(palette16)
+        self.hold9.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold10 = QPushButton(board_widget)
+        self.hold10.setObjectName(u"hold10")
+        self.hold10.setGeometry(QRect(280, 220, 21, 16))
+        palette17 = QPalette()
+        palette17.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette17.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette17.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette17.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette17.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette17.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette17.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette17.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette17.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold10.setPalette(palette17)
+        self.hold10.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold11 = QPushButton(board_widget)
+        self.hold11.setObjectName(u"hold11")
+        self.hold11.setGeometry(QRect(270, 300, 16, 16))
+        palette18 = QPalette()
+        palette18.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette18.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette18.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette18.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette18.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette18.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette18.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette18.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette18.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold11.setPalette(palette18)
+        self.hold11.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold12 = QPushButton(board_widget)
+        self.hold12.setObjectName(u"hold12")
+        self.hold12.setGeometry(QRect(160, 260, 41, 16))
+        palette19 = QPalette()
+        palette19.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette19.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette19.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette19.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette19.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette19.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette19.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette19.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette19.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold12.setPalette(palette19)
+        self.hold12.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold13 = QPushButton(board_widget)
+        self.hold13.setObjectName(u"hold13")
+        self.hold13.setGeometry(QRect(130, 220, 16, 16))
+        palette20 = QPalette()
+        palette20.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette20.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette20.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette20.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette20.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette20.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette20.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette20.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette20.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold13.setPalette(palette20)
+        self.hold13.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold14 = QPushButton(board_widget)
+        self.hold14.setObjectName(u"hold14")
+        self.hold14.setGeometry(QRect(110, 260, 31, 16))
+        palette21 = QPalette()
+        palette21.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette21.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette21.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette21.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette21.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette21.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette21.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette21.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette21.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold14.setPalette(palette21)
+        self.hold14.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold15 = QPushButton(board_widget)
+        self.hold15.setObjectName(u"hold15")
+        self.hold15.setGeometry(QRect(50, 270, 21, 21))
+        palette22 = QPalette()
+        palette22.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette22.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette22.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette22.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette22.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette22.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette22.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette22.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette22.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold15.setPalette(palette22)
+        self.hold15.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold16 = QPushButton(board_widget)
+        self.hold16.setObjectName(u"hold16")
+        self.hold16.setGeometry(QRect(70, 300, 31, 16))
+        palette23 = QPalette()
+        palette23.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette23.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette23.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette23.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette23.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette23.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette23.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette23.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette23.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold16.setPalette(palette23)
+        self.hold16.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold17 = QPushButton(board_widget)
+        self.hold17.setObjectName(u"hold17")
+        self.hold17.setGeometry(QRect(190, 310, 41, 21))
+        palette24 = QPalette()
+        palette24.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette24.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette24.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette24.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette24.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette24.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette24.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette24.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette24.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold17.setPalette(palette24)
+        self.hold17.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold18 = QPushButton(board_widget)
+        self.hold18.setObjectName(u"hold18")
+        self.hold18.setGeometry(QRect(240, 240, 16, 16))
+        palette25 = QPalette()
+        palette25.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette25.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette25.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette25.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette25.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette25.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette25.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette25.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette25.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold18.setPalette(palette25)
+        self.hold18.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold19 = QPushButton(board_widget)
+        self.hold19.setObjectName(u"hold19")
+        self.hold19.setGeometry(QRect(260, 340, 16, 16))
+        palette26 = QPalette()
+        palette26.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette26.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette26.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette26.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette26.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette26.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette26.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette26.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette26.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold19.setPalette(palette26)
+        self.hold19.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold20 = QPushButton(board_widget)
+        self.hold20.setObjectName(u"hold20")
+        self.hold20.setGeometry(QRect(140, 340, 16, 16))
+        palette27 = QPalette()
+        palette27.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette27.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette27.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette27.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette27.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette27.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette27.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette27.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette27.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold20.setPalette(palette27)
+        self.hold20.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+
+        self.retranslateUi(board_widget)
+
+        QMetaObject.connectSlotsByName(board_widget)
+    # setupUi
+
+    def retranslateUi(self, board_widget):
+        board_widget.setWindowTitle(QCoreApplication.translate("board_widget", u"Form", None))
+        self.label.setText("")
+        self.hold1.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold21.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold22.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold23.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold25.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold26.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold27.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold24.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold2.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold3.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold4.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold5.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold6.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold7.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold8.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold9.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold10.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold11.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold12.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold13.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold14.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold15.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold16.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold17.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold18.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold19.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold20.setText(QCoreApplication.translate("board_widget", u"...", None))
+    # retranslateUi
+

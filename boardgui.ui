@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>401</height>
+    <width>828</width>
+    <height>608</height>
    </rect>
   </property>
   <property name="palette">
@@ -120,7 +120,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>ched_board.jpg</pixmap>
+    <pixmap>../../.designer/backup/ched_board.jpg</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
