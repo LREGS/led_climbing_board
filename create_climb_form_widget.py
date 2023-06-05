@@ -7,5 +7,5 @@ class CreateClimbForm(QtWidgets.QWidget):
     def __innit__(self, parent: QtWidgets.QWidget = None) -> None:
         super(CreateClimbForm, self).__init__(parent)
         self.setLayout(QtWidgets.QVBoxLayout())
-        self.widget = UiForm()
+        self.widget = Ui_Form()
         self.widget.setupUi(self)

@@ -9,6 +9,7 @@ from PySide6.QtCore import QObject, Signal
 from BoardWidget import BoardWidget
 from Climbs import Climb
 from create_climb_form_widget import CreateClimbForm
+from create_clmb_dlg import CreateClimbDlg
 
 class MainWidget(QWidget):
     def __init__(self, parent: QWidget = None) -> None:
@@ -52,7 +53,9 @@ class MainWidget(QWidget):
             print(self.board_widget.route)
         else:
             self.save_climb_btn.setEnabled(False)
-            print('Please create a route')
+            dlg = CreateClimbDlg()
+            dlg.exect()
+            
           
     def create_climb(self): 
         """Create a climb once all the data collection has been satisified/

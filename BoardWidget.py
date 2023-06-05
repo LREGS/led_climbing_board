@@ -11,15 +11,15 @@ from boardgui import Ui_board_widget
 class BoardWidget(QtWidgets.QWidget):
     def __init__(self, parent: QtWidgets.QWidget = None) -> None:
         super(BoardWidget, self).__init__(parent)
-        # self.widget = UiBoardWidget()
         self.widget = Ui_board_widget()
         self.setLayout(QVBoxLayout())
         self.widget.setupUi(self)
         self.route = []
-#        self.creating_climb = False
+#This value doesn't seem to be getting updated when the creat_climb button is p
+# self.creating_climb = False
         self.hold_buttons = self.create_button_group()
 
-        #self.widget.hold_buttons.buttonClicked.connect(self.collect_route)
+        self.hold_buttons.buttonClicked.connect(self.collect_route)
         
     def create_button_group(self):
         button_group = QButtonGroup()
@@ -39,7 +39,7 @@ class BoardWidget(QtWidgets.QWidget):
         # if self.creating_climb == False:
         #     print("you haven't started creating a climb yet")
         # elif self.creating_climb == True:
-            hold_selected = self.widget.hold_buttons.id(button)
+            hold_selected = self .hold_buttons.id(button)
             self.route.append(hold_selected)
             print(self.route)
     
