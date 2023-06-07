@@ -7,13 +7,6 @@ from PySide6 import QtCore
 from PySide6.QtWidgets import QSizePolicy, QApplication, QMainWindow, \
 QLabel,QPushButton, QToolButton, QVBoxLayout, QWidget, QDialog, QButtonGroup, QApplication
 
-
-from create_clmb_dlg import CreateClimbDlg
-from Climbs import Climb
-from open_create_clmb_dlg_box import open_clmb_dlg_box
-from handle_create_climb import ClimbCreator
-from load_ui_file import ui_loader
-from handle_save_climb import SaveClimb
 from Ui_MainWindow_ import *
 from MainWidget import MainWidget
             
