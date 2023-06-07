@@ -9,3 +9,4 @@ class CreateClimbForm(QtWidgets.QWidget):
         self.setLayout(QtWidgets.QVBoxLayout())
         self.widget = Ui_Form()
         self.widget.setupUi(self)
+        

@@ -19,7 +19,7 @@ class BoardWidget(QtWidgets.QWidget):
 # self.creating_climb = False
         self.hold_buttons = self.create_button_group()
 
-        self.hold_buttons.buttonClicked.connect(self.collect_route)
+        #self.hold_buttons.buttonClicked.connect(self.collect_route)
         
     def create_button_group(self):
         button_group = QButtonGroup()
@@ -35,11 +35,11 @@ class BoardWidget(QtWidgets.QWidget):
     def handle_create_climb_clicked(self):
         print('click on the holds you want to include in the route')
         
-    def collect_route(self, button):
-        # if self.creating_climb == False:
-        #     print("you haven't started creating a climb yet")
-        # elif self.creating_climb == True:
-            hold_selected = self .hold_buttons.id(button)
-            self.route.append(hold_selected)
-            print(self.route)
+    # def collect_route(self, button):
+    #     # if self.creating_climb == False:
+    #     #     print("you haven't started creating a climb yet")
+    #     # elif self.creating_climb == True:
+    #         hold_selected = self.hold_buttons.id(button)
+    #         self.route.append(hold_selected)
+    #         print(self.route)
     

@@ -7,9 +7,9 @@ class CreateClimbDlg(QDialog):
     def __init__(self):
         super().__init__()
         
-        self.form_layout = Ui_Form()
-        self.form_layout.setupUi(self)
-        self.setLayout(self.form_layout)
+        # self.form_layout = Ui_Form()
+        # self.form_layout.setupUi(self)
+        # self.setLayout(self.form_layout)
         
         # self. climb = None
         # self.setWindowTitle('Create Climb')        

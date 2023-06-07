@@ -16,16 +16,17 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFormLayout, QLabel, QLineEdit,
-    QSizePolicy, QSpinBox, QWidget)
+    QPushButton, QSizePolicy, QSpinBox, QTextEdit,
+    QWidget)
 
 class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(264, 106)
+        Form.resize(268, 218)
         self.formLayoutWidget = QWidget(Form)
         self.formLayoutWidget.setObjectName(u"formLayoutWidget")
-        self.formLayoutWidget.setGeometry(QRect(0, 0, 261, 101))
+        self.formLayoutWidget.setGeometry(QRect(0, 0, 261, 158))
         self.formLayout = QFormLayout(self.formLayoutWidget)
         self.formLayout.setObjectName(u"formLayout")
         self.formLayout.setContentsMargins(0, 0, 0, 0)
@@ -34,32 +35,40 @@ class Ui_Form(object):
 
         self.formLayout.setWidget(0, QFormLayout.LabelRole, self.label)
 
-        self.route_lineEdit = QLineEdit(self.formLayoutWidget)
-        self.route_lineEdit.setObjectName(u"route_lineEdit")
-
-        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.route_lineEdit)
-
         self.label_2 = QLabel(self.formLayoutWidget)
         self.label_2.setObjectName(u"label_2")
 
-        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.label_2)
+        self.formLayout.setWidget(2, QFormLayout.LabelRole, self.label_2)
 
         self.climb_nam = QLineEdit(self.formLayoutWidget)
         self.climb_nam.setObjectName(u"climb_nam")
 
-        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.climb_nam)
+        self.formLayout.setWidget(2, QFormLayout.FieldRole, self.climb_nam)
 
         self.label_3 = QLabel(self.formLayoutWidget)
         self.label_3.setObjectName(u"label_3")
 
-        self.formLayout.setWidget(2, QFormLayout.LabelRole, self.label_3)
+        self.formLayout.setWidget(3, QFormLayout.LabelRole, self.label_3)
 
         self.Grade = QSpinBox(self.formLayoutWidget)
         self.Grade.setObjectName(u"Grade")
         self.Grade.setMaximum(16)
 
-        self.formLayout.setWidget(2, QFormLayout.FieldRole, self.Grade)
+        self.formLayout.setWidget(3, QFormLayout.FieldRole, self.Grade)
 
+        self.textEdit = QTextEdit(self.formLayoutWidget)
+        self.textEdit.setObjectName(u"textEdit")
+        self.textEdit.setReadOnly(True)
+        self.textEdit.setPlainText('route will appear here')
+
+        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.textEdit)
+
+        self.saveClimb = QPushButton(Form)
+        self.saveClimb.setObjectName(u"saveClimb")
+        self.saveClimb.setGeometry(QRect(0, 160, 261, 25))
+        self.cancelcreation = QPushButton(Form)
+        self.cancelcreation.setObjectName(u"cancelcreation")
+        self.cancelcreation.setGeometry(QRect(0, 190, 261, 25))
 
         self.retranslateUi(Form)
 
@@ -71,5 +80,7 @@ class Ui_Form(object):
         self.label.setText(QCoreApplication.translate("Form", u"Route", None))
         self.label_2.setText(QCoreApplication.translate("Form", u"Name", None))
         self.label_3.setText(QCoreApplication.translate("Form", u"Grade", None))
+        self.saveClimb.setText(QCoreApplication.translate("Form", u"Save Climb", None))
+        self.cancelcreation.setText(QCoreApplication.translate("Form", u"Cancel", None))
     # retranslateUi
 
