@@ -8,9 +8,7 @@ from PySide6.QtCore import QObject, Signal
 
 
 from BoardWidget import BoardWidget
-from Climbs import Climb
 from create_climb_form_widget import CreateClimbForm
-from create_clmb_dlg import CreateClimbDlg
 from create_climb_formUI import Ui_Form
 
 class MainWidget(QWidget):
