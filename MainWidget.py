@@ -28,7 +28,6 @@ class MainWidget(QWidget):
         self.create_climb_form_widget.widget.saveClimb.clicked.connect(self.save_climb_data)
         
         self.create_climb_btn = QPushButton('Create Climb')
-        
         self.save_climb_btn = QPushButton('Save Climb')
         
         self.main_layout.addWidget(self.board_widget)
@@ -49,13 +48,10 @@ class MainWidget(QWidget):
         
     
     def save_climb_data(self):
-        print('saving climb')
-        with open('climbs.csv', 'w', newline='') as file:
+        print('saving climb') 
+        with open('climbs.csv', 'a', newline='') as file:
             writer = csv.writer(file)
-            
-            header = ['route', 'name', 'grade']
-            writer.writerow(header)
-            
+
             climb = [self.create_climb_form_widget.widget.textEdit.toPlainText(),\
                 self.create_climb_form_widget.widget.climb_nam.text(),\
                     self.create_climb_form_widget.widget.Grade.value()]
