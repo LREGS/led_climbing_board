@@ -12,7 +12,6 @@ from Climbs import Climb
 from create_climb_form_widget import CreateClimbForm
 from create_clmb_dlg import CreateClimbDlg
 from create_climb_formUI import Ui_Form
-#from create_climb_formWidget import CreateClimbForm
 
 class MainWidget(QWidget):
     def __init__(self, parent: QWidget = None) -> None:
