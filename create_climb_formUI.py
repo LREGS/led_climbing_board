@@ -42,6 +42,7 @@ class Ui_Form(object):
 
         self.climb_nam = QLineEdit(self.formLayoutWidget)
         self.climb_nam.setObjectName(u"climb_nam")
+        self.climb_nam.setText('Climb Name')
 
         self.formLayout.setWidget(2, QFormLayout.FieldRole, self.climb_nam)
 
@@ -53,13 +54,14 @@ class Ui_Form(object):
         self.Grade = QSpinBox(self.formLayoutWidget)
         self.Grade.setObjectName(u"Grade")
         self.Grade.setMaximum(16)
+        self.Grade.setValue(0)
 
         self.formLayout.setWidget(3, QFormLayout.FieldRole, self.Grade)
 
         self.textEdit = QTextEdit(self.formLayoutWidget)
         self.textEdit.setObjectName(u"textEdit")
         self.textEdit.setReadOnly(True)
-        self.textEdit.setPlainText('route will appear here')
+        self.textEdit.setPlainText('Route')
 
         self.formLayout.setWidget(0, QFormLayout.FieldRole, self.textEdit)
 

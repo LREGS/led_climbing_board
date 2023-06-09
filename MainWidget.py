@@ -61,13 +61,21 @@ class MainWidget(QWidget):
         print('saving climb') 
         self.create_climb_form_widget.widget.saveClimb.setEnabled(False)
         self.create_climb_btn.setEnabled(True)
-        with open('climbs.csv', 'a', newline='') as file:
-            writer = csv.writer(file)
+        
+        if self.create_climb_form_widget.climb_name == 'Climb Name'\
+        and self.create_climb_form_widget.grade == 0\
+        and self.create_climb_form_widget.route == 'Route':
+            print('Please make sure you have selected a valid route, name and grade')
+        
+        else:
+            
+            with open('climbs.csv', 'a', newline='') as file:
+                writer = csv.writer(file)
 
-            climb = [self.create_climb_form_widget.widget.textEdit.toPlainText(),\
-                self.create_climb_form_widget.widget.climb_nam.text(),\
-                    self.create_climb_form_widget.widget.Grade.value()]
-            writer.writerow(climb)
+                climb = [self.create_climb_form_widget.widget.textEdit.toPlainText(),\
+                    self.create_climb_form_widget.widget.climb_nam.text(),\
+                        self.create_climb_form_widget.widget.Grade.value()]
+                writer.writerow(climb)
     
     def handle_cancel_create_climb(self):
         print('creating climb cancelled')
