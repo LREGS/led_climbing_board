@@ -34,4 +34,10 @@ class BoardWidget(QtWidgets.QWidget):
     def toggle_hold_buttons(self, arg):
         for button in self.hold_buttons:
             button.setEnabled(arg)
+    
+    def button_colour_active(self, id):
+        print('hold selected')
+    
+    def button_colour_reset(self):
+        return
         

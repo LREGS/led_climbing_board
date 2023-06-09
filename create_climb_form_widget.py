@@ -10,6 +10,23 @@ class CreateClimbForm(QtWidgets.QWidget):
         self.widget.setupUi(self)
         
  
-        self.climb_name = self.widget.climb_nam.text()
-        self.grade = self.widget.Grade.value()
-        self.route = self.widget.textEdit.toPlainText()
+        # self.climb_name = self.widget.climb_nam.text()
+        # self.grade = self.widget.Grade.value()
+        # self.route = self.widget.textEdit.toPlainText()
+        
+        self.climb_name = 1
+        self.grade = 0
+        self.route = 3
+        
+        self.widget.climb_nam.textChanged.connect(self.updateClimbName)
+        self.widget.Grade.valueChanged.connect(self.updateGrade)
+        self.widget.textEdit.textChanged.connect(self.updateRoute)
+        
+    def updateClimbName(self, text):
+        self.climb_name = text
+        
+    def updateGrade(self, value):
+        self.grade = value
+        
+    def updateRoute(self, value):
+        self.route = value
