@@ -14,12 +14,11 @@ class BoardWidget(QtWidgets.QWidget):
         self.widget = Ui_board_widget()
         self.setLayout(QVBoxLayout())
         self.widget.setupUi(self)
-        self.route = []
-#This value doesn't seem to be getting updated when the creat_climb button is p
-# self.creating_climb = False
-        self.hold_buttons = self.create_button_group()
+        
+        self.hold_buttons_group = self.create_button_group()
+        self.hold_buttons = self.hold_buttons_group.buttons()
+        self.toggle_hold_buttons(False)
 
-        #self.hold_buttons.buttonClicked.connect(self.collect_route)
         
     def create_button_group(self):
         button_group = QButtonGroup()
@@ -32,14 +31,7 @@ class BoardWidget(QtWidgets.QWidget):
         return button_group
 
     
-    def handle_create_climb_clicked(self):
-        print('click on the holds you want to include in the route')
+    def toggle_hold_buttons(self, arg):
+        for button in self.hold_buttons:
+            button.setEnabled(arg)
         
-    # def collect_route(self, button):
-    #     # if self.creating_climb == False:
-    #     #     print("you haven't started creating a climb yet")
-    #     # elif self.creating_climb == True:
-    #         hold_selected = self.hold_buttons.id(button)
-    #         self.route.append(hold_selected)
-    #         print(self.route)
-    
