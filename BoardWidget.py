@@ -17,7 +17,7 @@ class BoardWidget(QtWidgets.QWidget):
         
         self.hold_buttons_group = self.create_button_group()
         self.hold_buttons = self.hold_buttons_group.buttons()
-        self.toggle_hold_buttons(False)
+
 
         
     def create_button_group(self):
@@ -36,7 +36,10 @@ class BoardWidget(QtWidgets.QWidget):
             button.setEnabled(arg)
     
     def button_colour_active(self, id):
-        print('hold selected')
+        hold_name = f'hold{id}'
+        hold_value = getattr(self.widget, hold_name)
+        hold_value.setStyleSheet("background-color: green;")
+        
     
     def button_colour_reset(self):
         return

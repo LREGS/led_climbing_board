@@ -7,3 +7,7 @@ Route,Climb Name1,0
 [5],s,0
 [5],Climb Name,0
 [24],Climb Name,0
+"[4, 4]",Dank,4
+"[13, 13, 13]",Dankl,6
+Route,Climb Name,0
+"[12, 13, 6, 2, 25]",Wills Route,6
