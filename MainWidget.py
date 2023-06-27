@@ -55,9 +55,7 @@ class MainWidget(QWidget):
         self.route.append(hold_selected)
         self.create_climb_form_widget.widget.textEdit.setPlainText\
         (str(self.route))
-        self.board_widget.button_toggle_colour = (self.board_widget.button_toggle_colour) + 1
         self.board_widget.button_colour_active(hold_selected)
-        print(self.board_widget.button_toggle_colour)
 
     def save_climb_data(self):
         self.create_climb_form_widget.widget.saveClimb.setEnabled(False)

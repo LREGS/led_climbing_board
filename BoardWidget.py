@@ -18,6 +18,7 @@ class BoardWidget(QtWidgets.QWidget):
         self.hold_buttons_group = self.create_button_group()
         self.hold_buttons = self.hold_buttons_group.buttons()
 
+        self.toggle_tracker = False
 
         
     def create_button_group(self):
@@ -38,8 +39,14 @@ class BoardWidget(QtWidgets.QWidget):
     def button_colour_active(self, id):
         hold_name = f'hold{id}'
         hold_value = getattr(self.widget, hold_name)
-        hold_value.setStyleSheet("background-color: green;")
-        
+        if self.toggle_tracker == False:
+            hold_value.setStyleSheet("background-color: green;")
+            self.toggle_tracker = True
+        elif self.toggle_tracker == True:
+            hold_value.setStyleSheet("background-color: red;")
+            self.toggle_tracker = False
+    
+
     
     def button_colour_reset(self):
         return
