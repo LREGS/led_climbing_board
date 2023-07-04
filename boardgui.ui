@@ -233,6 +233,9 @@
    <property name="text">
     <string>...</string>
    </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="hold21">
    <property name="geometry">
@@ -340,6 +343,9 @@
    </property>
    <property name="text">
     <string>...</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="hold22">
@@ -449,6 +455,9 @@
    <property name="text">
     <string>...</string>
    </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="hold23">
    <property name="geometry">
@@ -556,6 +565,9 @@
    </property>
    <property name="text">
     <string>...</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="hold25">
@@ -665,6 +677,9 @@
    <property name="text">
     <string>...</string>
    </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="hold26">
    <property name="geometry">
@@ -772,6 +787,9 @@
    </property>
    <property name="text">
     <string>...</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="hold27">
@@ -881,6 +899,9 @@
    <property name="text">
     <string>...</string>
    </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="hold24">
    <property name="geometry">
@@ -988,6 +1009,9 @@
    </property>
    <property name="text">
     <string>...</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="hold2">
@@ -1097,6 +1121,9 @@
    <property name="text">
     <string>...</string>
    </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="hold3">
    <property name="geometry">
@@ -1204,6 +1231,9 @@
    </property>
    <property name="text">
     <string>...</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="hold4">
@@ -1313,6 +1343,9 @@
    <property name="text">
     <string>...</string>
    </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="hold5">
    <property name="geometry">
@@ -1420,6 +1453,9 @@
    </property>
    <property name="text">
     <string>...</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="hold6">
@@ -1529,6 +1565,9 @@
    <property name="text">
     <string>...</string>
    </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="hold7">
    <property name="geometry">
@@ -1636,6 +1675,9 @@
    </property>
    <property name="text">
     <string>...</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="hold8">
@@ -1745,6 +1787,9 @@
    <property name="text">
     <string>...</string>
    </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="hold9">
    <property name="geometry">
@@ -1852,6 +1897,9 @@
    </property>
    <property name="text">
     <string>...</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="hold10">
@@ -1961,6 +2009,9 @@
    <property name="text">
     <string>...</string>
    </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="hold11">
    <property name="geometry">
@@ -2068,6 +2119,9 @@
    </property>
    <property name="text">
     <string>...</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="hold12">
@@ -2177,6 +2231,9 @@
    <property name="text">
     <string>...</string>
    </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="hold13">
    <property name="geometry">
@@ -2284,6 +2341,9 @@
    </property>
    <property name="text">
     <string>...</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="hold14">
@@ -2393,6 +2453,9 @@
    <property name="text">
     <string>...</string>
    </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="hold15">
    <property name="geometry">
@@ -2500,6 +2563,9 @@
    </property>
    <property name="text">
     <string>...</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="hold16">
@@ -2609,6 +2675,9 @@
    <property name="text">
     <string>...</string>
    </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="hold17">
    <property name="geometry">
@@ -2716,6 +2785,9 @@
    </property>
    <property name="text">
     <string>...</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="hold18">
@@ -2825,6 +2897,9 @@
    <property name="text">
     <string>...</string>
    </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="hold19">
    <property name="geometry">
@@ -2933,6 +3008,9 @@
    <property name="text">
     <string>...</string>
    </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="hold20">
    <property name="geometry">
@@ -3040,6 +3118,9 @@
    </property>
    <property name="text">
     <string>...</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
    </property>
   </widget>
  </widget>

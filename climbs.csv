@@ -11,3 +11,8 @@ Route,Climb Name1,0
 "[13, 13, 13]",Dankl,6
 Route,Climb Name,0
 "[12, 13, 6, 2, 25]",Wills Route,6
+"[24, 1, 25, 4]",climb,3
+[],Climb Name,0
+[5],Climb Name,0
+[],Climb Name,0
+"[15, 5, 24, 25, 1]",new climb,4

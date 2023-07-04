@@ -60,6 +60,7 @@ class Ui_board_widget(object):
         self.hold1.setPalette(palette1)
         self.hold1.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold1.setCheckable(True)
         self.hold21 = QPushButton(board_widget)
         self.hold21.setObjectName(u"hold21")
         self.hold21.setGeometry(QRect(340, 50, 16, 16))
@@ -76,6 +77,7 @@ class Ui_board_widget(object):
         self.hold21.setPalette(palette2)
         self.hold21.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold21.setCheckable(True)
         self.hold22 = QPushButton(board_widget)
         self.hold22.setObjectName(u"hold22")
         self.hold22.setGeometry(QRect(250, 10, 41, 31))
@@ -92,6 +94,7 @@ class Ui_board_widget(object):
         self.hold22.setPalette(palette3)
         self.hold22.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold22.setCheckable(True)
         self.hold23 = QPushButton(board_widget)
         self.hold23.setObjectName(u"hold23")
         self.hold23.setGeometry(QRect(250, 90, 31, 16))
@@ -108,6 +111,7 @@ class Ui_board_widget(object):
         self.hold23.setPalette(palette4)
         self.hold23.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold23.setCheckable(True)
         self.hold25 = QPushButton(board_widget)
         self.hold25.setObjectName(u"hold25")
         self.hold25.setGeometry(QRect(170, 70, 16, 16))
@@ -124,6 +128,7 @@ class Ui_board_widget(object):
         self.hold25.setPalette(palette5)
         self.hold25.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold25.setCheckable(True)
         self.hold26 = QPushButton(board_widget)
         self.hold26.setObjectName(u"hold26")
         self.hold26.setGeometry(QRect(300, 120, 16, 16))
@@ -140,6 +145,7 @@ class Ui_board_widget(object):
         self.hold26.setPalette(palette6)
         self.hold26.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold26.setCheckable(True)
         self.hold27 = QPushButton(board_widget)
         self.hold27.setObjectName(u"hold27")
         self.hold27.setGeometry(QRect(330, 160, 16, 16))
@@ -156,6 +162,7 @@ class Ui_board_widget(object):
         self.hold27.setPalette(palette7)
         self.hold27.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold27.setCheckable(True)
         self.hold24 = QPushButton(board_widget)
         self.hold24.setObjectName(u"hold24")
         self.hold24.setGeometry(QRect(60, 160, 41, 16))
@@ -172,6 +179,7 @@ class Ui_board_widget(object):
         self.hold24.setPalette(palette8)
         self.hold24.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold24.setCheckable(True)
         self.hold2 = QPushButton(board_widget)
         self.hold2.setObjectName(u"hold2")
         self.hold2.setGeometry(QRect(170, 150, 31, 16))
@@ -188,6 +196,7 @@ class Ui_board_widget(object):
         self.hold2.setPalette(palette9)
         self.hold2.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold2.setCheckable(True)
         self.hold3 = QPushButton(board_widget)
         self.hold3.setObjectName(u"hold3")
         self.hold3.setGeometry(QRect(190, 120, 16, 16))
@@ -204,6 +213,7 @@ class Ui_board_widget(object):
         self.hold3.setPalette(palette10)
         self.hold3.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold3.setCheckable(True)
         self.hold4 = QPushButton(board_widget)
         self.hold4.setObjectName(u"hold4")
         self.hold4.setGeometry(QRect(100, 180, 31, 16))
@@ -220,6 +230,7 @@ class Ui_board_widget(object):
         self.hold4.setPalette(palette11)
         self.hold4.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold4.setCheckable(True)
         self.hold5 = QPushButton(board_widget)
         self.hold5.setObjectName(u"hold5")
         self.hold5.setGeometry(QRect(40, 200, 41, 16))
@@ -236,6 +247,7 @@ class Ui_board_widget(object):
         self.hold5.setPalette(palette12)
         self.hold5.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold5.setCheckable(True)
         self.hold6 = QPushButton(board_widget)
         self.hold6.setObjectName(u"hold6")
         self.hold6.setGeometry(QRect(190, 170, 16, 16))
@@ -252,6 +264,7 @@ class Ui_board_widget(object):
         self.hold6.setPalette(palette13)
         self.hold6.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold6.setCheckable(True)
         self.hold7 = QPushButton(board_widget)
         self.hold7.setObjectName(u"hold7")
         self.hold7.setGeometry(QRect(90, 100, 21, 16))
@@ -268,6 +281,7 @@ class Ui_board_widget(object):
         self.hold7.setPalette(palette14)
         self.hold7.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold7.setCheckable(True)
         self.hold8 = QPushButton(board_widget)
         self.hold8.setObjectName(u"hold8")
         self.hold8.setGeometry(QRect(250, 180, 51, 16))
@@ -284,6 +298,7 @@ class Ui_board_widget(object):
         self.hold8.setPalette(palette15)
         self.hold8.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold8.setCheckable(True)
         self.hold9 = QPushButton(board_widget)
         self.hold9.setObjectName(u"hold9")
         self.hold9.setGeometry(QRect(310, 270, 21, 16))
@@ -300,6 +315,7 @@ class Ui_board_widget(object):
         self.hold9.setPalette(palette16)
         self.hold9.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold9.setCheckable(True)
         self.hold10 = QPushButton(board_widget)
         self.hold10.setObjectName(u"hold10")
         self.hold10.setGeometry(QRect(280, 220, 21, 16))
@@ -316,6 +332,7 @@ class Ui_board_widget(object):
         self.hold10.setPalette(palette17)
         self.hold10.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold10.setCheckable(True)
         self.hold11 = QPushButton(board_widget)
         self.hold11.setObjectName(u"hold11")
         self.hold11.setGeometry(QRect(270, 300, 16, 16))
@@ -332,6 +349,7 @@ class Ui_board_widget(object):
         self.hold11.setPalette(palette18)
         self.hold11.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold11.setCheckable(True)
         self.hold12 = QPushButton(board_widget)
         self.hold12.setObjectName(u"hold12")
         self.hold12.setGeometry(QRect(160, 260, 41, 16))
@@ -348,6 +366,7 @@ class Ui_board_widget(object):
         self.hold12.setPalette(palette19)
         self.hold12.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold12.setCheckable(True)
         self.hold13 = QPushButton(board_widget)
         self.hold13.setObjectName(u"hold13")
         self.hold13.setGeometry(QRect(130, 220, 16, 16))
@@ -364,6 +383,7 @@ class Ui_board_widget(object):
         self.hold13.setPalette(palette20)
         self.hold13.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold13.setCheckable(True)
         self.hold14 = QPushButton(board_widget)
         self.hold14.setObjectName(u"hold14")
         self.hold14.setGeometry(QRect(110, 260, 31, 16))
@@ -380,6 +400,7 @@ class Ui_board_widget(object):
         self.hold14.setPalette(palette21)
         self.hold14.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold14.setCheckable(True)
         self.hold15 = QPushButton(board_widget)
         self.hold15.setObjectName(u"hold15")
         self.hold15.setGeometry(QRect(50, 270, 21, 21))
@@ -396,6 +417,7 @@ class Ui_board_widget(object):
         self.hold15.setPalette(palette22)
         self.hold15.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold15.setCheckable(True)
         self.hold16 = QPushButton(board_widget)
         self.hold16.setObjectName(u"hold16")
         self.hold16.setGeometry(QRect(70, 300, 31, 16))
@@ -412,6 +434,7 @@ class Ui_board_widget(object):
         self.hold16.setPalette(palette23)
         self.hold16.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold16.setCheckable(True)
         self.hold17 = QPushButton(board_widget)
         self.hold17.setObjectName(u"hold17")
         self.hold17.setGeometry(QRect(190, 310, 41, 21))
@@ -428,6 +451,7 @@ class Ui_board_widget(object):
         self.hold17.setPalette(palette24)
         self.hold17.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold17.setCheckable(True)
         self.hold18 = QPushButton(board_widget)
         self.hold18.setObjectName(u"hold18")
         self.hold18.setGeometry(QRect(240, 240, 16, 16))
@@ -444,6 +468,7 @@ class Ui_board_widget(object):
         self.hold18.setPalette(palette25)
         self.hold18.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold18.setCheckable(True)
         self.hold19 = QPushButton(board_widget)
         self.hold19.setObjectName(u"hold19")
         self.hold19.setGeometry(QRect(260, 340, 16, 16))
@@ -460,6 +485,7 @@ class Ui_board_widget(object):
         self.hold19.setPalette(palette26)
         self.hold19.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold19.setCheckable(True)
         self.hold20 = QPushButton(board_widget)
         self.hold20.setObjectName(u"hold20")
         self.hold20.setGeometry(QRect(140, 340, 16, 16))
@@ -476,6 +502,7 @@ class Ui_board_widget(object):
         self.hold20.setPalette(palette27)
         self.hold20.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
+        self.hold20.setCheckable(True)
 
         self.retranslateUi(board_widget)
 

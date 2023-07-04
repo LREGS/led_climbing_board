@@ -25,6 +25,7 @@ class MainWidget(QWidget):
         self.board_widget.hold_buttons_group.buttonClicked.connect\
         (self.collect_route)
         
+        
         self.create_climb_form_widget = CreateClimbForm()
         self.create_climb_form_widget.widget.saveClimb.setEnabled(False)
         self.create_climb_form_widget.widget.cancelcreation.setEnabled(False)
@@ -51,32 +52,38 @@ class MainWidget(QWidget):
 
 
     def collect_route(self, button):
-        hold_selected = self.board_widget.hold_buttons_group.id(button)
-        self.route.append(hold_selected)
-        self.create_climb_form_widget.widget.textEdit.setPlainText\
-        (str(self.route))
-        self.board_widget.button_colour_active(hold_selected)
+        if self.create_climb_btn.isEnabled() == True:
+            print('Please press create climb first')
+        elif button.isChecked() == True:
+            self.route.append(self.board_widget.hold_buttons_group.id(button))
+            button.setStyleSheet("background-color: green;")
+            print(self.route)
+        else:
+            self.route.remove(self.board_widget.hold_buttons_group.id(button))
+            button.setStyleSheet("background-color: transparent;")
+            print(self.route)
+        
 
     def save_climb_data(self):
         self.create_climb_form_widget.widget.saveClimb.setEnabled(False)
         self.create_climb_btn.setEnabled(True)
         
-        #if (self.create_climb_form_widget.climb_name == 'Climb Name') and (self.create_climb_form_widget.grade == 0) and (self.create_climb_form_widget.route == 'Route'):
-        if (self.create_climb_form_widget.climb_name != 1)\
-            and (self.create_climb_form_widget.grade != 0)\
-            and (self.create_climb_form_widget.route != 3):
-            print('saving climb')
-        else:
+        # #if (self.create_climb_form_widget.climb_name == 'Climb Name') and (self.create_climb_form_widget.grade == 0) and (self.create_climb_form_widget.route == 'Route'):
+        # if (self.create_climb_form_widget.climb_name != 1)\
+        #     and (self.create_climb_form_widget.grade != 0):
+        #     print('please populate required fields')
+            
+        # else:
 
-            print('saving climb')
-            with open('climbs.csv', 'a', newline='') as file:
-                writer = csv.writer(file)
+        print('saving climb')
+        with open('climbs.csv', 'a', newline='') as file:
+            writer = csv.writer(file)
 
-                climb = [self.create_climb_form_widget.widget.textEdit.toPlainText(),\
-                    self.create_climb_form_widget.widget.climb_nam.text(),\
-                        self.create_climb_form_widget.widget.Grade.value()]
-                writer.writerow(climb)
-    
+            climb = [self.route,\
+                self.create_climb_form_widget.widget.climb_nam.text(),\
+                    self.create_climb_form_widget.widget.Grade.value()]
+            writer.writerow(climb)
+
     def handle_cancel_create_climb(self):
         print('creating climb cancelled')
         self.create_climb_btn.setEnabled(True)
