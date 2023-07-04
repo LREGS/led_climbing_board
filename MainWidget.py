@@ -3,8 +3,10 @@ import csv
 
 from PySide6.QtWidgets import QWidget, QVBoxLayout
 from PySide6.QtWidgets import QSizePolicy, QApplication, QMainWindow, \
-QLabel,QPushButton, QToolButton, QVBoxLayout, QWidget, QDialog, QButtonGroup
-from PySide6.QtCore import QObject, Signal
+QLabel,QPushButton, QToolButton, QVBoxLayout, QWidget, QDialog, QButtonGroup, \
+QTableWidget, QGridLayout, QTableWidgetItem
+from PySide6.QtCore import QObject, Signal, QTimer
+from PySide6.QtGui import QPalette, QColor
 
 
 from BoardWidget import BoardWidget
@@ -18,17 +20,27 @@ class MainWidget(QWidget):
         #print statements need adding to a dlg box within the ui and not
         #printing in console
         
-        self.main_layout = QVBoxLayout(self)
+        self.main_layout = QGridLayout(self)
         self.setLayout(self.main_layout)
 
         self.board_widget = BoardWidget()
         self.board_widget.hold_buttons_group.buttonClicked.connect\
         (self.collect_route)
         
-        
         self.create_climb_form_widget = CreateClimbForm()
         self.create_climb_form_widget.widget.saveClimb.setEnabled(False)
         self.create_climb_form_widget.widget.cancelcreation.setEnabled(False)
+        
+        self.saved_climbs_table = QTableWidget()
+        self.saved_climbs_table.setColumnCount(3)
+        self.saved_climbs_table.setRowCount(3)
+        self.saved_climbs_table.setFixedSize(200,200)
+        self.csv_data = self.read_climbs_csv('climbs.csv')
+        self.populate_table(self.saved_climbs_table, self.csv_data)
+        # self.timer = QTimer()
+        # self.timer.timeout.connect(self.refresh_table)
+        # self.timer.start(1000)
+        self.saved_climbs_table.cellClicked.connect(self.load_climb)
         
         self.create_climb_form_widget.widget.saveClimb.clicked.connect\
         (self.save_climb_data)
@@ -38,9 +50,10 @@ class MainWidget(QWidget):
         self.create_climb_btn = QPushButton('Create Climb')
         self.create_climb_btn.clicked.connect(self.handle_create_climb)
                 
-        self.main_layout.addWidget(self.board_widget)
-        self.main_layout.addWidget(self.create_climb_btn)        
-        self.main_layout.addWidget(self.create_climb_form_widget)  
+        self.main_layout.addWidget(self.board_widget, 0,0)
+        self.main_layout.addWidget(self.create_climb_btn, 1,0)        
+        self.main_layout.addWidget(self.create_climb_form_widget, 0,1)  
+        self.main_layout.addWidget(self.saved_climbs_table, 0,2)
 
         self.route = []
         
@@ -89,7 +102,45 @@ class MainWidget(QWidget):
         self.create_climb_btn.setEnabled(True)
         self.create_climb_form_widget.widget.saveClimb.setEnabled(False)
         self.board_widget.toggle_hold_buttons(False)
-
         
+        for button in self.board_widget.hold_buttons_group.buttons():
+            palette = button.palette()
+            background_colour = palette.color(QPalette.Button)
+            
+            if background_colour == QColor("green"):
+                button.setStyleSheet("background-color: transparent;")
+                self.route.clear()
+                self.create_climb_form_widget.widget.climb_nam.setText("Climb Name")
+                self.create_climb_form_widget.widget.Grade.setValue(0)            
+            else:
+                continue
+        
+    
+    def read_climbs_csv(self, file_path):
+        data = []
+        with open(file_path, 'r') as file:
+            csv_reader = csv.reader(file)
+            for row in csv_reader:
+                data.append(row)
+        return data
+    
+    def populate_table(self, table_widget, data):
+        table_widget.setRowCount(len(data))
+        table_widget.setColumnCount(len(data))
+        
+        for row in range(len(data)):
+            for column in range(len(data[row])):
+                item = QTableWidgetItem(data[row][column])
+                table_widget.setItem(row, column, item)
+                
+    def load_climb(self, index):
+        # row = index.row()
+        # if row == 2:
+        #     print('climb loading')
+        print(index)
+
+    # def refresh_table(self):
+    #     csv_data = self.read_climbs_csv('climbs.csv')
+    #     self.populate_table(csv_data)
           
 

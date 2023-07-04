@@ -3,7 +3,6 @@ import os
 from PySide6 import QtWidgets
 from PySide6.QtWidgets import QVBoxLayout, QButtonGroup
 
-#from BoardWidgetUi import UiBoardWidget
 from boardgui import Ui_board_widget
 
 """Add methods to manipulate ui and connect signals to slots"""
@@ -20,8 +19,6 @@ class BoardWidget(QtWidgets.QWidget):
         
         self.hold_buttons = self.hold_buttons_group.buttons()
 
-        self.btn_toggle= False
-
         
     def create_button_group(self):
         button_group = QButtonGroup()
@@ -37,18 +34,7 @@ class BoardWidget(QtWidgets.QWidget):
     def toggle_hold_buttons(self, arg):
         for button in self.hold_buttons:
             button.setEnabled(arg)
-    
-    def button_colour_active(self, id):       
-        
-        hold_name = f'hold{id}'
-        hold_value = getattr(self.widget, hold_name)
-        if self.btn_toggle == False:
-            hold_value.setStyleSheet("background-color: green;")
-            self.btn_toggle = True
-        elif self.btn_toggle == True:
-            hold_value.setStyleSheet("background-color: transparent")
-            self.btn_toggle = False
-    
+
 
     
 
