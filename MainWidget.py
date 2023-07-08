@@ -31,6 +31,7 @@ class MainWidget(QWidget):
         self.create_climb_form_widget.widget.saveClimb.setEnabled(False)
         self.create_climb_form_widget.widget.cancelcreation.setEnabled(False)
         
+        """Needs to be added into own module"""
         self.saved_climbs_table = QTableWidget()
         self.saved_climbs_table.setColumnCount(3)
         self.saved_climbs_table.setRowCount(3)
@@ -101,17 +102,16 @@ class MainWidget(QWidget):
         print('creating climb cancelled')
         self.create_climb_btn.setEnabled(True)
         self.create_climb_form_widget.widget.saveClimb.setEnabled(False)
-        self.board_widget.toggle_hold_buttons(False)
+        self.create_climb_form_widget.widget.cancelcreation.setEnabled(False)
+        
+        self.create_climb_form_widget.widget.Grade.setValue(0)
+        self.create_climb_form_widget.widget.climb_nam.setText("Climb Name")
+        self.route.clear()
         
         for button in self.board_widget.hold_buttons_group.buttons():
-            palette = button.palette()
-            background_colour = palette.color(QPalette.Button)
-            
-            if background_colour == QColor("green"):
+            if button.isChecked() == True:
                 button.setStyleSheet("background-color: transparent;")
-                self.route.clear()
-                self.create_climb_form_widget.widget.climb_nam.setText("Climb Name")
-                self.create_climb_form_widget.widget.Grade.setValue(0)            
+                button.setChecked(False)                          
             else:
                 continue
         
