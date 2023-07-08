@@ -26,14 +26,19 @@ class BoardWidget(QtWidgets.QWidget):
             button_name = f'hold{i}'
             button = getattr(self.widget, button_name, None)
             if button:
+                button.setEnabled(False)
                 button_group.addButton(button, i)
         print(button_group)
         return button_group
 
     
-    def toggle_hold_buttons(self, arg):
-        for button in self.hold_buttons:
-            button.setEnabled(arg)
+    # def toggle_hold_buttons(self, arg):
+    #     for button in self.hold_buttons:
+    #         button.setEnabled(arg)
+            
+    def enable_buttons(self):
+        for button in self.hold_buttons_group.buttons():
+            button.setEnabled(True)
 
 
     

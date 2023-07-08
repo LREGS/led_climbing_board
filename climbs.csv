@@ -6,3 +6,6 @@ route,name,grade
 [],Cre,0
 "[3, 25, 22]",new_route,8
 [],Climb Name,0
+[3],Climb Name,0
+"[4, 24, 7, 1]",new_climb_23,4
+"[8, 3, 23]",defaul,3

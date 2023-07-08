@@ -62,8 +62,8 @@ class MainWidget(QWidget):
         self.create_climb_btn.setEnabled(False)
         self.create_climb_form_widget.widget.saveClimb.setEnabled(True)
         self.create_climb_form_widget.widget.cancelcreation.setEnabled(True)
-        self.board_widget.toggle_hold_buttons(True)
-
+        #self.board_widget.toggle_hold_buttons(True)
+        self.board_widget.enable_buttons()
 
     def collect_route(self, button):
         if self.create_climb_btn.isEnabled() == True:
@@ -72,15 +72,17 @@ class MainWidget(QWidget):
             self.route.append(self.board_widget.hold_buttons_group.id(button))
             button.setStyleSheet("background-color: green;")
             print(self.route)
+            print("enabled")
         else:
             self.route.remove(self.board_widget.hold_buttons_group.id(button))
             button.setStyleSheet("background-color: transparent;")
             print(self.route)
+            print("Disabled")
         
 
     def save_climb_data(self):
-        self.create_climb_form_widget.widget.saveClimb.setEnabled(False)
-        self.create_climb_btn.setEnabled(True)
+        # self.create_climb_form_widget.widget.saveClimb.setEnabled(False)
+        # self.create_climb_btn.setEnabled(True)
         
         # #if (self.create_climb_form_widget.climb_name == 'Climb Name') and (self.create_climb_form_widget.grade == 0) and (self.create_climb_form_widget.route == 'Route'):
         # if (self.create_climb_form_widget.climb_name != 1)\
@@ -97,9 +99,16 @@ class MainWidget(QWidget):
                 self.create_climb_form_widget.widget.climb_nam.text(),\
                     self.create_climb_form_widget.widget.Grade.value()]
             writer.writerow(climb)
+        
+        self.defaultUi()
 
     def handle_cancel_create_climb(self):
         print('creating climb cancelled')
+        self.defaultUi()
+            
+    def defaultUi(self):
+        """ returns UI back to default state """
+        
         self.create_climb_btn.setEnabled(True)
         self.create_climb_form_widget.widget.saveClimb.setEnabled(False)
         self.create_climb_form_widget.widget.cancelcreation.setEnabled(False)
@@ -114,7 +123,6 @@ class MainWidget(QWidget):
                 button.setChecked(False)                          
             else:
                 continue
-        
     
     def read_climbs_csv(self, file_path):
         data = []
@@ -134,9 +142,6 @@ class MainWidget(QWidget):
                 table_widget.setItem(row, column, item)
                 
     def load_climb(self, index):
-        # row = index.row()
-        # if row == 2:
-        #     print('climb loading')
         print(index)
 
     # def refresh_table(self):
