@@ -1,4 +1,3 @@
-import os
 
 from PySide6.QtCore import QFile, QIODevice, Signal
 from PySide6.QtGui import QIcon, QPixmap
@@ -7,8 +6,8 @@ from PySide6 import QtCore
 from PySide6.QtWidgets import QSizePolicy, QApplication, QMainWindow, \
 QLabel,QPushButton, QToolButton, QVBoxLayout, QWidget, QDialog, QButtonGroup, QApplication
 
-from Ui_MainWindow_ import *
-from MainWidget import MainWidget
+from ui_py_files.Ui_MainWindow_ import *
+from widgets.MainWidget import MainWidget
             
 class MainWindow(QMainWindow):        
     def __init__(self, app: QApplication = None):

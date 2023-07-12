@@ -3,7 +3,7 @@ import os
 from PySide6 import QtWidgets
 from PySide6.QtWidgets import QVBoxLayout, QButtonGroup
 
-from boardgui import Ui_board_widget
+from ui_py_files.boardgui import Ui_board_widget
 
 """Add methods to manipulate ui and connect signals to slots"""
 

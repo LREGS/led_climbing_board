@@ -1,13 +1,17 @@
 import unittest
+import sys 
+import os.path 
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 
 from PySide6.QtCore import QtMsgType, QObject, Qt
 from PySide6.QtWidgets import QApplication, QWidget
 from PySide6.QtTest import QTest
 from PySide6.QtGui import QPalette, QColor
 
-
 from main import MainWindow
-from MainWidget import MainWidget
+from widgets.MainWidget import MainWidget
 
 
 

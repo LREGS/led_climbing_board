@@ -1,7 +1,7 @@
 import os
 
 from PySide6.QtWidgets import QVBoxLayout, QWidget 
-from load_ui_file import ui_loader
+#from load_ui_file import ui_loader
 
 class Ui_MainWindow(object):
     def setupUI(self, MainWindow):

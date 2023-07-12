@@ -1,5 +1,6 @@
 import os
 import csv
+import json
 
 from PySide6.QtWidgets import QWidget, QVBoxLayout
 from PySide6.QtWidgets import QSizePolicy, QApplication, QMainWindow, \
@@ -9,9 +10,11 @@ from PySide6.QtCore import QObject, Signal, QTimer
 from PySide6.QtGui import QPalette, QColor
 
 
-from BoardWidget import BoardWidget
-from create_climb_form_widget import CreateClimbForm
-from create_climb_formUI import Ui_Form
+from widgets.BoardWidget import BoardWidget
+from widgets.create_climb_form_widget import CreateClimbForm
+from ui_py_files.create_climb_formUI import Ui_Form
+from widgets.SavedClimbsTable import SavedClimbsTable
+from data.climbs_dict import climbs_dict
 
 class MainWidget(QWidget):
     def __init__(self, parent: QWidget = None) -> None:
@@ -31,18 +34,6 @@ class MainWidget(QWidget):
         self.create_climb_form_widget.widget.saveClimb.setEnabled(False)
         self.create_climb_form_widget.widget.cancelcreation.setEnabled(False)
         
-        """Needs to be added into own module"""
-        self.saved_climbs_table = QTableWidget()
-        self.saved_climbs_table.setColumnCount(3)
-        self.saved_climbs_table.setRowCount(3)
-        self.saved_climbs_table.setFixedSize(200,200)
-        self.csv_data = self.read_climbs_csv('climbs.csv')
-        self.populate_table(self.saved_climbs_table, self.csv_data)
-        # self.timer = QTimer()
-        # self.timer.timeout.connect(self.refresh_table)
-        # self.timer.start(1000)
-        self.saved_climbs_table.cellClicked.connect(self.load_climb)
-        
         self.create_climb_form_widget.widget.saveClimb.clicked.connect\
         (self.save_climb_data)
         self.create_climb_form_widget.widget.cancelcreation.clicked.connect\
@@ -50,11 +41,17 @@ class MainWidget(QWidget):
         
         self.create_climb_btn = QPushButton('Create Climb')
         self.create_climb_btn.clicked.connect(self.handle_create_climb)
+        
+        self.saved_climbs = SavedClimbsTable()
                 
         self.main_layout.addWidget(self.board_widget, 0,0)
-        self.main_layout.addWidget(self.create_climb_btn, 1,0)        
-        self.main_layout.addWidget(self.create_climb_form_widget, 0,1)  
-        self.main_layout.addWidget(self.saved_climbs_table, 0,2)
+        #self.main_layout.addWidget(self.board_widget)
+        self.main_layout.addWidget(self.create_climb_btn, 1,0)  
+        #self.main_layout.addWidget(self.create_climb_btn)    
+        self.main_layout.addWidget(self.create_climb_form_widget, 0,1) 
+        #self.main_layout.addWidget(self.create_climb_form_widget) 
+        self.main_layout.addWidget(self.saved_climbs, 0,3)
+        #self.main_layout.addWidget(self.saved_climbs)
 
         self.route = []
         
@@ -81,24 +78,29 @@ class MainWidget(QWidget):
         
 
     def save_climb_data(self):
-        # self.create_climb_form_widget.widget.saveClimb.setEnabled(False)
-        # self.create_climb_btn.setEnabled(True)
+        self.create_climb_form_widget.widget.saveClimb.setEnabled(False)
+        self.create_climb_btn.setEnabled(True)
         
-        # #if (self.create_climb_form_widget.climb_name == 'Climb Name') and (self.create_climb_form_widget.grade == 0) and (self.create_climb_form_widget.route == 'Route'):
-        # if (self.create_climb_form_widget.climb_name != 1)\
-        #     and (self.create_climb_form_widget.grade != 0):
-        #     print('please populate required fields')
-            
-        # else:
-
-        print('saving climb')
-        with open('climbs.csv', 'a', newline='') as file:
-            writer = csv.writer(file)
-
-            climb = [self.route,\
-                self.create_climb_form_widget.widget.climb_nam.text(),\
-                    self.create_climb_form_widget.widget.Grade.value()]
-            writer.writerow(climb)
+        if self.create_climb_form_widget.climb_name and\
+            self.create_climb_form_widget.grade and\
+            len(self.route) > 1:
+                with open\
+                ('/home/william/Desktop/climbing_board/data/climbs_dict.json', 'r') as f: 
+                    my_dict = json.load(f)
+                    
+                    my_dict[self.create_climb_form_widget.climb_name] = \
+                       {'route' : self.route,
+                        'grade' : self.create_climb_form_widget.grade}
+                                       
+                with open\
+                ('/home/william/Desktop/climbing_board/data/climbs_dict.json', 'w') as f: 
+                    json.dump(my_dict, f)
+                    
+                self.saved_climbs.populate_table()
+                
+             
+        else:
+            print('please input climb information')
         
         self.defaultUi()
 

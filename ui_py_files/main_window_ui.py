@@ -18,8 +18,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QMainWindow, QMenuBar, QPushButton,
     QSizePolicy, QStatusBar, QWidget)
 
-from BoardWidget import BoardWidget
-from create_climb_form_widget import CreateClimbForm
+from widgets.BoardWidget import BoardWidget
+from widgets.create_climb_form_widget import CreateClimbForm
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
