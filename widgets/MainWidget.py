@@ -43,17 +43,16 @@ class MainWidget(QWidget):
         self.create_climb_btn.clicked.connect(self.handle_create_climb)
         
         self.saved_climbs = SavedClimbsTable()
-                
+        self.saved_climbs.populate_table()
+   
         self.main_layout.addWidget(self.board_widget, 0,0)
-        #self.main_layout.addWidget(self.board_widget)
         self.main_layout.addWidget(self.create_climb_btn, 1,0)  
-        #self.main_layout.addWidget(self.create_climb_btn)    
         self.main_layout.addWidget(self.create_climb_form_widget, 0,1) 
-        #self.main_layout.addWidget(self.create_climb_form_widget) 
         self.main_layout.addWidget(self.saved_climbs, 0,3)
-        #self.main_layout.addWidget(self.saved_climbs)
 
         self.route = []
+        
+        
         
     def handle_create_climb(self):
         self.create_climb_btn.setEnabled(False)
@@ -134,20 +133,19 @@ class MainWidget(QWidget):
                 data.append(row)
         return data
     
-    def populate_table(self, table_widget, data):
-        table_widget.setRowCount(len(data))
-        table_widget.setColumnCount(len(data))
+    def populate_table(self):
+        with open\
+        ('/home/william/Desktop/climbing_board/data/climbs_dict.json', 'r') as f: 
+            my_dict = json.load(f)
+            
+        names = [name for name in my_dict.keys()]
+        self.saved_climbs.setRowCount(len(names))
+
         
-        for row in range(len(data)):
-            for column in range(len(data[row])):
-                item = QTableWidgetItem(data[row][column])
-                table_widget.setItem(row, column, item)
+        print(self.names)
                 
     def load_climb(self, index):
         print(index)
 
-    # def refresh_table(self):
-    #     csv_data = self.read_climbs_csv('climbs.csv')
-    #     self.populate_table(csv_data)
-          
+
 
