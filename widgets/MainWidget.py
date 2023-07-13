@@ -44,6 +44,7 @@ class MainWidget(QWidget):
         
         self.saved_climbs = SavedClimbsTable()
         self.saved_climbs.populate_table()
+        self.saved_climbs.widget.tableWidget.cellClicked.connect(self.get_route)
    
         self.main_layout.addWidget(self.board_widget, 0,0)
         self.main_layout.addWidget(self.create_climb_btn, 1,0)  
@@ -58,23 +59,20 @@ class MainWidget(QWidget):
         self.create_climb_btn.setEnabled(False)
         self.create_climb_form_widget.widget.saveClimb.setEnabled(True)
         self.create_climb_form_widget.widget.cancelcreation.setEnabled(True)
-        #self.board_widget.toggle_hold_buttons(True)
         self.board_widget.enable_buttons()
+        self.default_board()
 
-    def collect_route(self, button):
+
+    def collect_route(self, button): 
         if self.create_climb_btn.isEnabled() == True:
             print('Please press create climb first')
         elif button.isChecked() == True:
             self.route.append(self.board_widget.hold_buttons_group.id(button))
             button.setStyleSheet("background-color: green;")
-            print(self.route)
-            print("enabled")
         else:
             self.route.remove(self.board_widget.hold_buttons_group.id(button))
             button.setStyleSheet("background-color: transparent;")
-            print(self.route)
-            print("Disabled")
-        
+
 
     def save_climb_data(self):
         self.create_climb_form_widget.widget.saveClimb.setEnabled(False)
@@ -118,34 +116,30 @@ class MainWidget(QWidget):
         self.create_climb_form_widget.widget.climb_nam.setText("Climb Name")
         self.route.clear()
         
-        for button in self.board_widget.hold_buttons_group.buttons():
-            if button.isChecked() == True:
-                button.setStyleSheet("background-color: transparent;")
-                button.setChecked(False)                          
-            else:
-                continue
-    
-    def read_climbs_csv(self, file_path):
-        data = []
-        with open(file_path, 'r') as file:
-            csv_reader = csv.reader(file)
-            for row in csv_reader:
-                data.append(row)
-        return data
-    
-    def populate_table(self):
-        with open\
-        ('/home/william/Desktop/climbing_board/data/climbs_dict.json', 'r') as f: 
-            my_dict = json.load(f)
-            
-        names = [name for name in my_dict.keys()]
-        self.saved_climbs.setRowCount(len(names))
+        self.default_board()
 
+ 
         
-        print(self.names)
                 
-    def load_climb(self, index):
-        print(index)
-
+    def get_route(self, row, column):
+        self.defaultUi()
+        climb_name = \
+        self.saved_climbs.widget.tableWidget.item(row, column).text()
+        
+        with open\
+                ('/home/william/Desktop/climbing_board/data/climbs_dict.json', 'r') as f: 
+                    my_dict = json.load(f)
+        
+        self.display_route(my_dict[climb_name]['route'])
+        
+        
+    def display_route(self, route):
+        for button in route:
+            button_to_display = self.board_widget.hold_buttons_group.button(button)
+            button_to_display.setStyleSheet("background-color: green;")
+            
+    def default_board(self):
+        for button in self.board_widget.hold_buttons_group.buttons():
+            button.setStyleSheet("background-color: transparent;")
 
 

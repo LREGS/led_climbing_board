@@ -27,7 +27,9 @@ class SavedClimbsTable(QWidget):
             self.widget.tableWidget.setItem(row, 0, row_name)
             
             row_grade = QTableWidgetItem(str(my_dict[name]['grade']))
-            self.widget.tableWidget.setItem(row, 1, row_grade)      
+            self.widget.tableWidget.setItem(row, 1, row_grade)  
+            
+            print(my_dict[name]['route'])    
             
         print(self.grade)
         print('table completd')
