@@ -31,25 +31,33 @@ class MainWidget(QWidget):
         self.board_widget.hold_buttons_group.buttonClicked.connect\
         (self.collect_route)
         
-        self.create_climb_form_widget = CreateClimbForm()
-        self.create_climb_form_widget.widget.saveClimb.setEnabled(False)
-        self.create_climb_form_widget.widget.cancelcreation.setEnabled(False)
+        # self.create_climb_form_widget = CreateClimbForm()
+        # self.create_climb_form_widget.widget.saveClimb.setEnabled(False)
+        # self.create_climb_form_widget.widget.cancelcreation.setEnabled(False)
         
-        self.create_climb_form_widget.widget.saveClimb.clicked.connect\
-        (self.save_climb_data)
-        self.create_climb_form_widget.widget.cancelcreation.clicked.connect\
-        (self.handle_cancel_create_climb)
+        # self.create_climb_form_widget.widget.saveClimb.clicked.connect\
+        # (self.save_climb_data)
+        # self.create_climb_form_widget.widget.cancelcreation.clicked.connect\
+        # (self.handle_cancel_create_climb)
         
         self.create_climb_btn = QPushButton('Create Climb')
         self.create_climb_btn.clicked.connect(self.handle_create_climb)
+        self.save_climb_btn = QPushButton('Save Climb')
+        self.save_climb_btn.clicked.connect(self.onSavedClimbClicked)
         
+        self.save_climb_data = SaveClimbPopup()
+        self.save_climb_data.widget.buttonBox.accepted.connect(self.save_climb)
+
+
+
         self.saved_climbs = SavedClimbsTable()
         self.saved_climbs.populate_table()
         self.saved_climbs.widget.tableWidget.cellClicked.connect(self.get_route)
    
         self.main_layout.addWidget(self.board_widget, 0,0)
-        self.main_layout.addWidget(self.create_climb_btn, 1,0)  
-        self.main_layout.addWidget(self.create_climb_form_widget, 0,1) 
+        self.main_layout.addWidget(self.create_climb_btn, 1,0)
+        self.main_layout.addWidget(self.save_climb_btn, 1,1)  
+        # self.main_layout.addWidget(self.create_climb_form_widget, 0,1) 
         self.main_layout.addWidget(self.saved_climbs, 0,3)
 
         self.route = []
@@ -58,8 +66,6 @@ class MainWidget(QWidget):
         
     def handle_create_climb(self):
         self.create_climb_btn.setEnabled(False)
-        self.create_climb_form_widget.widget.saveClimb.setEnabled(True)
-        self.create_climb_form_widget.widget.cancelcreation.setEnabled(True)
         self.board_widget.enable_buttons()
         self.default_board()
 
@@ -75,12 +81,11 @@ class MainWidget(QWidget):
             button.setStyleSheet("background-color: transparent;")
 
 
-    def save_climb_data(self):
-        self.create_climb_form_widget.widget.saveClimb.setEnabled(False)
+    def save_climb(self):
         self.create_climb_btn.setEnabled(True)
         
-        if self.create_climb_form_widget.climb_name and\
-            self.create_climb_form_widget.grade and\
+        if self.save_climb_data.climb_name and\
+            self.save_climb_data.climb_grade and\
             len(self.route) > 1:
                 main_folder = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   
                 relative_path = 'data/climbs_dict.json'
@@ -90,9 +95,9 @@ class MainWidget(QWidget):
                 (data_file_path, 'r') as f: 
                     my_dict = json.load(f)
                     
-                    my_dict[self.create_climb_form_widget.climb_name] = \
+                    my_dict[self.save_climb_data.climb_name] = \
                        {'route' : self.route,
-                        'grade' : self.create_climb_form_widget.grade}
+                        'grade' : self.save_climb_data.climb_grade}
                                        
                 with open\
                 (data_file_path, 'w') as f: 
@@ -113,18 +118,9 @@ class MainWidget(QWidget):
         """ returns UI back to default state """
         
         self.create_climb_btn.setEnabled(True)
-        self.create_climb_form_widget.widget.saveClimb.setEnabled(False)
-        self.create_climb_form_widget.widget.cancelcreation.setEnabled(False)
-        
-        self.create_climb_form_widget.widget.Grade.setValue(0)
-        self.create_climb_form_widget.widget.climb_nam.setText("Climb Name")
         self.route.clear()
-        
         self.default_board()
-
- 
-        
-                
+      
     def get_route(self, row, column):
         self.defaultUi()
         climb_name = \
@@ -151,7 +147,6 @@ class MainWidget(QWidget):
             button.setStyleSheet("background-color: transparent;")
 
     def onSavedClimbClicked(self):
-        save_climb_data = SaveClimbPopup()
-        save_climb_data.exec()
+        self.save_climb_data.exec()
 
 

@@ -1,10 +1,36 @@
-from ui_py_files.saved_climbs_table_ui import Ui_Form
+from ui_py_files.save_climb_popup_widget import Ui_input_climb_data
 
-from PySide6.QtWidgets import QWidget
+from PySide6.QtWidgets import QDialog
 
-class SaveClimbPopup(QWidget):
-    def __init__(self, parent: QWidget = None) -> None:
+class SaveClimbPopup(QDialog):
+    def __init__(self, parent: QDialog = None) -> None:
         super(SaveClimbPopup, self).__init__(parent)
 
-        self.widget = Ui_Form()
-        self.widget.setupUI(self)
+        self.widget = Ui_input_climb_data()
+        self.widget.setupUi(self)
+
+        # self.widget.buttonBox.accepted.connect(self.climbsaved)
+        # self.widget.buttonBox.rejected.connect(self.savecancelled)
+
+        self.climb_name = None
+        self.climb_grade = None
+        self.climb_rating = None
+
+        self.widget.climb_name.textChanged.connect(self.updateName)
+        self.widget.grade.valueChanged.connect(self.updateGrade)
+        self.widget.ratingSpinBox.valueChanged.connect(self.updateRating)
+
+    def climbsaved(self, route):
+        print('saved')
+
+    def savecancelled(self):
+        print('cancelled')
+
+    def updateName(self, text):
+        self.climb_name = text
+    
+    def updateGrade(self, value):
+        self.climb_grade = value
+    
+    def updateRating(self, value):
+        self.climb_rating = value
