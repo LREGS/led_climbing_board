@@ -40,7 +40,7 @@ class Ui_board_widget(object):
         self.label = QLabel(board_widget)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(0, 0, 400, 400))
-        self.label.setPixmap(QPixmap(u"/home/william/Desktop/climbing_board/board_img/ched_board.jpg"))
+        self.label.setPixmap(QPixmap(u"board_img/ched_board.jpg"))
         self.label.setScaledContents(True)
         self.hold1 = QPushButton(board_widget)
         self.hold1.setObjectName(u"hold1")

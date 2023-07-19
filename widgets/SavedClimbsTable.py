@@ -16,7 +16,7 @@ class SavedClimbsTable(QWidget):
         
     def populate_table(self):
         with open\
-        ('/home/william/Desktop/climbing_board/data/climbs_dict.json', 'r') as f: 
+        ('data/climbs_dict.json', 'r') as f: 
             my_dict = json.load(f)
             
         self.names = [name for name in my_dict.keys()]

@@ -82,7 +82,7 @@ class MainWidget(QWidget):
             self.create_climb_form_widget.grade and\
             len(self.route) > 1:
                 with open\
-                ('/home/william/Desktop/climbing_board/data/climbs_dict.json', 'r') as f: 
+                ('data/climbs_dict.json', 'r') as f: 
                     my_dict = json.load(f)
                     
                     my_dict[self.create_climb_form_widget.climb_name] = \
@@ -90,7 +90,7 @@ class MainWidget(QWidget):
                         'grade' : self.create_climb_form_widget.grade}
                                        
                 with open\
-                ('/home/william/Desktop/climbing_board/data/climbs_dict.json', 'w') as f: 
+                ('data/climbs_dict.json', 'w') as f: 
                     json.dump(my_dict, f)
                     
                 self.saved_climbs.populate_table()
@@ -127,7 +127,7 @@ class MainWidget(QWidget):
         self.saved_climbs.widget.tableWidget.item(row, column).text()
         
         with open\
-                ('/home/william/Desktop/climbing_board/data/climbs_dict.json', 'r') as f: 
+                ('data/climbs_dict.json', 'r') as f: 
                     my_dict = json.load(f)
         
         self.display_route(my_dict[climb_name]['route'])
