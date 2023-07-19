@@ -15,8 +15,14 @@ class SavedClimbsTable(QWidget):
         
         
     def populate_table(self):
+        main_folder = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   
+
+        # Construct the relative path to the JSON file
+        relative_path = 'data/climbs_dict.json'
+        data_file_path = os.path.join(main_folder, relative_path)
+        
         with open\
-        ('data/climbs_dict.json', 'r') as f: 
+        (data_file_path, 'r') as f: 
             my_dict = json.load(f)
             
         self.names = [name for name in my_dict.keys()]

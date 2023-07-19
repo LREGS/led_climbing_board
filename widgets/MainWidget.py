@@ -15,6 +15,7 @@ from widgets.create_climb_form_widget import CreateClimbForm
 from ui_py_files.create_climb_formUI import Ui_Form
 from widgets.SavedClimbsTable import SavedClimbsTable
 from data.climbs_dict import climbs_dict
+from widgets.SaveClimbPopup import SaveClimbPopup
 
 class MainWidget(QWidget):
     def __init__(self, parent: QWidget = None) -> None:
@@ -81,8 +82,12 @@ class MainWidget(QWidget):
         if self.create_climb_form_widget.climb_name and\
             self.create_climb_form_widget.grade and\
             len(self.route) > 1:
+                main_folder = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   
+                relative_path = 'data/climbs_dict.json'
+                data_file_path = os.path.join(main_folder, relative_path)
+
                 with open\
-                ('data/climbs_dict.json', 'r') as f: 
+                (data_file_path, 'r') as f: 
                     my_dict = json.load(f)
                     
                     my_dict[self.create_climb_form_widget.climb_name] = \
@@ -90,7 +95,7 @@ class MainWidget(QWidget):
                         'grade' : self.create_climb_form_widget.grade}
                                        
                 with open\
-                ('data/climbs_dict.json', 'w') as f: 
+                (data_file_path, 'w') as f: 
                     json.dump(my_dict, f)
                     
                 self.saved_climbs.populate_table()
@@ -98,7 +103,6 @@ class MainWidget(QWidget):
              
         else:
             print('please input climb information')
-        
         self.defaultUi()
 
     def handle_cancel_create_climb(self):
@@ -126,9 +130,13 @@ class MainWidget(QWidget):
         climb_name = \
         self.saved_climbs.widget.tableWidget.item(row, column).text()
         
+        main_folder = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   
+        relative_path = 'data/climbs_dict.json'
+        data_file_path = os.path.join(main_folder, relative_path)
+
         with open\
-                ('data/climbs_dict.json', 'r') as f: 
-                    my_dict = json.load(f)
+        (data_file_path, 'r') as f: 
+            my_dict = json.load(f)
         
         self.display_route(my_dict[climb_name]['route'])
         
@@ -141,5 +149,9 @@ class MainWidget(QWidget):
     def default_board(self):
         for button in self.board_widget.hold_buttons_group.buttons():
             button.setStyleSheet("background-color: transparent;")
+
+    def onSavedClimbClicked(self):
+        save_climb_data = SaveClimbPopup()
+        save_climb_data.exec()
 
 
