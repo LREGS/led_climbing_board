@@ -5,18 +5,21 @@ import json
 from PySide6.QtWidgets import QWidget, QVBoxLayout
 from PySide6.QtWidgets import QSizePolicy, QApplication, QMainWindow, \
 QLabel,QPushButton, QToolButton, QVBoxLayout, QWidget, QDialog, QButtonGroup, \
-QTableWidget, QGridLayout, QTableWidgetItem
+QTableWidget, QGridLayout, QTableWidgetItem, QMenuBar, QMenu
 from PySide6.QtCore import QObject, Signal, QTimer
 from PySide6.QtGui import QPalette, QColor
 
 
+
+from ui_py_files.create_climb_formUI import Ui_Form
 from widgets.BoardWidget import BoardWidget
 from widgets.create_climb_form_widget import CreateClimbForm
-from ui_py_files.create_climb_formUI import Ui_Form
 from widgets.SavedClimbsTable import SavedClimbsTable
-from data.climbs_dict import climbs_dict
 from widgets.SaveClimbPopup import SaveClimbPopup
+from widgets.MenuBar import MenuBar
 from tools.JsonHandler import JsonHanlder
+from data.climbs_dict import climbs_dict
+
 
 class MainWidget(QWidget):
     def __init__(self, parent: QWidget = None) -> None:
@@ -40,17 +43,19 @@ class MainWidget(QWidget):
         self.saved_climbs = SavedClimbsTable()
         self.saved_climbs.populate_table()
         self.saved_climbs.widget.tableWidget.cellClicked.connect(self.get_route)
-   
-        self.main_layout.addWidget(self.board_widget, 0,0)
-        self.main_layout.addWidget(self.create_climb_btn, 1,0)
-        self.main_layout.addWidget(self.save_climb_btn, 1,1)  
-        self.main_layout.addWidget(self.saved_climbs, 0,3)
+
+        self.menu = MenuBar()
+
+        self.main_layout.addWidget(self.board_widget, 1,0)
+        self.main_layout.addWidget(self.create_climb_btn, 2,0)
+        self.main_layout.addWidget(self.save_climb_btn, 2,1)  
+        self.main_layout.addWidget(self.saved_climbs, 1,1)
+        self.main_layout.addWidget(self.menu, 0,0)
 
         self.route = []
         
         self.climbsJSON = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'climbs_dict.json')
 
-        
         
     def handle_create_climb(self):
         self.create_climb_btn.setEnabled(False)
@@ -59,9 +64,7 @@ class MainWidget(QWidget):
 
 
     def collect_route(self, button): 
-        if self.create_climb_btn.isEnabled() == True:
-            print('Please press create climb first')
-        elif button.isChecked() == True:
+        if button.isChecked() == True:
             self.route.append(self.board_widget.hold_buttons_group.id(button))
             button.setStyleSheet("background-color: green;")
         else:

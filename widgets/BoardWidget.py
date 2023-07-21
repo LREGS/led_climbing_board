@@ -13,6 +13,8 @@ class BoardWidget(QtWidgets.QWidget):
         self.widget = Ui_board_widget()
         self.setLayout(QVBoxLayout())
         self.widget.setupUi(self)
+
+        self.setFixedSize(400,400)
         
         self.hold_buttons_group = self.create_button_group()
         self.hold_buttons_group.setExclusive(False)
@@ -30,11 +32,6 @@ class BoardWidget(QtWidgets.QWidget):
                 button_group.addButton(button, i)
         print(button_group)
         return button_group
-
-    
-    # def toggle_hold_buttons(self, arg):
-    #     for button in self.hold_buttons:
-    #         button.setEnabled(arg)
             
     def enable_buttons(self):
         for button in self.hold_buttons_group.buttons():
