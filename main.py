@@ -9,6 +9,7 @@ QLabel,QPushButton, QToolButton, QVBoxLayout, QWidget, QDialog, QButtonGroup, QA
 from ui_py_files.Ui_MainWindow_ import *
 from widgets.MainWidget import MainWidget
             
+
 class MainWindow(QMainWindow):        
     def __init__(self, app: QApplication = None):
         super(MainWindow, self).__init__()
