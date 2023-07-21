@@ -16,13 +16,11 @@ from ui_py_files.create_climb_formUI import Ui_Form
 from widgets.SavedClimbsTable import SavedClimbsTable
 from data.climbs_dict import climbs_dict
 from widgets.SaveClimbPopup import SaveClimbPopup
+from tools.JsonHandler import JsonHanlder
 
 class MainWidget(QWidget):
     def __init__(self, parent: QWidget = None) -> None:
         super(MainWidget, self).__init__(parent)
-        
-        #print statements need adding to a dlg box within the ui and not
-        #printing in console
         
         self.main_layout = QGridLayout(self)
         self.setLayout(self.main_layout)
@@ -30,15 +28,6 @@ class MainWidget(QWidget):
         self.board_widget = BoardWidget()
         self.board_widget.hold_buttons_group.buttonClicked.connect\
         (self.collect_route)
-        
-        # self.create_climb_form_widget = CreateClimbForm()
-        # self.create_climb_form_widget.widget.saveClimb.setEnabled(False)
-        # self.create_climb_form_widget.widget.cancelcreation.setEnabled(False)
-        
-        # self.create_climb_form_widget.widget.saveClimb.clicked.connect\
-        # (self.save_climb_data)
-        # self.create_climb_form_widget.widget.cancelcreation.clicked.connect\
-        # (self.handle_cancel_create_climb)
         
         self.create_climb_btn = QPushButton('Create Climb')
         self.create_climb_btn.clicked.connect(self.handle_create_climb)
@@ -48,8 +37,6 @@ class MainWidget(QWidget):
         self.save_climb_data = SaveClimbPopup()
         self.save_climb_data.widget.buttonBox.accepted.connect(self.save_climb)
 
-
-
         self.saved_climbs = SavedClimbsTable()
         self.saved_climbs.populate_table()
         self.saved_climbs.widget.tableWidget.cellClicked.connect(self.get_route)
@@ -57,11 +44,12 @@ class MainWidget(QWidget):
         self.main_layout.addWidget(self.board_widget, 0,0)
         self.main_layout.addWidget(self.create_climb_btn, 1,0)
         self.main_layout.addWidget(self.save_climb_btn, 1,1)  
-        # self.main_layout.addWidget(self.create_climb_form_widget, 0,1) 
         self.main_layout.addWidget(self.saved_climbs, 0,3)
 
         self.route = []
         
+        self.climbsJSON = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'climbs_dict.json')
+
         
         
     def handle_create_climb(self):
@@ -80,32 +68,20 @@ class MainWidget(QWidget):
             self.route.remove(self.board_widget.hold_buttons_group.id(button))
             button.setStyleSheet("background-color: transparent;")
 
-
     def save_climb(self):
         self.create_climb_btn.setEnabled(True)
         
         if self.save_climb_data.climb_name and\
             self.save_climb_data.climb_grade and\
             len(self.route) > 1:
-                main_folder = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   
-                relative_path = 'data/climbs_dict.json'
-                data_file_path = os.path.join(main_folder, relative_path)
-
-                with open\
-                (data_file_path, 'r') as f: 
-                    my_dict = json.load(f)
-                    
-                    my_dict[self.save_climb_data.climb_name] = \
+                
+                climb_data = JsonHanlder.openJson(self.climbsJSON)
+                climb_data[self.save_climb_data.climb_name] = \
                        {'route' : self.route,
                         'grade' : self.save_climb_data.climb_grade}
-                                       
-                with open\
-                (data_file_path, 'w') as f: 
-                    json.dump(my_dict, f)
-                    
-                self.saved_climbs.populate_table()
-                
-             
+                JsonHanlder.writeJson(climb_data, self.climbsJSON)
+
+                self.saved_climbs.populate_table()  
         else:
             print('please input climb information')
         self.defaultUi()
@@ -114,27 +90,20 @@ class MainWidget(QWidget):
         print('creating climb cancelled')
         self.defaultUi()
             
-    def defaultUi(self):
-        """ returns UI back to default state """
-        
+    def defaultUi(self):        
         self.create_climb_btn.setEnabled(True)
         self.route.clear()
         self.default_board()
       
     def get_route(self, row, column):
         self.defaultUi()
+
         climb_name = \
         self.saved_climbs.widget.tableWidget.item(row, column).text()
         
-        main_folder = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   
-        relative_path = 'data/climbs_dict.json'
-        data_file_path = os.path.join(main_folder, relative_path)
-
-        with open\
-        (data_file_path, 'r') as f: 
-            my_dict = json.load(f)
+        climbs_dict = JsonHanlder.openJson(self.climbsJSON)
         
-        self.display_route(my_dict[climb_name]['route'])
+        self.display_route(climbs_dict[climb_name]['route'])
         
         
     def display_route(self, route):
