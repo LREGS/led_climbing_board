@@ -10,7 +10,7 @@ class SignUpForm(QDialog):
 
         self.widget = Ui_Dialog()
         self.widget.setupUi(self)
-        self.widget.buttonBox.button(QDialogButtonBox.Ok).setEnabled(False)
+        # self.widget.buttonBox.button(QDialogButtonBox.Ok).setEnabled(False)
         self.widget.retyped_password_input.textChanged.connect(self.verify_data)
         self.widget.password_input.textChanged.connect(self.verify_data)
         self.widget.username_input.textChanged.connect(self.verify_data)
@@ -19,9 +19,10 @@ class SignUpForm(QDialog):
         self.widget.buttonBox.rejected.connect(self.signup_cancelled)
 
     def get_details(self):
-        username = self.widget.username_input.text()
-        encrypted_password = self.encrypt_password(self.widget.password_input.text())
-        print(username, encrypted_password)
+        # username = self.widget.username_input.text()
+        # encrypted_password = self.encrypt_password(self.widget.password_input.text())
+        # print(username, encrypted_password)
+        print('ok')
 
     def encrypt_password(self, password):
         password_hash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt(rounds=15))
@@ -40,8 +41,7 @@ class SignUpForm(QDialog):
 
     def verify_username(self):
         if len(self.widget.username_input.text()) == 0:
-            self.widget.buttonBox.button(QDialogButtonBox.Ok).setEnabled(False)
+            return True
         else:
-            self.widget.buttonBox.button(QDialogButtonBox.Ok).setEnabled(True)
-
+            return False
 
