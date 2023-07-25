@@ -3,6 +3,7 @@ from PySide6.QtWidgets import QDialog, QDialogButtonBox
 import bcrypt
 
 from ui_py_files.signupPopupUI import Ui_Dialog
+from tools.SignUpHandler import SignnUpHandler as handle
 
 class SignUpForm(QDialog):
     def __init__(self, parent: QDialog = None) -> None:
@@ -10,9 +11,9 @@ class SignUpForm(QDialog):
 
         self.widget = Ui_Dialog()
         self.widget.setupUi(self)
-        # self.widget.buttonBox.button(QDialogButtonBox.Ok).setEnabled(False)
-        self.widget.retyped_password_input.textChanged.connect(self.verify_data)
-        self.widget.password_input.textChanged.connect(self.verify_data)
+        self.widget.buttonBox.button(QDialogButtonBox.Ok).setEnabled(False)
+        self.retyped_passwrd = self.widget.retyped_password_input.textChanged.connect(self.verify_data)
+        self.password = self.widget.password_input.textChanged.connect(self.verify_data)
         self.widget.username_input.textChanged.connect(self.verify_data)
         
         self.widget.buttonBox.accepted.connect(self.get_details)
@@ -24,20 +25,32 @@ class SignUpForm(QDialog):
         # print(username, encrypted_password)
         print('ok')
 
-    def encrypt_password(self, password):
-        password_hash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt(rounds=15))
-        print(password_hash)
-        return password_hash
-    
     def signup_cancelled(self):
-        print('yes')
+        print('cancell pressed')
 
     def verify_data(self):
-        if self.widget.password_input.text() == self.widget.retyped_password_input.text()\
-            and len(self.widget.username_input.text()) > 0:
+        password = handle.password_checker(self.widget.password_input.text(), self.widget.retyped_password_input.text())
+        username = handle.username_checker(self.widget.username_input.text())
+
+        if password and username:
+            print('password matches')
             self.widget.buttonBox.button(QDialogButtonBox.Ok).setEnabled(True)
         else:
-            self.widget.communication_box.setText('Passwords must match')
+            print('passwords not matching')
+            self.widget.buttonBox.button(QDialogButtonBox.Ok).setEnabled(False)
+
+        
+        # print(password)
+            # if self.password > 1:
+            #     print('password')
+            # else:
+            #     print('please enter a password')
+
+        # if self.widget.password_input.text() == self.widget.retyped_password_input.text()\
+        #     and len(self.widget.username_input.text()) > 0:
+        #     self.widget.buttonBox.button(QDialogButtonBox.Ok).setEnabled(True)
+        # else:
+        #     self.widget.communication_box.setText('Passwords must match')
 
     def verify_username(self):
         if len(self.widget.username_input.text()) == 0:
