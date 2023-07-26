@@ -1,9 +1,11 @@
-import PySide6.QtGui
+import os
+
 from PySide6.QtWidgets import QDialog, QDialogButtonBox
-import bcrypt
 
 from ui_py_files.signupPopupUI import Ui_Dialog
+
 from tools.SignUpHandler import SignnUpHandler as handle
+from tools.JsonHandler import JsonHanlder as json
 
 class SignUpForm(QDialog):
     def __init__(self, parent: QDialog = None) -> None:
@@ -11,19 +13,18 @@ class SignUpForm(QDialog):
 
         self.widget = Ui_Dialog()
         self.widget.setupUi(self)
+        
         self.widget.buttonBox.button(QDialogButtonBox.Ok).setEnabled(False)
+        
+        self.login_details_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'climbs_dict.json')
+        self.login_details_data = json.openJson(self.login_details_path)
+        
         self.retyped_passwrd = self.widget.retyped_password_input.textChanged.connect(self.verify_data)
         self.password = self.widget.password_input.textChanged.connect(self.verify_data)
         self.widget.username_input.textChanged.connect(self.verify_data)
         
-        self.widget.buttonBox.accepted.connect(self.get_details)
+        self.widget.buttonBox.accepted.connect(self.signup_account)
         self.widget.buttonBox.rejected.connect(self.signup_cancelled)
-
-    def get_details(self):
-        # username = self.widget.username_input.text()
-        # encrypted_password = self.encrypt_password(self.widget.password_input.text())
-        # print(username, encrypted_password)
-        print('ok')
 
     def signup_cancelled(self):
         print('cancell pressed')
@@ -33,28 +34,14 @@ class SignUpForm(QDialog):
         username = handle.username_checker(self.widget.username_input.text())
 
         if password and username:
-            print('password matches')
             self.widget.buttonBox.button(QDialogButtonBox.Ok).setEnabled(True)
         else:
-            print('passwords not matching')
             self.widget.buttonBox.button(QDialogButtonBox.Ok).setEnabled(False)
+    
+    def signup_account(self):
+        # self.login_details_data = {self.widget.username_input.text()\
+        #                          : handle.encrypted_password(self.widget.password_input.text())            
+        # }
 
-        
-        # print(password)
-            # if self.password > 1:
-            #     print('password')
-            # else:
-            #     print('please enter a password')
-
-        # if self.widget.password_input.text() == self.widget.retyped_password_input.text()\
-        #     and len(self.widget.username_input.text()) > 0:
-        #     self.widget.buttonBox.button(QDialogButtonBox.Ok).setEnabled(True)
-        # else:
-        #     self.widget.communication_box.setText('Passwords must match')
-
-    def verify_username(self):
-        if len(self.widget.username_input.text()) == 0:
-            return True
-        else:
-            return False
-
+        # json.writeJson(self.login_details_data, self.login_details_path)
+        print('helo')

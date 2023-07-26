@@ -10,8 +10,7 @@ class SignnUpHandler:
     
     @staticmethod
     def username_checker(username):
-        if len(username) > 0:
-            return True
+        return len(username) > 0
     
     @staticmethod
     def password_checker(password, retyped_password):
@@ -19,6 +18,7 @@ class SignnUpHandler:
             return True 
         else:
             return None
-        
+    @staticmethod   
     def encrypted_password(password):
          return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt(rounds=15))
+

@@ -3,7 +3,8 @@ import os
 from PySide6 import QtWidgets
 from PySide6.QtWidgets import QVBoxLayout, QButtonGroup
 
-from ui_py_files.boardgui import Ui_board_widget
+# from ui_py_files.boardgui import Ui_board_widget
+from ui_py_files.boardgui_2 import Ui_board_widget
 
 """Add methods to manipulate ui and connect signals to slots"""
 
@@ -24,7 +25,7 @@ class BoardWidget(QtWidgets.QWidget):
         
     def create_button_group(self):
         button_group = QButtonGroup()
-        for i in range(1,28):
+        for i in range(1,56):
             button_name = f'hold{i}'
             button = getattr(self.widget, button_name, None)
             if button:
