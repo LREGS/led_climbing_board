@@ -1,5 +1,4 @@
 import os
-import sqlite3
 
 from PySide6.QtWidgets import QDialog, QDialogButtonBox
 
@@ -7,7 +6,6 @@ from ui_py_files.signupPopupUI import Ui_Dialog
 
 from tools.SignUpHandler import SignnUpHandler as handle
 from tools.JsonHandler import JsonHanlder as json
-from configuration import Configuartion
 
 class SignUpForm(QDialog):
     def __init__(self, parent: QDialog = None) -> None:
@@ -15,8 +13,6 @@ class SignUpForm(QDialog):
 
         self.widget = Ui_Dialog()
         self.widget.setupUi(self)
-
-        self.database = Configuartion()
         
         self.widget.buttonBox.button(QDialogButtonBox.Ok).setEnabled(False)
         
@@ -27,7 +23,7 @@ class SignUpForm(QDialog):
         self.password = self.widget.password_input.textChanged.connect(self.verify_data)
         self.widget.username_input.textChanged.connect(self.verify_data)
         
-        self.widget.buttonBox.accepted.connect(self.sql)
+        self.widget.buttonBox.accepted.connect(self.signup_account)
         self.widget.buttonBox.rejected.connect(self.signup_cancelled)
 
     def signup_cancelled(self):
@@ -41,8 +37,12 @@ class SignUpForm(QDialog):
             self.widget.buttonBox.button(QDialogButtonBox.Ok).setEnabled(True)
         else:
             self.widget.buttonBox.button(QDialogButtonBox.Ok).setEnabled(False)
+    
+    def signup_account(self):
+        new_login_details_data = {self.widget.username_input.text()\
+                                 : str(handle.encrypted_password(self.widget.password_input.text()))            
+        }
 
-    def sql(self):
-        
-        self.database.add_user(self.widget.username_input.text(), self.widget.password_input.text())
+        merged_data = {**self.login_details_data, **new_login_details_data}
 
+        json.writeJson(merged_data, self.login_details_path)

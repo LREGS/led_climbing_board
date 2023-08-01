@@ -1,3 +1,4 @@
+import sqlite3
 
 from PySide6.QtCore import QFile, QIODevice, Signal
 from PySide6.QtGui import QIcon, QPixmap
@@ -18,6 +19,7 @@ class MainWindow(QMainWindow):
         self.window_.setupUI(self)
         self.main_widget = MainWidget()
         self.setCentralWidget(self.main_widget)
+
         
     
 if __name__ == '__main__':

@@ -42,7 +42,7 @@ class Ui_board_widget(object):
         self.label.setGeometry(QRect(0, 0, 400, 400))
         self.label.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
-        self.label.setPixmap(QPixmap(u"~/Desktop/climbing_board/led_board/data/board.jpg"))
+        self.label.setPixmap(QPixmap(u"../data/board.jpg"))
         self.label.setScaledContents(True)
         self.hold44 = QPushButton(board_widget)
         self.hold44.setObjectName(u"hold44")
@@ -913,6 +913,40 @@ class Ui_board_widget(object):
         self.hold37.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
 "    border: none;")
         self.hold37.setCheckable(True)
+        self.hold57 = QPushButton(board_widget)
+        self.hold57.setObjectName(u"hold57")
+        self.hold57.setGeometry(QRect(60, 180, 31, 16))
+        palette52 = QPalette()
+        palette52.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette52.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette52.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette52.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette52.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette52.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette52.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette52.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette52.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold57.setPalette(palette52)
+        self.hold57.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold57.setCheckable(True)
+        self.hold56 = QPushButton(board_widget)
+        self.hold56.setObjectName(u"hold56")
+        self.hold56.setGeometry(QRect(70, 210, 31, 16))
+        palette53 = QPalette()
+        palette53.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette53.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette53.setBrush(QPalette.Active, QPalette.Window, brush1)
+        palette53.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette53.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette53.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        palette53.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette53.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette53.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        self.hold56.setPalette(palette53)
+        self.hold56.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+"    border: none;")
+        self.hold56.setCheckable(True)
 
         self.retranslateUi(board_widget)
 
@@ -973,5 +1007,7 @@ class Ui_board_widget(object):
         self.hold34.setText(QCoreApplication.translate("board_widget", u"...", None))
         self.hold35.setText(QCoreApplication.translate("board_widget", u"...", None))
         self.hold37.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold57.setText(QCoreApplication.translate("board_widget", u"...", None))
+        self.hold56.setText(QCoreApplication.translate("board_widget", u"...", None))
     # retranslateUi
 

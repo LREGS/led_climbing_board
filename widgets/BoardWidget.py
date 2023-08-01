@@ -25,7 +25,7 @@ class BoardWidget(QtWidgets.QWidget):
         
     def create_button_group(self):
         button_group = QButtonGroup()
-        for i in range(1,56):
+        for i in range(1,60):
             button_name = f'hold{i}'
             button = getattr(self.widget, button_name, None)
             if button:

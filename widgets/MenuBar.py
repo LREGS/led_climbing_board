@@ -1,6 +1,7 @@
 from PySide6.QtWidgets import QMenuBar, QMenu
 
 from widgets.SignUpForm import SignUpForm
+from widgets.SignInForm import SignInForm
 
 class MenuBar (QMenuBar):
     def __init__(self): 
@@ -19,7 +20,7 @@ class MenuBar (QMenuBar):
         profile = QMenu()
         profile.setTitle(f'Profile {profile_number}')
         login_attempt = profile.addAction('Login')
-        login_attempt.triggered.connect(self.onsign_in_attempt)
+        login_attempt.triggered.connect(self.onlogin_attempt)
         return profile
 
     def create_user_account(self):
@@ -35,4 +36,8 @@ class MenuBar (QMenuBar):
     def onsign_up_attempt(self):
         sign_up = SignUpForm()
         sign_up.exec()
+
+    def onlogin_attempt(self):
+        sign_in = SignInForm()
+        sign_in.exec()
         
