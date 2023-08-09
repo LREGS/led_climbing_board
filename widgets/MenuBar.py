@@ -14,8 +14,6 @@ class MenuBar (QMenuBar):
         self.addMenu(self.create_profile_menu('Two'))
         self.addMenu(self.create_profile_menu('Three'))
 
-        
-        
     def create_profile_menu(self, profile_number):
         profile = QMenu()
         profile.setTitle(f'Profile {profile_number}')

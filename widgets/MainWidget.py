@@ -18,7 +18,6 @@ from widgets.SavedClimbsTable import SavedClimbsTable
 from widgets.SaveClimbPopup import SaveClimbPopup
 from widgets.MenuBar import MenuBar
 from tools.JsonHandler import JsonHanlder
-from data.climbs_dict import climbs_dict
 
 
 class MainWidget(QWidget):
@@ -63,7 +62,7 @@ class MainWidget(QWidget):
         self.default_board()
 
 
-    def collect_route(self, button): 
+    def collect_route(self, button):
         if button.isChecked() == True:
             self.route.append(self.board_widget.hold_buttons_group.id(button))
             button.setStyleSheet("background-color: green;")
@@ -83,11 +82,12 @@ class MainWidget(QWidget):
                        {'route' : self.route,
                         'grade' : self.save_climb_data.climb_grade}
                 JsonHanlder.writeJson(climb_data, self.climbsJSON)
-
-                self.saved_climbs.populate_table()  
         else:
             print('please input climb information')
         self.defaultUi()
+        self.saved_climbs.populate_table()  
+        self.board_widget.disable_buttons()
+
 
     def handle_cancel_create_climb(self):
         print('creating climb cancelled')

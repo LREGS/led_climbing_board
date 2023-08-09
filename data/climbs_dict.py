@@ -1,1 +1,0 @@
-climbs_dict = {}
