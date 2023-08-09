@@ -25,6 +25,18 @@ class Configuartion(metaclass=Singleton):
         cursor = connection.cursor()
 
         cursor.execute('''INSERT INTO users(username, password)
-                             VALUES(?,?)
+                             VALUES(?,?);
                              ''', ((username, password))
                             )
+        
+
+    def get_users(self):
+        connection = sqlite3.connect(self.db_file_path)
+        cursor = connection.cursor()
+
+        for row in cursor.execute("SELECT * FROM users;"):
+            print(row)
+
+
+        
+

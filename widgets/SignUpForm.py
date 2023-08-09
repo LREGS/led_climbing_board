@@ -46,3 +46,4 @@ class SignUpForm(QDialog):
         
         self.database.add_user(self.widget.username_input.text(), self.widget.password_input.text())
 
+        print('adding users')
