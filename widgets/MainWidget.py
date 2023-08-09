@@ -38,6 +38,7 @@ class MainWidget(QWidget):
         
         self.save_climb_data = SaveClimbPopup()
         self.save_climb_data.widget.buttonBox.accepted.connect(self.save_climb)
+        self.save_climb_data.widget.buttonBox.rejected.connect(self.handle_cancel_create_climb)
 
         self.saved_climbs = SavedClimbsTable()
         self.saved_climbs.populate_table()
@@ -86,7 +87,6 @@ class MainWidget(QWidget):
             print('please input climb information')
         self.defaultUi()
         self.saved_climbs.populate_table()  
-        self.board_widget.disable_buttons()
 
 
     def handle_cancel_create_climb(self):
@@ -97,6 +97,7 @@ class MainWidget(QWidget):
         self.create_climb_btn.setEnabled(True)
         self.route.clear()
         self.default_board()
+        self.board_widget.disable_buttons()
       
     def get_route(self, row, column):
         self.defaultUi()
