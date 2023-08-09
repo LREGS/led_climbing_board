@@ -98,6 +98,7 @@ class MainWidget(QWidget):
         self.route.clear()
         self.default_board()
         self.board_widget.disable_buttons()
+        self.board_widget.uncheck_buttons()
       
     def get_route(self, row, column):
         self.defaultUi()

@@ -41,6 +41,10 @@ class BoardWidget(QtWidgets.QWidget):
     def disable_buttons(self):
         for button in self.hold_buttons_group.buttons():
             button.setEnabled(False)
+    
+    def uncheck_buttons(self):
+        for button in self.hold_buttons_group.buttons():
+            button.setChecked(False)
 
 
 
