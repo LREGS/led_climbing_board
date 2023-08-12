@@ -15,18 +15,23 @@ class Configuartion(metaclass=Singleton):
         self.cu.execute("INSERT INTO users VALUES(?,?)", ((username, password)))        
 
     def get_users(self):
-        for row in self.cu.execute("SELECT 'William' FROM users"):
+        for row in self.cu.execute("SELECT * FROM users"):
             print(row)
-        # users = [row for row in self.cu.execute("SELECT username FROM users")]
-        # print(users)
-        # return users
 
     def get_password(self):
         for row in self.cu.execute("SELECT password FROM users"):
             print(row)
-
+    
+    def check_username(self, username):
+        for row in self.cu.execute("SELECT username FROM users WHERE username = VALUE(?)", (username)):
+            if row:
+                print('row')
+            elif row == None:
+                print('no')
+            
 database = Configuartion()
 database.set_up_config_db()
-database.get_users()
-# database.get_password()
+# database.get_users()
+
+database.check_username('William')
 

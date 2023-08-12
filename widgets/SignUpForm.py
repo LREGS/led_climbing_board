@@ -27,7 +27,7 @@ class SignUpForm(QDialog):
         self.password = self.widget.password_input.textChanged.connect(self.verify_data)
         self.widget.username_input.textChanged.connect(self.verify_data)
         
-        self.widget.buttonBox.accepted.connect(self.sql)
+        self.widget.buttonBox.accepted.connect(self.add_user)
         self.widget.buttonBox.rejected.connect(self.signup_cancelled)
 
     def signup_cancelled(self):
@@ -42,7 +42,7 @@ class SignUpForm(QDialog):
         else:
             self.widget.buttonBox.button(QDialogButtonBox.Ok).setEnabled(False)
 
-    def sql(self):
+    def add_user(self):
         
         self.database.add_user(self.widget.username_input.text(), self.widget.password_input.text())
         self.database.cx.commit()
