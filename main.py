@@ -14,7 +14,7 @@ from widgets.MainWidget import MainWidget
 class MainWindow(QMainWindow):        
     def __init__(self, app: QApplication = None):
         super(MainWindow, self).__init__()
-        
+            
         self.window_ = Ui_MainWindow()
         self.window_.setupUI(self)
         self.main_widget = MainWidget()

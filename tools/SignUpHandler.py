@@ -2,11 +2,12 @@ import os
 
 import bcrypt 
 
-from tools.JsonHandler import JsonHanlder as json
+from configuration import Configuartion
 
 class SignnUpHandler:
 
-
+    def __init__(self):
+        self.database = Configuarion()
 
     @staticmethod  
     def encrypt_password(password):
@@ -16,14 +17,8 @@ class SignnUpHandler:
     
     @staticmethod
     def username_checker(username):
-        login_details_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'account_logins.json')
-        login_details_data = json.openJson(login_details_path)
 
         if len(username) > 0:
-            # if username in login_details_data:
-            #     return False
-            # else:
-            #     return True
             return username
         else:
             message = "username should be one character or longer"
@@ -35,6 +30,7 @@ class SignnUpHandler:
             return password 
         else:
             return None
+        
     @staticmethod   
     def encrypted_password(password):
          return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt(rounds=15))

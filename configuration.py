@@ -12,7 +12,11 @@ class Configuartion(metaclass=Singleton):
         self.cu.execute( "CREATE TABLE IF NOT EXISTS  users(username, password)")
 
     def add_user(self, username, password):
-        self.cu.execute("INSERT INTO users VALUES(?,?)", ((username, password)))        
+        if self.check_username(username):
+            print('user exists')
+        else:
+            print('adding user')
+            self.cu.execute("INSERT INTO users VALUES(?,?)", ((username, password)))        
 
     def get_users(self):
         for row in self.cu.execute("SELECT * FROM users"):
@@ -23,15 +27,15 @@ class Configuartion(metaclass=Singleton):
             print(row)
     
     def check_username(self, username):
-        for row in self.cu.execute("SELECT username FROM users WHERE username = VALUE(?)", (username)):
-            if row:
-                print('row')
-            elif row == None:
-                print('no')
-            
-database = Configuartion()
-database.set_up_config_db()
-# database.get_users()
+        self.cu.execute('SELECT exists(select 1 from users where username = ?)', (username,))
+        exists = self.cu.fetchone()[0]
+        if exists:
+            return True
+        else:
+            return False
 
-database.check_username('William')
+db = Configuartion()
+db.set_up_config_db()
+if db.check_username('William'):
+    print('true')
 

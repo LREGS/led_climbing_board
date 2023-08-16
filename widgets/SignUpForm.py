@@ -1,7 +1,7 @@
 import os
 import sqlite3
 
-from PySide6.QtWidgets import QDialog, QDialogButtonBox
+from PySide6.QtWidgets import QDialog, QDialogButtonBox, QLabel
 
 from ui_py_files.signupPopupUI import Ui_Dialog
 
@@ -27,7 +27,7 @@ class SignUpForm(QDialog):
         self.password = self.widget.password_input.textChanged.connect(self.verify_data)
         self.widget.username_input.textChanged.connect(self.verify_data)
         
-        self.widget.buttonBox.accepted.connect(self.add_user)
+        self.widget.buttonBox.accepted.connect(self.add_user_profile)
         self.widget.buttonBox.rejected.connect(self.signup_cancelled)
 
     def signup_cancelled(self):
@@ -42,7 +42,9 @@ class SignUpForm(QDialog):
         else:
             self.widget.buttonBox.button(QDialogButtonBox.Ok).setEnabled(False)
 
-    def add_user(self):
+    def add_user_profile(self):
         
         self.database.add_user(self.widget.username_input.text(), self.widget.password_input.text())
         self.database.cx.commit()
+
+        
