@@ -23,5 +23,8 @@ class SignInForm(QDialog):
 
 
     def verify_credentials(self):
-        if self.database.check_username(self.widget.username_input.text()):
+        if self.database.check_username(self.widget.username_input.text())\
+        and self.database.check_password(self.widget.password_input.text()):
             print('logging')
+        else:
+            print('invalid login')

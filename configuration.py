@@ -33,6 +33,14 @@ class Configuartion(metaclass=Singleton):
             return True
         else:
             return False
+        
+    def check_password(self, password):
+        self.cu.execute('SELECT exists(select 1 from users where password = ?)', (password,))
+        exists = self.cu.fetchone()[0]
+        if exists:
+            return True
+        else:
+            return False
 
 db = Configuartion()
 db.set_up_config_db()

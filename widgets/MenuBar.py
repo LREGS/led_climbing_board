@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QMenuBar, QMenu
+from PySide6.QtWidgets import QMenuBar, QMenu, QPushButton
 
 from widgets.SignUpForm import SignUpForm
 from widgets.SignInForm import SignInForm
@@ -10,9 +10,16 @@ class MenuBar (QMenuBar):
         self.signup = self.addAction('Sign Up')
         self.signup.triggered.connect(self.onsign_up_attempt)
 
+        self.logged_user = QMenu()
+        self.logged_user.setTitle('username')
+
+        self.addMenu(self.logged_user)
+
         self.addMenu(self.create_profile_menu('One'))
         self.addMenu(self.create_profile_menu('Two'))
         self.addMenu(self.create_profile_menu('Three'))
+        
+        self.addMenu(self.logged_user)
 
     def create_profile_menu(self, profile_number):
         profile = QMenu()
@@ -20,6 +27,10 @@ class MenuBar (QMenuBar):
         login_attempt = profile.addAction('Login')
         login_attempt.triggered.connect(self.onlogin_attempt)
         return profile
+    
+    def logged_in_user_button(self):
+        logged_user = QPushButton()
+        logged_user.setText('username')
 
     def create_user_account(self):
         signUp = QMenu()
@@ -27,9 +38,6 @@ class MenuBar (QMenuBar):
         sign_up_attempt = signUp.addAction('Sign Up')
         sign_up_attempt.triggered.connect(self.onsign_up_attempt)
         return signUp
-
-    def onsign_in_attempt(self):
-        print('whats ur login mayyte')
 
     def onsign_up_attempt(self):
         sign_up = SignUpForm()
