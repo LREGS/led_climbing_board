@@ -18,6 +18,7 @@ from widgets.SavedClimbsTable import SavedClimbsTable
 from widgets.SaveClimbPopup import SaveClimbPopup
 from widgets.MenuBar import MenuBar
 from tools.JsonHandler import JsonHanlder
+from widgets.SignInForm import SignInForm
 
 
 class MainWidget(QWidget):
@@ -38,7 +39,7 @@ class MainWidget(QWidget):
 
         self.user_button_one = QPushButton('User One')
         self.user_button_one.isCheckable()
-        self.user_button_one.clicked.connect(self.user_one)
+        self.user_button_one.clicked.connect(self.handle_sign_in)
         self.user_button_two = QPushButton('User Two')
         self.user_button_two.isCheckable()
 
@@ -58,6 +59,10 @@ class MainWidget(QWidget):
         self.saved_climbs.widget.tableWidget.cellClicked.connect(self.get_route)
 
         self.menu = MenuBar()
+        # self.menu.SendUsername.connect(self.update_user_login)
+
+        self.sign_in_form = SignInForm()
+        self.sign_in_form.SendUsername.connect(self.update_user_login)
 
         self.main_layout.addWidget(self.board_widget, 1,0)
         self.main_layout.addWidget(self.create_climb_btn, 2,0)
@@ -138,5 +143,9 @@ class MainWidget(QWidget):
     def onSavedClimbClicked(self):
         self.save_climb_data.exec() 
 
-    def user_one(self):
-        print('one')
+
+    def update_user_login(self, username):
+        self.user_button_one.setText(username)
+
+    def handle_sign_in(self):
+        self.sign_in_form.exec()

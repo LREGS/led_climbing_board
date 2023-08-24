@@ -6,6 +6,9 @@ from widgets.SignInForm import SignInForm
 from configuration import Configuartion
 
 class MenuBar (QMenuBar):
+
+    SendUsername = Signal(str)
+
     def __init__(self): 
         QMenuBar.__init__(self)
 
@@ -17,7 +20,7 @@ class MenuBar (QMenuBar):
         self.username = None
 
         self.sign_in_form = SignInForm()
-        self.sign_in_form.SendUsername.connect(self.username_shout)
+        self.sign_in_form.SendUsername.connect(self.emit_username)
 
         self.addMenu(self.create_profile_menu('One'))
         
@@ -42,5 +45,5 @@ class MenuBar (QMenuBar):
     def onlogin_attempt(self):
         self.sign_in_form.exec()
     
-    def username_shout(self, username):
-        print('inputted username is ', username)
+    def emit_username(self, username):
+        self.SendUsername.emit(username)
