@@ -22,14 +22,15 @@ class MenuBar (QMenuBar):
         self.sign_in_form = SignInForm()
         self.sign_in_form.SendUsername.connect(self.emit_username)
 
-        self.addMenu(self.create_profile_menu('One'))
+    #     self.addMenu(self.create_profile_menu('One'))
+    #     self.addMenu(self.create_profile_menu('Two'))
         
-    def create_profile_menu(self, profile_number):
-        profile = QMenu()
-        profile.setTitle(f'Profile {profile_number}')
-        login_attempt = profile.addAction('Login')
-        login_attempt.triggered.connect(self.onlogin_attempt)
-        return profile
+    # def create_profile_menu(self, profile_number):
+    #     profile = QMenu()
+    #     profile.setTitle(f'Profile {profile_number}')
+    #     login_attempt = profile.addAction('Login')
+    #     login_attempt.triggered.connect(self.onlogin_attempt)
+    #     return profile
 
     def create_user_account(self):
         signUp = QMenu()
