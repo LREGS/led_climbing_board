@@ -35,6 +35,19 @@ class MainWidget(QWidget):
         self.create_climb_btn.clicked.connect(self.handle_create_climb)
         self.save_climb_btn = QPushButton('Save Climb')
         self.save_climb_btn.clicked.connect(self.onSavedClimbClicked)
+
+        self.user_button_one = QPushButton('User One')
+        self.user_button_one.isCheckable()
+        self.user_button_one.clicked.connect(self.user_one)
+        self.user_button_two = QPushButton('User Two')
+        self.user_button_two.isCheckable()
+
+
+        self.user_buttons = QButtonGroup()
+        self.user_buttons.addButton(self.user_button_one)
+        self.user_buttons.addButton(self.user_button_two)
+        self.user_buttons.setExclusive(True)
+
         
         self.save_climb_data = SaveClimbPopup()
         self.save_climb_data.widget.buttonBox.accepted.connect(self.save_climb)
@@ -48,7 +61,9 @@ class MainWidget(QWidget):
 
         self.main_layout.addWidget(self.board_widget, 1,0)
         self.main_layout.addWidget(self.create_climb_btn, 2,0)
-        self.main_layout.addWidget(self.save_climb_btn, 2,1)  
+        self.main_layout.addWidget(self.save_climb_btn, 2,1)
+        self.main_layout.addWidget(self.user_button_one, 3,0) 
+        self.main_layout.addWidget(self.user_button_two, 3,1)   
         self.main_layout.addWidget(self.saved_climbs, 1,1)
         self.main_layout.addWidget(self.menu, 0,0)
 
@@ -121,6 +136,7 @@ class MainWidget(QWidget):
             button.setStyleSheet("background-color: transparent;")
 
     def onSavedClimbClicked(self):
-        self.save_climb_data.exec()
+        self.save_climb_data.exec() 
 
-
+    def user_one(self):
+        print('one')
