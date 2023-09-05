@@ -14,8 +14,10 @@ can be called user1, user2 etc and as a user logs in it rechanges the name to us
 
 
 [x] added a custom signal to represent user login
-[] add a custom database for each user of their sends etc 
-[] change button which will hold user data 
+[] add column into user data file that will hold data on the climbs sent
+[] add a list of sent climbs
 [] change the climb loaded based on user 
 [] change climb saved data based on user profile 
 
+ISSUE 
+NEED TO FIX THAT THE CLIMB DATA TABLE DOESN'T UPDATE UNTIL YOU ADD A NEW CLIMB BECAUSE ITS REALLY FUCKING ANNOYING!!!!!!!!!

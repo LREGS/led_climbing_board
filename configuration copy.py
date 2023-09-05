@@ -2,13 +2,32 @@ import sqlite3
 
 from Singleton import Singleton
 
+class DatabaseManeger(metaclass= Singleton):
+    def __init__(self):
+        self.db = sqlite3.connect("users.db")
+        self.cursor = self.get_cu()
+
+    def get_cu(self):
+        cu = self.db.cursor()
+        return cu
+    
+    def do_commit(self):
+        self.db.commit()
+
+class UserAccountTable:
+    def __init__(self):
+        self.db = DatabaseManeger()
+        self.cursor = db.cursor
+
+    def create_table(self):
+        
 
 class Configuartion(metaclass=Singleton):
     def __init__(self):
         self.cx = sqlite3.connect("users.db")
         self.cu = self.cx.cursor()
 
-    def set_up_config_db(self):
+    def build_users_table(self):
         self.cu.execute( "CREATE TABLE IF NOT EXISTS  users(username, password)")
 
     def add_user(self, username, password):
@@ -41,14 +60,10 @@ class Configuartion(metaclass=Singleton):
             return True
         else:
             return False
-
-    def create_tick_list(self,username):
-        self.cu.execute("CREATE TABLE ?(username, tick, project)", (username))
-
+        
     # def alter_table(self):
     #     self.cu.execute("ALTER TABLE users DROP COLUMN user_id")
     #     self.cx.commit
 
 db = Configuartion()
-db.set_up_config_db()
-# db.alter_table()
+db.build_users_table()

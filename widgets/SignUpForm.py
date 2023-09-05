@@ -20,9 +20,6 @@ class SignUpForm(QDialog):
         
         self.widget.buttonBox.button(QDialogButtonBox.Ok).setEnabled(False)
         
-        self.login_details_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'account_logins.json')
-        self.login_details_data = json.openJson(self.login_details_path)
-        
         self.retyped_passwrd = self.widget.retyped_password_input.textChanged.connect(self.verify_data)
         self.password = self.widget.password_input.textChanged.connect(self.verify_data)
         self.widget.username_input.textChanged.connect(self.verify_data)
@@ -46,5 +43,8 @@ class SignUpForm(QDialog):
         
         self.database.add_user(self.widget.username_input.text(), self.widget.password_input.text())
         self.database.cx.commit()
+        self.database.create_tick_list(self.widget.username_input.text())
+
+    
 
         

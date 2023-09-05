@@ -63,7 +63,7 @@ class Ui_Form(object):
         ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
         ___qtablewidgetitem1.setText(QCoreApplication.translate("Form", u"Grade", None));
         ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("Form", u"Rating", None));
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("Form", u"Ticks", None));
         ___qtablewidgetitem3 = self.tableWidget.verticalHeaderItem(0)
         ___qtablewidgetitem3.setText(QCoreApplication.translate("Form", u"New Row", None));
     # retranslateUi

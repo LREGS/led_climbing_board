@@ -17,8 +17,10 @@ from widgets.create_climb_form_widget import CreateClimbForm
 from widgets.SavedClimbsTable import SavedClimbsTable
 from widgets.SaveClimbPopup import SaveClimbPopup
 from widgets.MenuBar import MenuBar
-from tools.JsonHandler import JsonHanlder
+from tools.JsonHandler import JsonHanlder as json
 from widgets.SignInForm import SignInForm
+from configuration import Configuartion
+
 
 
 class MainWidget(QWidget):
@@ -27,6 +29,8 @@ class MainWidget(QWidget):
         
         self.main_layout = QGridLayout(self)
         self.setLayout(self.main_layout)
+
+        self.database = Configuartion()
 
         self.board_widget = BoardWidget()
         self.board_widget.hold_buttons_group.buttonClicked.connect\
@@ -43,13 +47,14 @@ class MainWidget(QWidget):
         self.user_button_two = QPushButton('User Two')
         self.user_button_two.isCheckable()
 
-
         self.user_buttons = QButtonGroup()
         self.user_buttons.addButton(self.user_button_one)
         self.user_buttons.addButton(self.user_button_two)
         self.user_buttons.setExclusive(True)
 
-        
+        self.climb_ticked_button = QPushButton('Ticked')
+        self.climb_ticked_button.clicked.connect(self.handle_climb_tick)
+
         self.save_climb_data = SaveClimbPopup()
         self.save_climb_data.widget.buttonBox.accepted.connect(self.save_climb)
         self.save_climb_data.widget.buttonBox.rejected.connect(self.handle_cancel_create_climb)
@@ -59,9 +64,8 @@ class MainWidget(QWidget):
         self.saved_climbs.widget.tableWidget.cellClicked.connect(self.get_route)
 
         self.menu = MenuBar()
-        # self.menu.SendUsername.connect(self.update_user_login)
 
-        self.sign_in_form = SignInForm()
+        self.sign_in_form = SignInForm(parent=self, database=self.database)
         self.sign_in_form.SendUsername.connect(self.update_user_login)
 
         self.main_layout.addWidget(self.board_widget, 1,0)
@@ -71,9 +75,12 @@ class MainWidget(QWidget):
         self.main_layout.addWidget(self.user_button_two, 3,1)   
         self.main_layout.addWidget(self.saved_climbs, 1,1)
         self.main_layout.addWidget(self.menu, 0,0)
+        self.main_layout.addWidget(self.climb_ticked_button, 4,0)
 
-        self.route = []
-        
+        self.route = [] 
+
+        self.selected_climb = None
+
         self.climbsJSON = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'climbs_dict.json')
 
         
@@ -98,11 +105,12 @@ class MainWidget(QWidget):
             self.save_climb_data.climb_grade and\
             len(self.route) > 1:
                 
-                climb_data = JsonHanlder.openJson(self.climbsJSON)
+                climb_data = json.openJson(self.climbsJSON)
                 climb_data[self.save_climb_data.climb_name] = \
                        {'route' : self.route,
-                        'grade' : self.save_climb_data.climb_grade}
-                JsonHanlder.writeJson(climb_data, self.climbsJSON)
+                        'grade' : self.save_climb_data.climb_grade,
+                        'ticks' : 0}
+                json.writeJson(climb_data, self.climbsJSON)
         else:
             print('please input climb information')
         self.defaultUi()
@@ -126,9 +134,12 @@ class MainWidget(QWidget):
         climb_name = \
         self.saved_climbs.widget.tableWidget.item(row, column).text()
         
-        climbs_dict = JsonHanlder.openJson(self.climbsJSON)
+        climbs_dict = json.openJson(self.climbsJSON)
         
         self.display_route(climbs_dict[climb_name]['route'])
+
+        #populating selected climb so other elements can see what programmes have been selected - not really following solid
+        self.selected_climb = climb_name
         
         
     def display_route(self, route):
@@ -143,9 +154,21 @@ class MainWidget(QWidget):
     def onSavedClimbClicked(self):
         self.save_climb_data.exec() 
 
-
     def update_user_login(self, username):
         self.user_button_one.setText(username)
 
     def handle_sign_in(self):
         self.sign_in_form.exec()
+
+    def handle_climb_tick(self):
+        #allows guests to log ticks 
+        saved_climbs_data = json.openJson(self.climbsJSON)
+        saved_climbs_data[self.selected_climb]['ticks'] = (saved_climbs_data[self.selected_climb]['ticks']) + 1
+        json.writeJson(saved_climbs_data, self.climbsJSON)
+
+        if self.user_button_one.text() != 'User One':
+            print('adding climb')
+            self.database.add_tick(self.selected_climb)
+            print(self.selected_climb)
+        else:
+            pass

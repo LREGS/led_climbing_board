@@ -32,6 +32,9 @@ class SavedClimbsTable(QWidget):
             
             row_grade = QTableWidgetItem(str(saved_climbs_data[name]['grade']))
             self.widget.tableWidget.setItem(row, 1, row_grade)  
+
+            row_ticks = QTableWidgetItem(str(saved_climbs_data[name]['ticks']))
+            self.widget.tableWidget.setItem(row, 2, row_ticks)
+
+
                     
-        print(self.grade)
-        print('table completd')

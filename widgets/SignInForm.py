@@ -9,19 +9,20 @@ from ui_py_files.signinwindow import Ui_Dialog
 from configuration import Configuartion
 
 class SignInForm(QDialog):
+    
     SendUsername = Signal(str)
-    def __init__(self, parent: QDialog = None) -> None:
+
+    def __init__(self, parent: QDialog = None, database : Configuartion = None) -> None:
         super(SignInForm, self).__init__(parent)
 
         self.widget = Ui_Dialog()
         self.widget.setupUi(self)
+
+        self.database = database
+
         self.widget.buttonBox.button(QDialogButtonBox.Ok).setEnabled(True)
         
         self.widget.buttonBox.accepted.connect(self.verify_credentials)
-        self.database = Configuartion()
-
-    username_signal = Signal(str)
-
 
     def verify_credentials(self):
         print('working')

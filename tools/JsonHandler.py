@@ -11,7 +11,6 @@ class JsonHanlder():
 
     @staticmethod
     def writeJson(json_data, file_path):
-
         with open(file_path, 'w') as f:
             json.dump(json_data, f)
 

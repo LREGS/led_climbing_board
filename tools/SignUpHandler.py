@@ -7,7 +7,7 @@ from configuration import Configuartion
 class SignnUpHandler:
 
     def __init__(self):
-        self.database = Configuarion()
+        self.database = Configuartion()
 
     @staticmethod  
     def encrypt_password(password):
