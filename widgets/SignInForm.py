@@ -12,7 +12,7 @@ class SignInForm(QDialog):
     
     SendUsername = Signal(str)
 
-    def __init__(self, parent: QDialog = None, database : Configuartion = None) -> None:
+    def __init__(self, parent: QDialog = None) -> None:
         super(SignInForm, self).__init__(parent)
 
         self.widget = Ui_Dialog()
