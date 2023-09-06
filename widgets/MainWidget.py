@@ -20,6 +20,7 @@ from widgets.MenuBar import MenuBar
 from tools.JsonHandler import JsonHanlder as json
 from widgets.SignInForm import SignInForm
 from configuration import Configuartion
+from configuration_copy import UserAccountTable, Climbs, ClimbsHistory
 
 
 
@@ -30,7 +31,9 @@ class MainWidget(QWidget):
         self.main_layout = QGridLayout(self)
         self.setLayout(self.main_layout)
 
-        self.database = Configuartion()
+        self.UserAccountsTable = UserAccountTable()
+        self.ClimbsTable = Climbs()
+        self.ClimbsHistoryTable = ClimbsHistory()
 
         self.board_widget = BoardWidget()
         self.board_widget.hold_buttons_group.buttonClicked.connect\

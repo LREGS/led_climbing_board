@@ -8,7 +8,7 @@ class Configuartion(metaclass=Singleton):
         self.cx = sqlite3.connect("users.db")
         self.cu = self.cx.cursor()
 
-    def set_up_config_db(self):
+    def build_users_table(self):
         self.cu.execute( "CREATE TABLE IF NOT EXISTS  users(username, password)")
 
     def add_user(self, username, password):
@@ -41,14 +41,10 @@ class Configuartion(metaclass=Singleton):
             return True
         else:
             return False
-
-    def create_tick_list(self,username):
-        self.cu.execute("CREATE TABLE ?(username, tick, project)", (username))
-
+        
     # def alter_table(self):
     #     self.cu.execute("ALTER TABLE users DROP COLUMN user_id")
     #     self.cx.commit
 
 db = Configuartion()
-db.set_up_config_db()
-# db.alter_table()
+db.build_users_table()
