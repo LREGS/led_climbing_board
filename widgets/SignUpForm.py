@@ -7,16 +7,15 @@ from ui_py_files.signupPopupUI import Ui_Dialog
 
 from tools.SignUpHandler import SignnUpHandler as handle
 from tools.JsonHandler import JsonHanlder as json
-from configuration import Configuartion
-
+from configuration_copy import UserAccountTable
 class SignUpForm(QDialog):
-    def __init__(self, parent: QDialog = None) -> None:
+    def __init__(self, db: UserAccountTable = None, parent: QDialog = None) -> None:
         super(SignUpForm, self).__init__(parent)    
 
         self.widget = Ui_Dialog()
         self.widget.setupUi(self)
 
-        self.database = Configuartion()
+        self.db = db
         
         self.widget.buttonBox.button(QDialogButtonBox.Ok).setEnabled(False)
         
@@ -41,9 +40,8 @@ class SignUpForm(QDialog):
 
     def add_user_profile(self):
         
-        self.database.add_user(self.widget.username_input.text(), self.widget.password_input.text())
-        self.database.cx.commit()
-        self.database.create_tick_list(self.widget.username_input.text())
+        self.db.add_user(self.widget.username_input.text(), self.widget.password_input.text())
+        self.db.db.commit()
 
     
 

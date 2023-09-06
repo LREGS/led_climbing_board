@@ -6,9 +6,6 @@ from configuration import Configuartion
 
 class SignnUpHandler:
 
-    def __init__(self):
-        self.database = Configuartion()
-
     @staticmethod  
     def encrypt_password(password):
         password_hash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt(rounds=15))

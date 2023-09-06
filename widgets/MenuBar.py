@@ -3,24 +3,25 @@ from PySide6.QtCore import Signal
 
 from widgets.SignUpForm import SignUpForm
 from widgets.SignInForm import SignInForm
-from configuration import Configuartion
-
+from configuration_copy import UserAccountTable
 class MenuBar (QMenuBar):
 
     SendUsername = Signal(str)
 
-    def __init__(self): 
+    def __init__(self, db: UserAccountTable= None): 
         QMenuBar.__init__(self)
-
-        self.database = Configuartion()
+        
+        self.db = db
 
         self.signup = self.addAction('Sign Up')
         self.signup.triggered.connect(self.onsign_up_attempt)
 
         self.username = None
 
-        self.sign_in_form = SignInForm()
-        self.sign_in_form.SendUsername.connect(self.emit_username)
+
+
+        # self.sign_in_form = SignInForm()
+        # self.sign_in_form.SendUsername.connect(self.emit_username)
 
     #     self.addMenu(self.create_profile_menu('One'))
     #     self.addMenu(self.create_profile_menu('Two'))
@@ -40,11 +41,11 @@ class MenuBar (QMenuBar):
         return signUp
 
     def onsign_up_attempt(self):
-        sign_up = SignUpForm()
+        sign_up = SignUpForm(self.db)
         sign_up.exec()
 
-    def onlogin_attempt(self):
-        self.sign_in_form.exec()
+    # def onlogin_attempt(self):
+    #     self.sign_in_form.exec()
     
     def emit_username(self, username):
         self.SendUsername.emit(username)

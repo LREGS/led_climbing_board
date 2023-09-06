@@ -51,6 +51,7 @@ class MainWidget(QWidget):
         self.create_climb_btn.clicked.connect(self.handle_create_climb)
         self.save_climb_btn = QPushButton('Save Climb')
         self.save_climb_btn.clicked.connect(self.onSavedClimbClicked)
+        self.save_climb_btn.setEnabled(False)
 
         self.user_button_one = QPushButton('User One')
         self.user_button_one.isCheckable()
@@ -66,15 +67,11 @@ class MainWidget(QWidget):
         self.climb_ticked_button = QPushButton('Ticked')
         self.climb_ticked_button.clicked.connect(self.handle_climb_tick)
 
-        # self.save_climb_data = SaveClimbPopup(route = self.route, db=self.ClimbsTable)
-        # self.save_climb_data.widget.buttonBox.accepted.connect(self.save_climb)
-        # self.save_climb_data.widget.buttonBox.rejected.connect(self.handle_cancel_create_climb)
-
         self.saved_climbs = SavedClimbsTable(db= self.ClimbsTable)
-        # self.saved_climbs.populate_table()
+        self.saved_climbs.populate_table()
         self.saved_climbs.widget.tableWidget.cellClicked.connect(self.get_route)
 
-        # self.menu = MenuBar()
+        self.menu = MenuBar(self.UserAccountsTable)
 
         # self.sign_in_form = SignInForm()
         # self.sign_in_form.SendUsername.connect(self.update_user_login)
@@ -85,7 +82,7 @@ class MainWidget(QWidget):
         self.main_layout.addWidget(self.user_button_one, 3,0) 
         self.main_layout.addWidget(self.user_button_two, 3,1)   
         self.main_layout.addWidget(self.saved_climbs, 1,1)
-        # self.main_layout.addWidget(self.menu, 0,0)
+        self.main_layout.addWidget(self.menu, 0,0)
         self.main_layout.addWidget(self.climb_ticked_button, 4,0)
 
         self.route = []
@@ -98,8 +95,8 @@ class MainWidget(QWidget):
     def handle_create_climb(self):
         self.create_climb_btn.setEnabled(False)
         self.board_widget.enable_buttons()
+        self.save_climb_btn.setEnabled(True)
         self.default_board()
-
 
     def collect_route(self, button):
         if button.isChecked() == True:
@@ -109,31 +106,13 @@ class MainWidget(QWidget):
             self.route.remove(self.board_widget.hold_buttons_group.id(button))
             button.setStyleSheet("background-color: transparent;")
 
-    # def save_climb(self):
-    #     self.create_climb_btn.setEnabled(True)
-        
-    #     if self.save_climb_data.climb_name and\
-    #         self.save_climb_data.climb_grade and\
-    #         len(self.route) > 1:
-                
-    #             climb_data = JsonHanlder.openJson(self.climbsJSON)
-    #             climb_data[self.save_climb_data.climb_name] = \
-    #                    {'route' : self.route,
-    #                     'grade' : self.save_climb_data.climb_grade,
-    #                     'ticks' : 0}
-    #             JsonHanlder.writeJson(climb_data, self.climbsJSON)
-    #     else:
-    #         print('please input climb information')
-    #     self.defaultUi()
-    #     self.saved_climbs.populate_table()  
-
-
-    def handle_cancel_create_climb(self):
+    def save_cancelled(self):
         print('creating climb cancelled')
         self.defaultUi()
             
     def defaultUi(self):        
         self.create_climb_btn.setEnabled(True)
+        self.save_climb_btn.setEnabled(False)
         self.route.clear()
         self.default_board()
         self.board_widget.disable_buttons()
@@ -163,9 +142,10 @@ class MainWidget(QWidget):
             button.setStyleSheet("background-color: transparent;")
 
     def onSavedClimbClicked(self):
-        serialized_route = json.dumps(self.route)
-        save_climb_form = SaveClimbPopup(route= serialized_route, db= self.ClimbsTable)
+        save_climb_form = SaveClimbPopup(route= self.route, db= self.ClimbsTable)
         save_climb_form.exec() 
+
+        save_climb_form.SaveCancelled.connect(self.save_cancelled())
 
     def update_user_login(self, username):
         self.user_button_one.setText(username)

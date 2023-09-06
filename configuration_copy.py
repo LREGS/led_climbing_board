@@ -25,10 +25,10 @@ class UserAccountTable:
         if self.check_username(username):
             print("User exists")
         else:
-            self.cursor.execute("INSERT INTO users VALUES(?,?)", ((username, password,)))
+            self.cursor.execute("INSERT INTO users(username, password) VALUES(?,?)", ((username, password,)))
     
     def check_username(self, username):
-        self.cursor.execute("SELECT EXISTS(select 1 from users where username = ?)", (username))
+        self.cursor.execute("SELECT EXISTS(select 1 from users where username = ?)", (username, ))
         exists = self.cursor.fetchone()[0]
         if exists:
             return True
@@ -59,7 +59,7 @@ class Climbs:
         climb_name VARCHAR(255) NOT NULL,\
         route TEXT NOT NULL,\
         grade INTEGER)")
-
+    
     def add_climb(self, name, route, grade):
         self.cursor.execute("INSERT INTO climbs(climb_name, route, grade) VALUES(?, ?, ?)",(name, route, grade))
         self.db.commit()
