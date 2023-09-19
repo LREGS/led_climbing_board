@@ -5,20 +5,19 @@ from PySide6.QtWidgets import QDialog, QDialogButtonBox
 from PySide6.QtCore import Signal, QObject
 
 from ui_py_files.signinwindow import Ui_Dialog
-
-from configuration import Configuartion
+from configuration_copy import UserAccountTable
 
 class SignInForm(QDialog):
     
     SendUsername = Signal(str)
 
-    def __init__(self, parent: QDialog = None) -> None:
+    def __init__(self, db = UserAccountTable, parent: QDialog = None) -> None:
         super(SignInForm, self).__init__(parent)
 
         self.widget = Ui_Dialog()
         self.widget.setupUi(self)
 
-        self.database = database
+        self.database = db
 
         self.widget.buttonBox.button(QDialogButtonBox.Ok).setEnabled(True)
         
@@ -31,3 +30,5 @@ class SignInForm(QDialog):
             self.SendUsername.emit(self.widget.username_input.text())
         else:
             print('Invalid user login')
+
+

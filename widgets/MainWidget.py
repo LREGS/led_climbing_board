@@ -29,6 +29,10 @@ class MainWidget(QWidget):
     def __init__(self, parent: QWidget = None) -> None:
         super(MainWidget, self).__init__(parent)
 
+
+        """SAVED CLIMB NOT WORKING ERROR REGARDING WORKING ON A CLOSED DATA BASE 
+        ALSO CANNOT GET THE ROUTE TO LOAD AS IT IS COMING AS A LIST WITH A SINGLE ELEMENT
+        WHICH IS A TUPLE THAT HOLDS A STRING THAT IS OUR ROUTE"""
         self.route = []
         
         self.main_layout = QGridLayout(self)
@@ -55,7 +59,7 @@ class MainWidget(QWidget):
 
         self.user_button_one = QPushButton('User One')
         self.user_button_one.isCheckable()
-        # self.user_button_one.clicked.connect(self.handle_sign_in)
+        self.user_button_one.clicked.connect(self.handle_sign_in)
         self.user_button_two = QPushButton('User Two')
         self.user_button_two.isCheckable()
 
@@ -73,8 +77,8 @@ class MainWidget(QWidget):
 
         self.menu = MenuBar(self.UserAccountsTable)
 
-        # self.sign_in_form = SignInForm()
-        # self.sign_in_form.SendUsername.connect(self.update_user_login)
+        self.sign_in_form = SignInForm(self.UserAccountsTable)
+        self.sign_in_form.SendUsername.connect(self.update_user_login)
 
         self.main_layout.addWidget(self.board_widget, 1,0)
         self.main_layout.addWidget(self.create_climb_btn, 2,0)
@@ -124,19 +128,26 @@ class MainWidget(QWidget):
         climb_name = \
         self.saved_climbs.widget.tableWidget.item(row, column).text()
         
-        climbs_dict = json.openJson(self.climbsJSON)
-        
-        self.display_route(climbs_dict[climb_name]['route'])
+        self.ClimbsTable.cursor.execute("SELECT route from climbs WHERE climb_name = ?", (climb_name,))
+        data = self.ClimbsTable.cursor.fetchall()
+        print(data)
+        #handle error of this not returning a value (pop up window error or somethin)
+
+        s_data = eval(data)
+        print(s_data)
+                 
+        # self.display_route(data)
 
         #populating selected climb so other elements can see what programmes have been selected - not really following solid
+        #dont think anything is even using this?
         self.selected_climb = climb_name
         
-        
+    #should be in board widget
     def display_route(self, route):
         for button in route:
             button_to_display = self.board_widget.hold_buttons_group.button(button)
             button_to_display.setStyleSheet("background-color: green;")
-            
+    #should be in board widger            
     def default_board(self):
         for button in self.board_widget.hold_buttons_group.buttons():
             button.setStyleSheet("background-color: transparent;")
@@ -151,7 +162,7 @@ class MainWidget(QWidget):
         self.user_button_one.setText(username)
 
     def handle_sign_in(self):
-        # self.sign_in_form.exec()
+        self.sign_in_form.exec()
         return
 
     def handle_climb_tick(self):
@@ -166,4 +177,3 @@ class MainWidget(QWidget):
             print(self.selected_climb)
         else:
             pass
-

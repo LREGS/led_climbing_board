@@ -22,8 +22,8 @@ class SaveClimbPopup(QDialog):
 
     def save_climb(self):
         if len(self.route) > 2:
-            serialized_route = json.dumps(self.route)
-            self.db.add_climb(self.widget.climb_name.text(), serialized_route, int(self.widget.grade.value()))
+            route_str = repr(self.route)
+            self.db.add_climb(self.widget.climb_name.text(), route_str, int(self.widget.grade.value()))
         else:
             print("Climb must contain 2 holds or more") 
     

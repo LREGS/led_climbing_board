@@ -22,7 +22,7 @@ class SavedClimbsTable(QWidget):
         
     def populate_table(self):
 
-        self.db.cursor.execute("SELECT climb_name, route, grade from climbs")
+        self.db.cursor.execute("SELECT climb_name, grade from climbs")
         data = self.db.cursor.fetchall()
 
         self.table.setRowCount(len(data))
@@ -34,19 +34,6 @@ class SavedClimbsTable(QWidget):
                 self.table.setItem(i, j, item)
 
 
-
-        # self.names = [name for name in saved_climbs_data.keys()]
-        # self.widget.tableWidget.setRowCount(len(self.names))
-
-        # for row, name in enumerate(self.names):
-        #     row_name = QTableWidgetItem(str(name))
-        #     self.widget.tableWidget.setItem(row, 0, row_name)
-            
-        #     row_grade = QTableWidgetItem(str(saved_climbs_data[name]['grade']))
-        #     self.widget.tableWidget.setItem(row, 1, row_grade)  
-
-        #     # row_ticks = QTableWidgetItem(str(saved_climbs_data[name]['ticks']))
-        #     # self.widget.tableWidget.setItem(row, 2, row_ticks)
 
             """guess ticks will need to be added in by querying the other database """
 

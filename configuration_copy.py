@@ -36,7 +36,7 @@ class UserAccountTable:
             return False
 
     def check_password(self, password):
-        self.cu.execute('SELECT exists(select 1 from users where password = ?)', (password,))
+        self.cursor.execute('SELECT exists(select 1 from users where password = ?)', (password,))
         exists = self.cursor.fetchone()[0]
         if exists:
             return True
@@ -64,6 +64,9 @@ class Climbs:
         self.cursor.execute("INSERT INTO climbs(climb_name, route, grade) VALUES(?, ?, ?)",(name, route, grade))
         self.db.commit()
         self.db.close()
+    
+    def find_route(self, name):
+        return None
 
 class ClimbsHistory:
     def __init__(self):
