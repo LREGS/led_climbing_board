@@ -48,10 +48,7 @@ class Climbs:
     def __init__(self):
         self.db = DatabaseManager()
         self.cursor = self.db.cursor
-        
-
-    #might want to cache the climbs so it makes it quicker to query them 
-    #or use threading to make sure gui is responsive during the time the database takes to querry 
+    
     def create_table(self):
         self.cursor.execute(\
         "CREATE TABLE IF NOT EXISTS climbs(\
@@ -63,11 +60,18 @@ class Climbs:
     def add_climb(self, name, route, grade):
         self.cursor.execute("INSERT INTO climbs(climb_name, route, grade) VALUES(?, ?, ?)",(name, route, grade))
         self.db.commit()
-        self.db.close()
     
     def find_route(self, name):
         return None
-
+    
+    def delete_climbs(self, id):
+        #is this dual responsibility and should just an interface for the two functions delete_single_climb and delete_multi_climb?
+        if id == list:
+            for id in list:
+                self.cursor.execute("DELETE FROM climbs WHERE climbs_ID = ?", (id,))
+        else:
+            self.cursor.execute("DELETE FROM climbs WHERE climbs_ID = ?", (id,))
+ 
 class ClimbsHistory:
     def __init__(self):
         self.db = DatabaseManager()

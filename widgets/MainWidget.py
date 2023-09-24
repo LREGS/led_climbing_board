@@ -1,6 +1,7 @@
 import os
 import csv
 import json 
+import pickle
 
 from PySide6.QtWidgets import QWidget, QVBoxLayout
 from PySide6.QtWidgets import QSizePolicy, QApplication, QMainWindow, \
@@ -17,7 +18,7 @@ from widgets.CreateCimbForm import CreateClimbForm
 from widgets.SavedClimbsTable import SavedClimbsTable
 from widgets.SaveClimbPopup import SaveClimbPopup
 from widgets.MenuBar import MenuBar
-from tools.JsonHandler import JsonHanlder
+from tools.JsonHandler import JsonHanlder as js
 from widgets.SignInForm import SignInForm
 # from configuration import Configuartion
 from configuration_copy import UserAccountTable, Climbs, ClimbsHistory
@@ -26,7 +27,7 @@ from ui_py_files.save_climb_popup_widget import Ui_input_climb_data
 
 
 class MainWidget(QWidget):
-    def __init__(self, parent: QWidget = None) -> None:
+    def __init__(self, ClimbsDb : Climbs, ClimbsHistoryDb = ClimbsHistory, UserAccountDb = UserAccountTable, parent: QWidget = None) -> None:
         super(MainWidget, self).__init__(parent)
 
 
@@ -43,14 +44,15 @@ class MainWidget(QWidget):
         self.main_layout = QGridLayout(self)
         self.setLayout(self.main_layout)
 
-        self.UserAccountsTable = UserAccountTable()
-        self.UserAccountsTable.create_table()
+        self.UserAccountsDb = UserAccountDb
 
-        self.ClimbsTable = Climbs()
-        self.ClimbsTable.create_table()
+        self.ClimbsDb = ClimbsDb
+        # self.ClimbsTable.create_table()
 
-        self.ClimbsHistoryTable = ClimbsHistory()
-        self.ClimbsHistoryTable.create_table()
+        # self.ClimbsHistoryTable = ClimbsHistory()
+        # self.ClimbsHistoryTable.create_table()
+        self.ClimbsHistoryDb = ClimbsHistoryDb
+
 
         self.board_widget = BoardWidget()
         self.board_widget.hold_buttons_group.buttonClicked.connect\
@@ -76,13 +78,13 @@ class MainWidget(QWidget):
         self.climb_ticked_button = QPushButton('Ticked')
         self.climb_ticked_button.clicked.connect(self.handle_climb_tick)
 
-        self.saved_climbs = SavedClimbsTable(db= self.ClimbsTable)
+        self.saved_climbs = SavedClimbsTable(db= self.ClimbsDb)
         self.saved_climbs.populate_table()
         self.saved_climbs.widget.tableWidget.cellClicked.connect(self.get_route)
 
-        self.menu = MenuBar(self.UserAccountsTable)
+        self.menu = MenuBar(self.UserAccountsDb)
 
-        self.sign_in_form = SignInForm(self.UserAccountsTable)
+        self.sign_in_form = SignInForm(self.UserAccountsDb)
         self.sign_in_form.SendUsername.connect(self.update_user_login)
 
         self.main_layout.addWidget(self.board_widget, 1,0)
@@ -95,7 +97,7 @@ class MainWidget(QWidget):
         self.main_layout.addWidget(self.climb_ticked_button, 4,0)
 
         self.route = []
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
         self.selected_climb = None
 
         self.climbsJSON = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'climbs_dict.json')
@@ -128,37 +130,42 @@ class MainWidget(QWidget):
         self.board_widget.uncheck_buttons()
       
     def get_route(self, row, column):
+
         self.defaultUi()
 
         climb_name = \
         self.saved_climbs.widget.tableWidget.item(row, column).text()
         
-        self.ClimbsTable.cursor.execute("SELECT route from climbs WHERE climb_name = ?", (climb_name,))
-        data = self.ClimbsTable.cursor.fetchall()
-        print(data)
-        #handle error of this not returning a value (pop up window error or somethin)
+        self.ClimbsHistoryDb.cursor.execute("SELECT route from climbs WHERE climb_name = ?", (climb_name,))
+        data = self.ClimbsHistoryDb.cursor.fetchall()
+        tuple = data[0]
+        d = tuple[0]
+        # route = [char for char in d]
+        route = pickle.loads(d)
 
-        s_data = eval(data)
-        print(s_data)
-                 
-        # self.display_route(data)
+        # print(data )
+        # for char in route:
+        #     print(type(char))
+        
 
-        #populating selected climb so other elements can see what programmes have been selected - not really following solid
-        #dont think anything is even using this?
-        self.selected_climb = climb_name
+        self.display_route(route)
+    
+
         
     #should be in board widget
     def display_route(self, route):
+
         for button in route:
             button_to_display = self.board_widget.hold_buttons_group.button(button)
             button_to_display.setStyleSheet("background-color: green;")
+
     #should be in board widger            
     def default_board(self):
         for button in self.board_widget.hold_buttons_group.buttons():
             button.setStyleSheet("background-color: transparent;")
 
     def onSavedClimbClicked(self):
-        save_climb_form = SaveClimbPopup(route= self.route, db= self.ClimbsTable)
+        save_climb_form = SaveClimbPopup(route= self.route, db= self.ClimbsDb)
         save_climb_form.exec() 
 
         save_climb_form.SaveCancelled.connect(self.save_cancelled())

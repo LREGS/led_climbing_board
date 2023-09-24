@@ -9,16 +9,28 @@ QLabel,QPushButton, QToolButton, QVBoxLayout, QWidget, QDialog, QButtonGroup, QA
 
 from ui_py_files.Ui_MainWindow_ import *
 from widgets.MainWidget import MainWidget
+from configuration_copy import Climbs, ClimbsHistory, UserAccountTable
             
 
 class MainWindow(QMainWindow):        
     def __init__(self, app: QApplication = None):
         super(MainWindow, self).__init__()
 
+        self.ClimbsDatabase = Climbs()
+        self.ClimbsDatabase.create_table()
+
+        self.ClimbsHistory = ClimbsHistory()
+        self.ClimbsHistory.create_table()
+
+        self.UserAccountDatabase = UserAccountTable()
+        self.UserAccountDatabase.create_table()
+
+
         self.window_ = Ui_MainWindow()
         self.window_.setupUI(self)
-        self.main_widget = MainWidget()
+        self.main_widget = MainWidget(self.ClimbsDatabase, self.ClimbsHistory, self.UserAccountDatabase)
         self.setCentralWidget(self.main_widget)
+
 
 if __name__ == '__main__':
     app = QApplication()
