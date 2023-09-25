@@ -19,7 +19,12 @@ class UserAccountTable:
         self.cursor = self.db.cursor
 
     def create_table(self):
-        self.cursor.execute("CREATE TABLE IF NOT EXISTS users(user_ID INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT)")
+        self.cursor.execute("CREATE TABLE IF NOT EXISTS users(user_ID INTEGER PRIMARY KEY AUTOINCREMENT,\
+                             username TEXT,\
+                             password TEXT,\
+                             climbs_sent INT,\
+                             projects INT,\
+                             climbs_created INT)")
 
     def add_user(self, username, password):
         if self.check_username(username):
@@ -55,7 +60,9 @@ class Climbs:
         climbs_ID INTEGER PRIMARY KEY AUTOINCREMENT, \
         climb_name VARCHAR(255) NOT NULL,\
         route TEXT NOT NULL,\
-        grade INTEGER)")
+        grade INTEGER,\
+        setter TEXT,\
+        ticks, INT)")
     
     def add_climb(self, name, route, grade):
         self.cursor.execute("INSERT INTO climbs(climb_name, route, grade) VALUES(?, ?, ?)",(name, route, grade))

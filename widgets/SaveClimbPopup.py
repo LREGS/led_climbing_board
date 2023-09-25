@@ -11,6 +11,7 @@ from PySide6.QtCore import Signal
 
 class SaveClimbPopup(QDialog):
     SaveCancelled = Signal()
+    ClimbSaved = Signal()
     def __init__(self, route, db: Climbs= None, parent: QDialog = None) -> None:
         super(SaveClimbPopup, self,).__init__(parent)
 
@@ -25,26 +26,15 @@ class SaveClimbPopup(QDialog):
 
     def save_climb(self):
         if len(self.route) > 2 and self.widget.climb_name.text():
-            
-        #should this be seperated? and should there be a seperate function for saving 
-        #route to json maybe? And the save climb just calls two functions?
-        #so threading???
             new_list = pickle.dumps(self.route)
             self.db.add_climb(self.widget.climb_name.text(), new_list, int(self.widget.grade.value()))
-
-            
-            routes_path = "data/routes.json"
-            data = js.openJson(routes_path)
-            rt = {self.widget.climb_name.text(): self.route}
-            data.append(rt)
-
-            js.writeJson(data, routes_path)
-
-
-            
+            self.ClimbSaved.emit()
         else:
             print("Climb must contain 2 holds or more") 
     
     def save_cancelled(self):
         self.SaveCancelled.emit()
+    
+
+
 

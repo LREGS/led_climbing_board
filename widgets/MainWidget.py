@@ -97,6 +97,7 @@ class MainWidget(QWidget):
         self.main_layout.addWidget(self.climb_ticked_button, 4,0)
 
         self.route = []
+        self.activeuser = None
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
         self.selected_climb = None
 
@@ -163,14 +164,21 @@ class MainWidget(QWidget):
     def default_board(self):
         for button in self.board_widget.hold_buttons_group.buttons():
             button.setStyleSheet("background-color: transparent;")
+                    
+    def climb_saved(self):
+        print('climb saved')
+        self.saved_climbs.populate_table()
+
 
     def onSavedClimbClicked(self):
         save_climb_form = SaveClimbPopup(route= self.route, db= self.ClimbsDb)
         save_climb_form.exec() 
 
         save_climb_form.SaveCancelled.connect(self.save_cancelled())
+        save_climb_form.ClimbSaved.connect(self.climb_saved())
 
     def update_user_login(self, username):
+        self.activeuser = username
         self.user_button_one.setText(username)
 
     def handle_sign_in(self):
