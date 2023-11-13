@@ -1,5 +1,7 @@
 import sqlite3
 
+#notes
+
 from PySide6.QtCore import QFile, QIODevice, Signal
 from PySide6.QtGui import QIcon, QPixmap
 from PySide6.QtUiTools import QUiLoader

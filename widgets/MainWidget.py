@@ -24,6 +24,7 @@ from widgets.SignInForm import SignInForm
 from configuration_copy import UserAccountTable, Climbs, ClimbsHistory
 
 from ui_py_files.save_climb_popup_widget import Ui_input_climb_data
+from tools.sendClimbRequest import sendRouteToServer
 
 
 class MainWidget(QWidget):
@@ -137,6 +138,7 @@ class MainWidget(QWidget):
         climb_name = \
         self.saved_climbs.widget.tableWidget.item(row, column).text()
         
+        #dont handle sql query in the main widget like this - needs moving and abstracting
         self.ClimbsHistoryDb.cursor.execute("SELECT route from climbs WHERE climb_name = ?", (climb_name,))
         data = self.ClimbsHistoryDb.cursor.fetchall()
         tuple = data[0]
@@ -155,10 +157,14 @@ class MainWidget(QWidget):
         
     #should be in board widget
     def display_route(self, route):
-
+        #displays route in ui
         for button in route:
             button_to_display = self.board_widget.hold_buttons_group.button(button)
             button_to_display.setStyleSheet("background-color: green;")
+        
+        #displays route on the board
+        sendRouteToServer(route)
+        
 
     #should be in board widger            
     def default_board(self):
