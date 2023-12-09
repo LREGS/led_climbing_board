@@ -1,4 +1,5 @@
-converter = {
+def routeToLeds(route):
+    conversion =  {
     1:1, 
     2:4,
     11:7,
@@ -34,5 +35,13 @@ converter = {
     19:88,
     15:91,
     14:94,
-    22:96
-}
+    22:97
+        }
+    led_to_light = []
+    for hold in route:
+        print(hold)
+        if hold in conversion.keys():
+            led = conversion[hold]
+            led_to_light.append(led)
+    data = {"leds": led_to_light}
+    return data
