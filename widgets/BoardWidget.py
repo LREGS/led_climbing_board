@@ -37,6 +37,7 @@ class BoardWidget(QtWidgets.QWidget):
     def enable_buttons(self):
         for button in self.hold_buttons_group.buttons():
             button.setEnabled(True)
+            button.setStyleSheet("QPushButton { background-color: transparent; }")
 
     def disable_buttons(self):
         for button in self.hold_buttons_group.buttons():

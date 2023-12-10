@@ -116,55 +116,8 @@ class MainWidget(QWidget):
         if button.isChecked() == True:
             self.route.append(self.board_widget.hold_buttons_group.id(button))
             # button.setStyleSheet("background-color: rgba(124,252,0,0);")
-            conversion =  {
-                1:1, 
-                2:4,
-                11:7,
-                10:10,
-                13:13,
-                12:16,
-                24:21,
-                27:25,
-                25:29,
-                37:31,
-                26:34,
-                36:36,
-                38:39,
-                52:41,
-                39:44,
-                40:46,
-                51:48,
-                53:50,
-                50:54,
-                54:56,
-                48:60,
-                49:63,
-                41:67,
-                42:69,
-                43:71,
-                44:73,
-                33:75,
-                34:78,
-                29:80,
-                21:81,
-                20:84,
-                56:87,
-                19:88,
-                15:91,
-                14:94,
-                22:97
-                    }
-            led_to_light = []
-            for hold in self.route:
-                print(hold)
-                if hold in conversion.keys():
-                    led = conversion[hold]
-                    led_to_light.append(led)
-            data = {"leds": led_to_light}
-
-            #displays route on the board
-            
-            sendRouteToServer(data['leds'])
+            ledSelection =  routeToLeds(self.route)
+            sendRouteToServer(ledSelection['leds'])
         else:
             self.route.remove(self.board_widget.hold_buttons_group.id(button))
             button.setStyleSheet("background-color: transparent;")
@@ -214,55 +167,9 @@ class MainWidget(QWidget):
             button_to_display = self.board_widget.hold_buttons_group.button(button)
             button_to_display.setStyleSheet("background-color: green;")
         #relates hold number to the led number in the led string
-        conversion =  {
-                        1:1, 
-                        2:4,
-                        11:7,
-                        10:10,
-                        13:13,
-                        12:16,
-                        24:21,
-                        27:25,
-                        25:29,
-                        37:31,
-                        26:34,
-                        36:36,
-                        38:39,
-                        52:41,
-                        39:44,
-                        40:46,
-                        51:48,
-                        53:50,
-                        50:54,
-                        54:56,
-                        48:60,
-                        49:63,
-                        41:67,
-                        42:69,
-                        43:71,
-                        44:73,
-                        33:75,
-                        34:78,
-                        29:80,
-                        21:81,
-                        20:84,
-                        56:87,
-                        19:88,
-                        15:91,
-                        14:94,
-                        22:97
-                    }
-        led_to_light = []
-        for hold in route:
-            print(hold)
-            if hold in conversion.keys():
-                led = conversion[hold]
-                led_to_light.append(led)
-        data = {"leds": led_to_light}
-
+        ledsToIlluminate = routeToLeds(route)
         #displays route on the board
-        print(data['leds'])
-        sendRouteToServer(data['leds'])
+        sendRouteToServer(ledsToIlluminate['leds'])
 
         
 

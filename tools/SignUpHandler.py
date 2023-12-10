@@ -2,7 +2,6 @@ import os
 
 import bcrypt 
 
-from configuration import Configuartion
 
 class SignnUpHandler:
 

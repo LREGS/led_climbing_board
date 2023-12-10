@@ -1,3 +1,5 @@
+"""Manual mapping of the led numbers to the hold numbers within pyside - this is vital for telling neopixel which leds it needs to illuminate"""
+
 def routeToLeds(route):
     conversion =  {
     1:1, 
