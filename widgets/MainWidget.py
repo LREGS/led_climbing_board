@@ -12,7 +12,7 @@ from PySide6.QtGui import QPalette, QColor
 
 
 
-from ui_py_files.create_climb_formUI import Ui_Form
+from ui_py_files.CreateClimbFormUI import Ui_Form
 from widgets.BoardWidget import BoardWidget
 from widgets.CreateCimbForm import CreateClimbForm
 from widgets.SavedClimbsTable import SavedClimbsTable
@@ -21,10 +21,10 @@ from widgets.MenuBar import MenuBar
 from tools.JsonHandler import JsonHanlder as js
 from widgets.SignInForm import SignInForm
 # from configuration import Configuartion
-from configuration_copy import UserAccountTable, Climbs, ClimbsHistory
+from DBConfig import UserAccountTable, Climbs, ClimbsHistory
 from tools.hold2ledconvert import routeToLeds
 
-from ui_py_files.save_climb_popup_widget import Ui_input_climb_data
+from ui_py_files.SaveClimbWindow import Ui_input_climb_data
 from tools.sendClimbRequest import sendRouteToServer
 
 

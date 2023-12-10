@@ -3,7 +3,7 @@ from PySide6.QtCore import Signal
 
 from widgets.SignUpForm import SignUpForm
 from widgets.SignInForm import SignInForm
-from configuration_copy import UserAccountTable
+from DBConfig import UserAccountTable
 class MenuBar (QMenuBar):
 
     SendUsername = Signal(str)

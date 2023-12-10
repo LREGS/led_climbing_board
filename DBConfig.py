@@ -1,6 +1,6 @@
 import sqlite3
 
-from Singleton import Singleton
+from tools.Singleton import Singleton
 
 class DatabaseManager(metaclass= Singleton):
     def __init__(self):

@@ -2,8 +2,8 @@ import os
 
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QTableWidgetItem
 
-from ui_py_files.saved_climbs_table_ui import Ui_Form
-from configuration_copy import Climbs
+from ui_py_files.SavedClimbTableUI import Ui_Form
+from DBConfig import Climbs
 
 class SavedClimbsTable(QWidget):
     def __init__(self, db: Climbs = None, parent: QWidget = None) -> None:

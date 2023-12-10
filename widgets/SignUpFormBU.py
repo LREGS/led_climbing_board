@@ -2,7 +2,7 @@ import os
 
 from PySide6.QtWidgets import QDialog, QDialogButtonBox
 
-from ui_py_files.signupPopupUI import Ui_Dialog
+from ui_py_files.SignUpWindowUI import Ui_Dialog
 
 from tools.SignUpHandler import SignnUpHandler as handle
 from tools.JsonHandler import JsonHanlder as json

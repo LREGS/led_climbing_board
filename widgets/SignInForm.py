@@ -4,8 +4,8 @@ import bcrypt
 from PySide6.QtWidgets import QDialog, QDialogButtonBox
 from PySide6.QtCore import Signal, QObject
 
-from ui_py_files.signinwindow import Ui_Dialog
-from configuration_copy import UserAccountTable
+from ui_py_files.SignInWindowUI import Ui_Dialog
+from DBConfig import UserAccountTable
 
 class SignInForm(QDialog):
     

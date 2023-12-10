@@ -3,7 +3,7 @@ import os
 from PySide6 import QtWidgets
 from PySide6.QtWidgets import QVBoxLayout, QButtonGroup
 
-from ui_py_files.boardgui_2 import Ui_board_widget
+from ui_py_files.boardUI import Ui_board_widget
 
 class BoardWidget(QtWidgets.QWidget):
     '''Controls and represents the climbing board and the buttons that represent the holds'''

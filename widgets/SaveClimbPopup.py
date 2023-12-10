@@ -3,8 +3,8 @@ import pickle
 
 
 from tools.JsonHandler import JsonHanlder as js
-from ui_py_files.save_climb_popup_widget import Ui_input_climb_data
-from configuration_copy import Climbs
+from ui_py_files.SaveClimbWindow import Ui_input_climb_data
+from DBConfig import Climbs
 
 from PySide6.QtWidgets import QDialog
 from PySide6.QtCore import Signal
