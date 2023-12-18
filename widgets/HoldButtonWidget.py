@@ -4,23 +4,24 @@ from PySide6.QtWidgets import QAbstractButton, QApplication, QWidget, QHBoxLayou
 from PySide6.QtCore import Signal
 
 class clickableLabel(QLabel):
-    """Now I wont have the checked/unchecked functionality 
-    that I rely on to control my view model for the buttons
-    so I will need to devise a new way.
-    
-    I just think opn every action (create/load) climb we wipe 
-    the ui 
-    
-    and then On MouseRelease we should make it switch between two 
-    pixmaps - one is a button that represents selected (aurora around 
-    hold) and one is the standard pixmap that just shows the button"""
-    
+
     click = Signal()
     def __init__(self, parent=None):
         super(clickableLabel, self).__init__(parent)
+        #None = unchecked, True = Checked
+        self.isChecked = False
 
     def mouseReleaseEvent(self, event):
         self.click.emit()
+        self.toggleChecked()
+
+    def toggleChecked(self):
+        if self.isChecked:
+            self.isChecked = False
+        else:
+            self.isChecked = True
+
+
 
 # if __name__ == '__main__':
 #     app = QApplication(sys.argv)
