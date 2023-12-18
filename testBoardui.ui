@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>913</width>
-    <height>689</height>
+    <width>852</width>
+    <height>669</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -44,8 +44,8 @@
   <widget class="clickableLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>150</y>
+     <x>330</x>
+     <y>40</y>
      <width>21</width>
      <height>16</height>
     </rect>
@@ -60,12 +60,31 @@
     <bool>true</bool>
    </property>
   </widget>
+  <widget class="clickableLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>220</y>
+     <width>31</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>holdPhotos/output/hold54.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>
    <class>clickableLabel</class>
    <extends>QLabel</extends>
-   <header>clickablelabel.h</header>
+   <header location="global">clickablelabel.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
