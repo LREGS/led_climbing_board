@@ -44,3 +44,26 @@ I'd love for some people to start contributing to this project so that it can be
 I have a number of issues already in the repo, please feel free to fork and send a PR. 
 
 If you want to chat about contributing then feel free to message me on here, william-cullum@hotmail.co.uk, or discord William#7401
+
+# How it Works
+I'm going to try and briefly explain the basic running of the appliction. 
+
+main.py is the entry point for the application. This is a child of a QMainWindow which is the framework for building the application interface. It also intitalized the Database, builds the tables etc.
+
+The MainWidget is main widget which controls and orchestrates all the other widgets (the climbing board, forms, table etc). Unfortunately, I did not know what a class was when I wrote this app, let alone MVC architecture so please don't expect any facny architecture or design patters in this codebase. The MainWidget is a child of a QWidget and accepts, the parameters for the MainWidget are the database connections initalized in main.py. 
+
+Within the MainWidget,I have initalized all the child widgets of the application (board, forms etc) and control the database connections going to each widget. The MainWidget contains the logic for the following operations:
+- Creating a climb
+- Get saved route from databse
+- Dispalying route (in app, and also sending http request to the server)
+- Other ui controls (default views etc)
+
+Another key component is the BoardWidget. The boardwidget is created from a UI file from within QDesigner. This displays the image of the climbing board, and controls the buttons for the climbing holds. 
+
+All the other form based widgets are more than self explanatory. 
+
+User Accounts: There is user accounts in it at the moment but it is very much as WIP. You can make a login, and login, but I have no proper functionality for tracking who is logged in and what it means for assigning who set the route etc. 
+
+Database: I have three tables in my database: users, climb history, and climbs. 
+My plan for the database is to keep track of everytime a user clicks a climb so you can use it as some kind of training log to keep track of projects and ticked off climbs etc. 
+
