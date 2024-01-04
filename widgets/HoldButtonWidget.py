@@ -1,7 +1,7 @@
-import sys
-from PySide6.QtGui import QMouseEvent, QPixmap, QPainter
-from PySide6.QtWidgets import QAbstractButton, QApplication, QWidget, QHBoxLayout, QLabel, QMainWindow
+from PySide6.QtWidgets import QLabel
 from PySide6.QtCore import Signal
+
+"""Unfinished class trying to make the hold buttons the actual images of the buttons, rather than the current ugly squares."""
 
 class clickableLabel(QLabel):
 

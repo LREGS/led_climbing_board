@@ -1,13 +1,10 @@
-import os
-import sqlite3
-
-from PySide6.QtWidgets import QDialog, QDialogButtonBox, QLabel
+from PySide6.QtWidgets import QDialog, QDialogButtonBox
 
 from ui_py_files.SignUpWindowUI import Ui_Dialog
 
 from tools.SignUpHandler import SignnUpHandler as handle
-from tools.JsonHandler import JsonHanlder as json
 from DBConfig import UserAccountTable
+
 class SignUpForm(QDialog):
     def __init__(self, db: UserAccountTable = None, parent: QDialog = None) -> None:
         super(SignUpForm, self).__init__(parent)    

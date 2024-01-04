@@ -1,30 +1,16 @@
 import os
-import csv
 import json 
 import pickle
 
-from PySide6.QtWidgets import QWidget, QVBoxLayout
-from PySide6.QtWidgets import QSizePolicy, QApplication, QMainWindow, \
-QLabel,QPushButton, QToolButton, QVBoxLayout, QWidget, QDialog, QButtonGroup, \
-QTableWidget, QGridLayout, QTableWidgetItem, QMenuBar, QMenu
-from PySide6.QtCore import QObject, Signal, QTimer
-from PySide6.QtGui import QPalette, QColor
+from PySide6.QtWidgets import QWidget, QPushButton, QWidget, QButtonGroup, QGridLayout
 
-
-
-from ui_py_files.CreateClimbFormUI import Ui_Form
 from widgets.BoardWidget import BoardWidget
-from widgets.CreateCimbForm import CreateClimbForm
 from widgets.SavedClimbsTable import SavedClimbsTable
 from widgets.SaveClimbPopup import SaveClimbPopup
 from widgets.MenuBar import MenuBar
-from tools.JsonHandler import JsonHanlder as js
 from widgets.SignInForm import SignInForm
-# from configuration import Configuartion
 from DBConfig import UserAccountTable, Climbs, ClimbsHistory
 from tools.hold2ledconvert import routeToLeds
-
-from ui_py_files.SaveClimbWindow import Ui_input_climb_data
 from tools.sendClimbRequest import sendRouteToServer
 
 
@@ -143,7 +129,7 @@ class MainWidget(QWidget):
         climb_name = \
         self.saved_climbs.widget.tableWidget.item(row, column).text()
         
-        #dont handle sql query in the main widget like this - needs moving and abstracting
+        #dont handle sql query in the main widget like this - needs moving to db config 
         self.ClimbsHistoryDb.cursor.execute("SELECT route from climbs WHERE climb_name = ?", (climb_name,))
         data = self.ClimbsHistoryDb.cursor.fetchall()
         tuple = data[0]

@@ -2,3 +2,14 @@ pyside6
 faker
 bcrypt
 requests
+flask
+Adafruit-Blinka
+adafruit-circuitpython-busdevice
+adafruit-circuitpython-neopixel
+adafruit-circuitpython-pixelbuf
+adafruit-circuitpython-requests
+adafruit-circuitpython-typing
+Adafruit-PlatformDetect
+Adafruit-PureIO
+blinker
+click

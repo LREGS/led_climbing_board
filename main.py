@@ -1,17 +1,9 @@
-import sqlite3
-
-#notesss
-
-from PySide6.QtCore import QFile, QIODevice, Signal
-from PySide6.QtGui import QIcon, QPixmap
-from PySide6.QtUiTools import QUiLoader
-from PySide6 import QtCore
-from PySide6.QtWidgets import QSizePolicy, QApplication, QMainWindow, \
-QLabel,QPushButton, QToolButton, QVBoxLayout, QWidget, QDialog, QButtonGroup, QApplication
+from PySide6.QtWidgets import QApplication, QMainWindow, QApplication
 
 from ui_py_files.MainWindowUI import *
-from widgets.MainWidget import MainWidget
 from DBConfig import Climbs, ClimbsHistory, UserAccountTable
+from widgets.MainWidget import MainWidget
+
             
 
 class MainWindow(QMainWindow):        

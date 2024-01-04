@@ -1,6 +1,6 @@
 import os.path
 
-from PySide6 import QtWidgets, QtCore, QtGui
+from PySide6 import QtWidgets
 from ui_py_files.CreateClimbFormUI import Ui_Form
 
 class CreateClimbForm(QtWidgets.QWidget):

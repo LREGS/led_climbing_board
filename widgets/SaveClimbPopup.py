@@ -1,8 +1,6 @@
-import json
 import pickle
 
 
-from tools.JsonHandler import JsonHanlder as js
 from ui_py_files.SaveClimbWindow import Ui_input_climb_data
 from DBConfig import Climbs
 

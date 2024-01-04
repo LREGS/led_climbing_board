@@ -46,7 +46,7 @@ class Ui_board_widget(object):
         self.label.setStyleSheet(u"background-color: rgba(100, 100, 100,50);\n"
 "    border: none;")
         self.label.setFrameShape(QFrame.WinPanel)
-        self.label.setPixmap(QPixmap(u"../board.jpeg"))
+        self.label.setPixmap(QPixmap(u"board_img/board.jpeg"))
         self.label.setScaledContents(True)
         self.hold1 = QPushButton(board_widget)
         self.hold1.setObjectName(u"hold1")
