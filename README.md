@@ -37,14 +37,6 @@ include all the QPushButtons you just created in QDesigner
 Once this is completed you should have LEDs powered by a 5v cable, that is plugged into a microcontroller/pi running a flask server. You can then start the PySide application up and assuming the above is correct, you should be able to click "create route" and click on holds it will illuminate leds. 
 
 
-# Contributing
-
-I'd love for some people to start contributing to this project so that it can be improved for myself and future visitors. Selfishly, I'd also love to learn from future contributors and increase my own skill at the same time! 
-
-I have a number of issues already in the repo, please feel free to fork and send a PR. 
-
-If you want to chat about contributing then feel free to message me on here, william-cullum@hotmail.co.uk, or discord William#7401
-
 # How it Works
 I'm going to try and briefly explain the basic running of the appliction. 
 
