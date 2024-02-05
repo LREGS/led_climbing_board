@@ -1,0 +1,3 @@
+- create an actual api to the database 
+- new front-end eihter electron/nciegui or just a website that will allow me more freedom to manipulate scg
+- can I do in go to save me from python?
