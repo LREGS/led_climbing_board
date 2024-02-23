@@ -13,7 +13,7 @@ def hello():
 @app.route('/processRoute', methods=['POST'])
 def processroute():
     request_data = request.json
-    illuminate_route(request_data['middle holds'])
+    illuminate_route(request_data)
     return "<p> s </p>" 
 
 def printData(data):
